@@ -1,6 +1,6 @@
 <?php
 
-class Gallery_control extends CI_Controller {
+class Menu_control extends CI_Controller {
 
 	function __construct()
 	{
@@ -52,11 +52,22 @@ class Gallery_control extends CI_Controller {
                 'height'    => $upload_data['image_height'],
                 'type'      => $upload_data['image_type'],
                 'size'      => $upload_data['file_size'],
-                'date'      => time(),
-                'category' => $this->input->post('category'),
-            	'title' =>  $this->input->post('title'),
+               'category' => $this->input->post('category'),
+            	'vegoil' =>  $this->input->post('vegoil'),
+            	'cream' =>  $this->input->post('cream'),
+
+            	'name' =>  $this->input->post('name'),
             	'sugar' => $this->input->post('sugar'),
-                
+            	'price' => $this->input->post('price'),
+
+            	'description' =>  $this->input->post('description'),
+            	'cocoapowder' => $this->input->post('cocoapowder'),
+            	'bakingpowder' => $this->input->post('bakingpowder'),
+
+            	'bicarbonate' =>  $this->input->post('bicarbonate'),
+            	'eggs' => $this->input->post('eggs'),
+            	'milk' => $this->input->post('milk'),
+
             );
             $img_insert=$this->menu_model->insert($data_ary);
             $this->img_display();
@@ -65,7 +76,7 @@ class Gallery_control extends CI_Controller {
 
 	function img_display()
 		{
-			$config["total_rows"] = $this->gallery_model->count();
+			$config["total_rows"] = $this->menu_model->count();
 			$config["per_page"] = 10;
 			$config["uri_segment"] = 3;
 			$config['num_links'] = 20;
@@ -76,17 +87,17 @@ class Gallery_control extends CI_Controller {
 
     if($page!="")
     	{
-			$data['display']=$this->gallery_model->get_images($config["per_page"], $page);
+			$data['display']=$this->menu_model->get_images($config["per_page"], $page);
 		}
 	else
 		{
-			$data['display']=$this->gallery_model->get_images('4','1');
+			$data['display']=$this->menu_model->get_images('4','1');
+			print_r($data);
 		}
  			$data["links"] = $this->pagination->create_links();
- 			$this->load->view('admin_header'); 
- 			$this->load->view('admin_sidebar'); 
-			$this->load->view('Upload_success',$data);
-			$this->load->view('admin_footer');
+ 			$this->load->view('header'); 
+			$this->load->view('all_cartoon',$data);
+			$this->load->view('footer');
 	
 	 
 	}
