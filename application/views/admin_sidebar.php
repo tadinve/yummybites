@@ -22,7 +22,7 @@
                             <a href="<?php echo $this->config->base_url(); ?>index.php/welcome/admin_home">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                                 </a>
-                                 <a href="index1">
+                                 <a href="<?php echo $this->config->base_url(); ?>index.php/welcome/change_password">
                                 <i class="fa fa-dashboard"></i> <span>Change Password</span>
                             </a>
                         </li>
@@ -37,6 +37,22 @@
                             <ul class="treeview-menu">
                                 <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/upload_form"><i class="fa fa-angle-double-right"></i> Order Online Images </a></li>
                                 <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/gallery_form"><i class="fa fa-angle-double-right"></i> Gallery Images </a></li>
+
+                            </ul>
+                           
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-laptop"></i>
+                                <span>Menu</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/menu_form"><i class="fa fa-angle-double-right"></i> Flower Cake Images </a></li>
+                                <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/menu_form"><i class="fa fa-angle-double-right"></i> Edible Cake Images </a></li>
+                                 <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/menu_form"><i class="fa fa-angle-double-right"></i> Fruit Cake Images </a></li>
+                                <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/menu_form"><i class="fa fa-angle-double-right"></i> Cartoon Cake Images </a></li>
+                                 <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/menu_form"><i class="fa fa-angle-double-right"></i> Engagement Cake Images </a></li>
 
                             </ul>
                            

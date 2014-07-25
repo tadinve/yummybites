@@ -52,9 +52,9 @@ document.getElementById("price").value='Rs.'+a*c;
 											<!-- Single item details -->
 											<div class="item-details">
 												<!-- Paragraph -->
-												<p class="text-justify">Indulgence!! We don't need a reason for this.. Let your dearone's heart melt with our chocolate cake at the very bite they make!!</p>
+												<p class="text-justify">Indulgence!! We don't need a reason for this.. Let your dear one's heart melt with our chocolate cake at the very bite they make!!</p>
 												<!-- Heading -->
-												<h5>Ingrediants-</h5>
+												<h5>Ingredients-</h5>
 												
 
 												<!-- Recipe ingredients -->
@@ -68,7 +68,7 @@ document.getElementById("price").value='Rs.'+a*c;
 														<div class="clearfix"></div>
 													</li>
 													<li>
-														<i class="fa fa-check"></i> Suger <span class="pull-right"> 350g</span>
+														<i class="fa fa-check"></i> Sugar <span class="pull-right"> 350g</span>
 														<div class="clearfix"></div>
 													</li>
 													<li>

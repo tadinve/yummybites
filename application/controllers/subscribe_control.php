@@ -20,12 +20,16 @@ class Subscribe_control extends CI_Controller
 
 public function subscribe_val()
 { 
-        $user['name'] = $this->input->post('name');
+        $user['fullname'] = $this->input->post('fullname');
         $user['email'] = $this->input->post('email');
-if($user['name']!=0 && $user['email']!=0)
+if($this->input->post('fullname')!='')
 {
         $value=$this->subscribe_model->subscribe_insert($user);
+                $this->load->view('header'); 
+
         $this->load->view('subscription_success');
+                $this->load->view('footer'); 
+
     }
     else{
         echo "please enter your name";

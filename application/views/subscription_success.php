@@ -2,11 +2,16 @@
 <head>
 <title>Subscription_success</title>
 </head>
-<body>
+<body >
+<div class="wrapper">
+				<div class="container" style="background-color:white;">
 
-<h3>You are successfully subscribed!</h3>
+<h1 style="color:orange; text-align:center;">WoW!!</h1>
+<center><img src="<?php echo $this->config->base_url(); ?>img/smiley.gif"  alt="Smiley face"  align="middle">
+<h3 style="color:orange; text-align:center;">You are successfully subscribed!</h3>
 
-<p><?php echo anchor('welcome/home', 'Try it again!'); ?></p>
-
+</center>
+</div>
+</div>
 </body>
 </html>

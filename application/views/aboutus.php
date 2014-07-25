@@ -24,7 +24,7 @@
 						<div class="row">
 							<div class="col-md-6">
 								<!-- BLock heading -->
-								<h3>Our Resturant</h3>
+								<h3>Our Restaurant </h3>
 								<!-- Flex slider Content -->
 								<div class="flexslider-recent">
 									<ul class="slides">
@@ -45,7 +45,7 @@
 											<!-- Slide content -->
 											<div class="slider-content">
 												<!-- Heading -->
-												<h4>Choclate Cake</h4>
+												<h4> Chocolate Cake</h4>
 												<!-- Paragraph -->
 												<p></p>
 											</div>
@@ -79,7 +79,7 @@
 												<blockquote>
 													<!-- Paragraph -->
 													<p style="color:#660033">We make the best designed cakes according to customer's requirement.
-													Many number of flavours are offered depending on customer's taste.</p>
+													Many number of flavors are offered depending on customer's taste.</p>
 												</blockquote>
 												<!-- Heading with image -->
 												
@@ -94,7 +94,7 @@
 												<!-- Your comments -->
 												<blockquote>
 													<!-- Paragraph -->
-													<p style="color:#660099">Select your ingrediants with no extra charge. 
+													<p style="color:#660099">Select your ingredients with no extra charge. 
 													We provide best baked cakes for any occasion. Make your order through online also. All you need is just click on our online shopping cart.</p>
 												</blockquote>
 												<!-- Heading with image -->

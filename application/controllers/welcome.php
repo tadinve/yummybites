@@ -38,6 +38,61 @@ public function nocache()
         $this->set_header('Pragma: no-cache');
     }
 
+    public function all_cartoon()
+	{
+
+		$this->load->view('header'); 
+ 		$this->load->view('all_cartoon'); 
+		$this->load->view('footer');
+        		
+    }
+
+    public function all_edible()
+	{
+
+		$this->load->view('header'); 
+ 		$this->load->view('all_edible'); 
+		$this->load->view('footer');
+        		
+    }
+
+    public function all_valentaine()
+	{
+
+		$this->load->view('header'); 
+ 		$this->load->view('all_valentaine'); 
+		$this->load->view('footer');
+        		
+    }
+
+    public function all_fruit()
+	{
+
+		$this->load->view('header'); 
+ 		$this->load->view('all_fruit'); 
+		$this->load->view('footer');
+        		
+    }
+
+    public function all_engagement()
+	{
+
+		$this->load->view('header'); 
+ 		$this->load->view('all_engagement'); 
+		$this->load->view('footer');
+        		
+    }
+
+
+public function all_flower()
+	{
+
+		$this->load->view('header'); 
+ 		$this->load->view('all_flower'); 
+		$this->load->view('footer');
+        		
+    }
+
 public function gallery()
 	{
 
@@ -220,6 +275,17 @@ public function upload_form()
 	}
 
 
+public function menu_form()
+	{
+		$session_id=$this->session->userdata('id');
+        $data=$this->login_model->get_userdetails($session_id);
+        $user['username']=$data->userid;
+		$this->load->view('admin_header',$user);
+        $this->load->view('admin_sidebar',$user);
+		$this->load->view('menu_form', array('error' => ' ' ));
+		$this->load->view('admin_footer',$user);  
+	}
+
 public function gallery_form()
 	{
 		$session_id=$this->session->userdata('id');
@@ -272,8 +338,8 @@ public function do_upload()
                 'description' => $this->input->post('description'),
             	'price' =>  $this->input->post('price'),
             );
-            $img_insert=$this->image_model->insert($data_ary);
-            $this->img_display();
+        $img_insert=$this->image_model->insert($data_ary);
+        $this->img_display();
 		}
 	}
 
@@ -401,5 +467,24 @@ public function logout()
 	 
 	}
 
+
+public function change_password()
+          {
+          	          	
+
+		$session_id=$this->session->userdata('id');
+        $data=$this->login_model->get_userdetails($session_id);
+        $user['username']=$data->userid;
+        	//echo $data['username'];exit;
+                  	$error = array('error' => $this->upload->display_errors());
+
+        $this->load->view('admin_header',$user);
+        $this->load->view('admin_sidebar',$user); 
+          	$this->load->view('change_password',array('error' => ' ' ));
+        $this->load->view('admin_footer',$user);  
+
+            //$data = array( "main_content" => 'includes/memberadmin/memberadmin_cpass');
+               // $this->load->view('includes/memberadmin/template',$data);
+          }
 
 }

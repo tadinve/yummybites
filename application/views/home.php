@@ -375,7 +375,7 @@
 								data-endeasing="Power3.easeInOut"
 								data-captionhidden="on"
 								
-								style="color:#330066; font-size:20px;font-weight:bold;max-width: auto; max-height: auto; white-space: nowrap;">Select your Ingrediants and Designs. <br /> Get your Order in time. <br />
+								style="color:#330066; font-size:20px;font-weight:bold;max-width: auto; max-height: auto; white-space: nowrap;">Select your Ingredients and Designs. <br /> Get your Order in time. <br />
 							</div>
 							
 							<div class="tp-caption lfl largeblackbg br-red"

@@ -1,4 +1,31 @@
+<script type="text/javascript">
 
+  function checkPassword(str)
+  {
+    var re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    re1 = /^\w+$/;
+    return re.test(str);
+    
+  }
+
+  function checkForm(form)
+  {
+    if(form.fullname.value == "" || form.email.value == "" || form.message.value == "") {
+      alert("Error: Fill all the fields");
+      form.fullname.focus();
+      return false;
+    }
+    
+    if(!re1.test(form.fullname.value) || !re.test(form.email.value) || !re.test(form.message.value)) {
+      alert("Error: Invalid Name/EmailID/Empty Message");
+      form.fullname.focus();
+      return false;
+    }
+    
+    return true;
+  }
+
+</script>
 			
 			<!-- Banner Start -->
 			
@@ -46,7 +73,7 @@
 											<!-- Heading -->
 											<h4>On-line Order</h4>
 											<!-- Contact Number / Icon -->
-									<i class="fa fa-phone br-green"></i> <span>+91 9848077734/+91 9912235686</span>
+									<i class="fa fa-phone br-green"></i> <span>+91 9848077734<br>+91 9912235686</span>
 											<div class="clearfix"></div>
 											<!-- Email / Icon -->
 										<i class="fa fa-envelope-o br-lblue"></i> <span><a href="#">yummybitesbakers@gmail.com</a><br/><a href="#">neeraja@yummybites.co.in</a></span>											
@@ -59,18 +86,18 @@
 									<!-- Heading -->
 									<h3>Contact Form</h3>
 									<!-- Form -->
-									<form role="form">
+                <form method="POST" action="<?php echo $this->config->base_url(); ?>index.php/contact_control/contact_val" onsubmit="return checkForm(this);">
 										<div class="form-group">
 											<!-- Form input -->
-											<input class="form-control" type="text" placeholder="Name" />
+											<input class="form-control" type="text" name="fullname" placeholder="Name" />
 										</div>
 										<div class="form-group">
 											<!-- Form input -->
-											<input class="form-control" type="email" placeholder="Email" />
+											<input class="form-control" type="email" name="email" placeholder="Email" />
 										</div>
 										<div class="form-group">
 											<!-- Form text area -->
-											<textarea class="form-control" rows="3" placeholder="Message..."></textarea>
+											<textarea class="form-control" rows="3" name="message" placeholder="Message..."></textarea>
 										</div>
 										<!-- Form button -->
 										<button class="btn btn-danger btn-sm" type="submit">Send</button>&nbsp;

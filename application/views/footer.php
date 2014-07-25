@@ -1,3 +1,33 @@
+<script type="text/javascript">
+
+  function checkPassword(str)
+  {
+    var re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    re1 = /^\w+$/;
+    return re.test(str);
+    
+  }
+
+  function checkForm(form)
+  {
+    if(form.fullname.value == "" || form.email.value == "") {
+      alert("Error: Fill all the fields");
+      form.fullname.focus();
+      return false;
+    }
+    
+    if(!re1.test(form.fullname.value) || !re.test(form.email.value)) {
+      alert("Error: Invalid Name/EmailID");
+      form.fullname.focus();
+      return false;
+    }
+    
+    return true;
+  }
+
+</script>
+
+
 <!-- Footer Start -->
 			
 			<div class="footer padd">
@@ -13,7 +43,7 @@
 									<h1>Yummy Bites</h1>
 								</div>
 								<!-- Paragraph -->
-								<p>Celebrations add joy to our life's. Make your Celebrations a little Tastefull with our Bakery Products.</p>
+								<p>Celebrations add joy to our life's. Make your Celebrations a little Tasteful with our Bakery Products.</p>
 								<hr />
 								<!-- Heading -->
 								<h6>On-line Payment Clients</h6>
@@ -57,26 +87,22 @@
 
 <!--<?php  $error;?> -->
 
-<?php echo form_open_multipart('subscribe_control/subscribe_val');?>
+                <form method="POST" action="<?php echo $this->config->base_url(); ?>index.php/subscribe_control/subscribe_val" onsubmit="return checkForm(this);">
  
 
-                          <div class="form-group">
-                        <input type="text" name="name" class="form-control" placeholder="Full name"/>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="email" class="form-control" placeholder="User ID"/>
-                    </div>
-                    
-                    
-               
-               
-                             
-
-                    <input type="submit" value="Subscribe" class="btn btn-danger"></button>
+                          
+                        <div class="form-group">
+                                        <input title="Enter FullName" type="text" class="form-control" placeholder="FullName" name="fullname"/>
+                                        </div>
+                                         <div class="form-group">
+                                    
+                                        <input title="Enter EmailID" type="text" class="form-control" placeholder="EmailID" name="email"/></div>
+                                     <input type="submit" value="Subscribe" class="btn btn-danger"/>
+                                    </form>
 
                     
-               
-            </form>
+
+           
 
 							</div> <!--/ Footer widget end -->
 						</div>
@@ -91,7 +117,7 @@
 									<i class="fa fa-map-marker br-red"></i> <span>7-1-392/1,<br />Balkampet main road,<br /> SR nagar colony,<br/>Hyderabad-16.</span>
 									<div class="clearfix"></div>
 									<!-- Contact Number / Icon -->
-									<i class="fa fa-phone br-green"></i> <span>+91-9848077734/+91-9912235686</span>
+									<i class="fa fa-phone br-green"></i> <span>+91-9848077734<br />+91-9912235686</span>
 									<div class="clearfix"></div>
 									<!-- Email / Icon -->
 									<i class="fa fa-envelope-o br-lblue"></i> <span><a href="#">yummybitesbakers@gmail.com</a><br/><a href="#">neeraja@yummybites.co.in</a></span>

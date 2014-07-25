@@ -7,7 +7,7 @@
 	<title>
 		Yummy Bites - Order Online Cakes, Eggless Cakes, Pastries, Bread, Cookies, Sweets. Free Delivery
 	</title>
-		<meta name="description" content="Yummy Bakery online store offers you a great variety of products like Cakes,Eggless Cakes,Pastries,Savouries,Cookies,Sweets.">
+		<meta name="description" content="Yummy Bakery online store offers you a great variety of products like Cakes,Eggless Cakes,Pastries,Savories,Cookies,Sweets.">
 		<meta name="keywords" content="yummy, bakery, cakes">
 		<meta name="author" content="ResponsiveWebInc">
 		
@@ -485,7 +485,7 @@
 								data-elementdelay="0.2"
 								data-endelementdelay="0.08"
 								data-endspeed="300"
-								style="z-index: 10; max-width: auto; max-height: auto; white-space: nowrap;font-size:15px;color:#330066;font-weight:bold;">yummy bites<br/> The best bakery <br/>  With new designs<br/>  in all flavours<br/> 
+								style="z-index: 10; max-width: auto; max-height: auto; white-space: nowrap;font-size:15px;color:#330066;font-weight:bold;">yummy bites<br/> The best bakery <br/>  With new designs<br/>  in all flavors<br/> 
 							</div>
 							
 							<!-- LAYER NR. 4 -->
@@ -613,7 +613,7 @@
 								data-endeasing="Power3.easeInOut"
 								data-captionhidden="on"
 								
-								style="color:#330066; font-size:20px;font-weight:bold;max-width: auto; max-height: auto; white-space: nowrap;">Select your Ingrediants and Designs. <br /> Get your Order in time. <br />
+								style="color:#330066; font-size:20px;font-weight:bold;max-width: auto; max-height: auto; white-space: nowrap;">Select your Ingredients and Designs. <br /> Get your Order in time. <br />
 							</div>
 							
 							<div class="tp-caption lfl largeblackbg br-red"

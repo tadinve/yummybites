@@ -44,7 +44,7 @@
 										<span class="item-price pull-right"><?php echo 'Rs: '.$display[$i]->price;?></span>
 										<div class="clearfix"></div>
 										<!-- Paragraph -->
-										<p>Its avaiable in different designs.</p>
+										<p>Its available in different designs.</p>
 										<!-- Buy now button -->
 										<div class="visible-xs">
 											<a class="btn btn-danger btn-sm" href="#">Buy Now</a>

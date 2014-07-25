@@ -39,10 +39,10 @@
 																	<!-- Image -->
 																	<img src="<?php echo $this->config->base_url(); ?>img/galary/18.jpg" class="img-responsive" alt style="width:350px;height:250px;" />
 																	<!-- Paragraph -->
-																	<p>Available in all flavours.</p>
+																	<p>Available in all flavors.</p>
 																	
 																	<!-- Button -->
-																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/item_flower" class="btn btn-danger btn-xs">Order Now</a>
+																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/all_flower" class="btn btn-danger btn-xs">Order Now</a>
 																</div>
 
 															</div>
@@ -51,14 +51,14 @@
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
-																	<h3>Valantaine Cake</h3>
+																	<h3>Valentine Cake</h3>
 																	<!-- Image -->
 																	<img src="<?php echo $this->config->base_url(); ?>img/galary/9.jpg" class="img-responsive" alt style="width:350px;height:250px;" />
 																	<!-- Paragraph -->
-																	<p>Available in all flavours.</p>
+																	<p>Available in all flavors.</p>
 																	
 																	<!-- Button -->
-																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/item_valentaine" class="btn btn-danger btn-xs">Order Now</a>
+																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/all_valentaine" class="btn btn-danger btn-xs">Order Now</a>
 																</div>
 
 															</div>
@@ -71,10 +71,10 @@
 																	<!-- Image -->
 																	<img src="<?php echo $this->config->base_url(); ?>img/galary/20.png" class="img-responsive" alt style="width:350px;height:250px;" />
 																	<!-- Paragraph -->
-																	<p>Available in all flavours.</p>
+																	<p>Available in all flavors.</p>
 																	
 																	<!-- Button -->
-																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/item_cartoon" class="btn btn-danger btn-xs">Order Now</a>
+																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/all_cartoon" class="btn btn-danger btn-xs">Order Now</a>
 																</div>
 
 															</div>
@@ -87,10 +87,10 @@
 																	<!-- Image -->
 																	<img src="<?php echo $this->config->base_url(); ?>img/galary/21.jpg" class="img-responsive" alt style="width:350px;height:250px;" />
 																	<!-- Paragraph -->
-																	<p>Available in all flavours.</p>
+																	<p>Available in all flavors.</p>
 																	
 																	<!-- Button -->
-																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/item_edible" class="btn btn-danger btn-xs">Order Now</a>
+																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/all_edible" class="btn btn-danger btn-xs">Order Now</a>
 																</div>
 
 															</div>
@@ -102,10 +102,10 @@
 																	<!-- Image -->
 																	<img src="<?php echo $this->config->base_url(); ?>img/galary/4.jpg" class="img-responsive" alt style="width:350px;height:250px;" />
 																	<!-- Paragraph -->
-																	<p>Available in all flavours.</p>
+																	<p>Available in all flavors.</p>
 																	
 																	<!-- Button -->
-																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/item_engagement" class="btn btn-danger btn-xs">Order Now</a>
+																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/all_engagement" class="btn btn-danger btn-xs">Order Now</a>
 																</div>
 
 															</div>
@@ -118,7 +118,7 @@
 																	<!-- Image -->
 																	<img src="<?php echo $this->config->base_url(); ?>img/galary/27.jpg" class="img-responsive" alt style="width:350px;height:250px;" />
 																	<!-- Paragraph -->
-																	<p>Available in all flavours.</p>
+																	<p>Available in all flavors.</p>
 																	
 																	<!-- Button -->
 																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/item_fruit" class="btn btn-danger btn-xs">Order Now</a>
@@ -141,4 +141,3 @@
 				
 				
 			</div><!-- / Inner Page Content End -->	
-

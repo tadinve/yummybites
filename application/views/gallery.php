@@ -1,6 +1,4 @@
 
-
-			
 			<!-- Banner Start -->
 			
 			<div class="banner padd">
@@ -38,12 +36,15 @@
 									<!-- Separate gallery element -->
 									<div class="element">
 										<!-- Image -->
-										<?php echo '<img src="'.$this->config->base_url().'uploads/'.$display[$i]->file.'" width="242" height="142"/>'; ?>
+										<?php echo '<img src="'.$this->config->base_url().'uploads/'.$display[$i]->file.'" width="272" height="142"/>'; ?>
 
 										<!-- Gallery Image Hover Effect -->
 										<span class="gallery-img-hover"></span>
 										<!-- Gallery Image Hover Icon -->
-										<a href="<?php echo $this->config->base_url(); ?>img/galary/4.jpg" class="gallery-img-link">
+										<!--"<?php echo '<img src="'.$this->config->base_url().'uploads/'.$display[$i]->file.'" width="242" height="142"/>'; ?> class="gallery-img-link" -->
+										<!--<?php echo '<a href="<img src="'.$this->config->base_url().'uploads/'.$display[$i]->file.'" width="242" height="142" class="gallery-img-link"/>"' ?></a> -->
+
+										<a href="<?php echo $this->config->base_url().'uploads/'.$display[$i]->file?>" class="gallery-img-link">
 											<i class="fa fa-search-plus hover-icon icon-left"></i>
 										</a>
 										<a href="#">
@@ -58,7 +59,7 @@
 							<div class="shopping-pagination" style="text-align:center">
 								<ul class="pagination">
 									<!--<li class="disabled"><a href="#">&laquo;</a></li> -->
-										<div style="text-align:center"><li class="pagination"><?php print_r($links); ?></li></div> 
+										<div style="text-align:center"><li class="pagination"><?php print_r($links);?></li></div> 
 <!--
 									<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
 									<li><a href="#">2</a></li>

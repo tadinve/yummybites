@@ -7,7 +7,7 @@
 	<title>
 		Yummy Bites - Order Online Cakes, Eggless Cakes, Pastries, Bread, Cookies, Sweets. Free Delivery
 	</title>
-		<meta name="description" content="Yummy Bakery online store offers you a great variety of products like Cakes,Eggless Cakes,Pastries,Savouries,Cookies,Sweets.">
+		<meta name="description" content="Yummy Bakery online store offers you a great variety of products like Cakes,Eggless Cakes,Pastries,Savories,Cookies,Sweets.">
 		<meta name="keywords" content="yummy, bakery, cakes">
 		<meta name="author" content="ResponsiveWebInc">
 		
@@ -210,7 +210,7 @@
 																	<!-- Paragraph -->
 																	<p>Get your desired flavour in Flower Bouquet Design.</p>
 																	<!-- Button -->
-																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/menu" class="btn btn-danger btn-xs">View Menu</a>
+																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/all_flower" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
 															<div class="col-md-4 col-sm-6">
@@ -221,9 +221,9 @@
 																	<!-- Image -->
 																	<img src="<?php echo $this->config->base_url(); ?>img/fruit.png" class="img-responsive" alt="" />
 																	<!-- Paragraph -->
-																	<p>Get it with your desired flavour and Ingredients. </p>
+																	<p>Get it with your desired flavor and Ingredients. </p>
 																	<!-- Button -->
-																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/menu" class="btn btn-danger btn-xs">View Menu</a>
+																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/all_fruit" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
 															<div class="col-md-4 col-sm-6">
@@ -234,9 +234,9 @@
 																	<!-- Image -->
 																	<img width="150px" height="50px" src="<?php echo $this->config->base_url(); ?>img/edible.png" class="img-responsive" alt="" />
 																	<!-- Paragraph -->
-																	<p>Get your desired flavour in Flower Bouquet Design.</p>
+																	<p>Get your desired flavor in Flower Bouquet Design.</p>
 																	<!-- Button -->
-																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/menu" class="btn btn-danger btn-xs">View Menu</a>
+																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/all_edible" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
 															<div class="col-md-4 col-sm-6">
@@ -247,9 +247,9 @@
 																	<!-- Image -->
 																	<img src="<?php echo $this->config->base_url(); ?>img/valentaine.png" class="img-responsive" alt="" />
 																	<!-- Paragraph -->
-																	<p>Get it with your desired flavour and Ingredients. </p>
+																	<p>Get it with your desired flavor and Ingredients. </p>
 																	<!-- Button -->
-																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/menu" class="btn btn-danger btn-xs">View Menu</a>
+																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/all_valentaine" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
 															<div class="col-md-4 col-sm-6">
@@ -260,9 +260,9 @@
 																	<!-- Image -->
 																	<img src="<?php echo $this->config->base_url(); ?>img/engagement.png" class="img-responsive" alt="" />
 																	<!-- Paragraph -->
-																	<p>Get it in your desired flavour. </p>
+																	<p>Get it in your desired flavor. </p>
 																	<!-- Button -->
-																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/menu" class="btn btn-danger btn-xs">View Menu</a>
+																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/all_engagement" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
 															<div class="col-md-4 col-sm-6">
@@ -273,9 +273,9 @@
 																	<!-- Image -->
 																	<img src="<?php echo $this->config->base_url(); ?>img/cartoon.png" class="img-responsive" alt="" />
 																	<!-- Paragraph -->
-																	<p>Get your Favourite Catroon on your Cake.</p>
+																	<p>Get your Favorite Cartoon on your Cake.</p>
 																	<!-- Button -->
-																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/menu" class="btn btn-danger btn-xs">View Menu</a>
+																	<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/all_cartoon" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
 														</div>

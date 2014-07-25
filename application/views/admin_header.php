@@ -22,6 +22,37 @@
         <link href="<?php echo $this->config->base_url(); ?>adminpanel/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="<?php echo $this->config->base_url(); ?>adminpanel/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+ 
+     <link href="<?php echo $this->config->base_url(); ?>assets/css/validationEngine.jquery.css" rel="stylesheet">
+               <link href="<?php echo $this->config->base_url(); ?>assets/css/template.css" rel="stylesheet">
+               <script src="<?php echo $this->config->base_url(); ?>assets/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+               <script src="<?php echo $this->config->base_url(); ?>assets/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+               <script src="<?php echo $this->config->base_url(); ?>assets/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+  
+   
+           <script>
+              jQuery(document).ready(function(){
+            // binds form submission and fields to the validation engine
+            jQuery("#formid").validationEngine();
+        });
+
+       </script>
+    <script>
+        /**
+        * 
+        * @param {input[type=checkbox]} the checkbox to read
+        * @param {input[type=textbox]} the field bound to the checkbox that gets enabled or disabled
+        */
+            function ToggleState(checkbox, field) {
+                    if ($(checkbox).attr('checked'))
+                        $(field).attr('disabled', 'disabled');
+                    else
+                        $(field).removeAttr('disabled');
+            }
+            </script>
+
+
+
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

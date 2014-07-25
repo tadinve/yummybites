@@ -1,0 +1,33 @@
+<?php
+class Contact_Model extends CI_Model
+{
+	function __construct()
+	{
+parent::__construct();
+		$this->load->database();
+	}
+	public function contact_insert($user)
+	{	        
+		if($user!=0)
+		{
+
+		        $data=$this->db->insert("contact", $user);
+		       // echo $data;
+
+		    }
+		    else
+		    {
+		    	echo "enter valid info";
+		    }
+
+		        if($data!=0)
+		        {
+		        
+		        	return true;
+		        }
+		        else
+		        {		  
+		        	return false;
+		        }
+	}
+}
