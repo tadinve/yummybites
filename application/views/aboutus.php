@@ -24,7 +24,7 @@
 						<div class="row">
 							<div class="col-md-6">
 								<!-- BLock heading -->
-								<h3>Our Restaurant </h3>
+								<h3>Our Bakery </h3>
 								<!-- Flex slider Content -->
 								<div class="flexslider-recent">
 									<ul class="slides">

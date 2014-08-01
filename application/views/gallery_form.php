@@ -30,6 +30,9 @@ Upload Image:<br><input type="file" name="userfile" size="2000" />
 
 <input type="submit" value="upload" />
 
+<a class="btn btn-mini btn-danger pull-right" href="<?php echo $this->config->base_url(); ?>index.php/gallery_control/img_display"><input type="submit" value="View Gallery" /></a>
+
+
 </form>
 
  </div>

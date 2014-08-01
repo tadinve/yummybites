@@ -1,3 +1,8 @@
+<?php
+$paypal_url='https://www.sandbox.paypal.com/cgi-bin/webscr'; // Test Paypal API URL
+$paypal_id='reethi-facilitator@solivarindia.com '; // Business email ID
+?>
+
 <script type="text/javascript">
  	var id_array=[];
  	var price_array=[];
@@ -56,6 +61,8 @@ function cart(aa){
 function cart1(category_array,price_array,file_array,id_array)
 {
 		//alert(category_price);
+							var price_total=0;
+
 var option='';
 var option=option+'<table class="table table-striped"><thead><tr><td>Selected Cake</td><td>Category</td><td>Price</td></tr></thead><tbody>';
 							
@@ -64,17 +71,19 @@ var option=option+'<table class="table table-striped"><thead><tr><td>Selected Ca
 var length_id=id_array.length;
 	while(length_id>0)
 {
-
+											price_total=parseInt(price_total)+parseInt(price_array[i]);
 	var option = option+'<tr class="cart-item">';
 	var option = option+'<td><img class="img-responsive img-rounded" width="120px" height="120px" src="<?php echo base_url(); ?>uploads/'+file_array[i]+'" alt="" /></td>';
 	var option = option+'<td>'+category_array[i]+'</td>';
 	var option = option+'<td>'+price_array[i]+'</td>';
-	var option = option+'<div class="clearfix"></div></div></li></tr>';
+
 var length_id=length_id-1;
 					i++;
 }
-var option=option+'</tbody></table>';
+		var option = option+'<tr><td></td><td>Total:</td><td>'+price_total+'</td></tr>';
 
+var option=option+'</tbody></table>';
+//document.getElementById('amount').value=price_array;
 
 
 	   				$("#category_id").html(option); 
@@ -127,6 +136,8 @@ var option=option+'</tbody></table>';
 		<link rel="shortcut icon" href="#">
 	</head>
 	<!-- Shopping cart Modal -->
+                                    <form action="<?php echo $paypal_url; ?>" method="post" name="frmPayPal1">
+
 		<div class="modal fade pull-right"  id="shoppingcart1" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -141,11 +152,48 @@ var option=option+'</tbody></table>';
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Continue Shopping</button>
-						<button type="button" class="btn btn-info">Checkout</button>
+							<input type="hidden" name="business" id="business" value="<?php echo $paypal_id; ?>">
+						    <input type="hidden" name="cmd" value="_xclick">
+
+						    <input type="hidden" name="item_name" id="item_name" value="2">
+						    <input type="hidden" name="item_number" id="item_number" value="2">
+						    <input type="hidden" name="credits" value="510">
+						    <input type="hidden" name="userid" value="1">
+						    <input type="hidden" name="amount" id="amount" value="2">
+						    <input type="hidden" name="cpp_header_image" value="<?php echo $this->config->base_url(); ?>img/lo.png">
+						    <input type="hidden" name="no_shipping" value="2">
+						    <input type="hidden" name="currency_code" value="USD">
+						    <input type="hidden" name="handling" value="0">
+
+
+
+
+
+						    <input type="hidden" name="cancel_return" value="http://demo.phpgang.com/payment_with_paypal/cancel.php">
+						    <input type="hidden" name="return" value="http://demo.phpgang.com/payment_with_paypal/success.php">
+
+
+						    <!--<input type="hidden" name="business" id="business" value="<?php echo $paypal_id; ?>">
+						    <input type="hidden" name="cmd" value="_xclick">
+
+						    <input type="hidden" name="item_name" id="item_name" value="1">
+						    <input type="hidden" name="item_number" id="item_number" value="1">
+						    <input type="hidden" name="credits" value="510">
+						    <input type="hidden" name="userid" value="1">
+						    <input type="hidden" name="amount" id="amount" value="2">
+						    <input type="hidden" name="cpp_header_image" value="<?php echo $this->config->base_url(); ?>img/lo.png">
+						    <input type="hidden" name="no_shipping" value="1">
+						    <input type="hidden" name="currency_code" value="USD">
+						    <input type="hidden" name="handling" value="0">
+						    <input type="hidden" name="cancel_return" value="http://demo.phpgang.com/payment_with_paypal/cancel.php">
+						    <input type="hidden" name="return" value="http://demo.phpgang.com/payment_with_paypal/success.php"> -->
+     
+						<button type="submit" class="btn btn-info" name="submit" alt="PayPal - The safer, easier way to pay online!">Checkout</button>
 					</div>
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
+		</form>
 		<!-- Model End -->
 	
 		<!-- Page Wrapper -->
@@ -255,7 +303,8 @@ var option=option+'</tbody></table>';
 																	<!-- Heading -->
 																	<h5>Flower Bouquet Cakes</h5>
 																	<!-- Image -->
-																	<img width="150px" height="50px" src="<?php echo $this->config->base_url(); ?>img/flower.png" class="img-responsive" alt="" />
+																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_flower">	<img width="150px" height="50px" src="<?php echo $this->config->base_url(); ?>img/flower.png" class="img-responsive" alt="" />
+																	</a>
 																	<!-- Paragraph -->
 																	<p>Get your desired flavour in Flower Bouquet Design.</p>
 																	<!-- Button -->
@@ -268,8 +317,8 @@ var option=option+'</tbody></table>';
 																	<!-- Heading -->
 																	<h5>Fruit Cakes</h5>
 																	<!-- Image -->
-																	<img src="<?php echo $this->config->base_url(); ?>img/fruit.png" class="img-responsive" alt="" />
-																	<!-- Paragraph -->
+																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_fruit"><img src="<?php echo $this->config->base_url(); ?>img/fruit.png" class="img-responsive" alt="" />
+																	</a><!-- Paragraph -->
 																	<p>Get it with your desired flavor and Ingredients. </p>
 																	<!-- Button -->
 																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_fruit" class="btn btn-danger btn-xs">View Menu</a>
@@ -281,11 +330,11 @@ var option=option+'</tbody></table>';
 																	<!-- Heading -->
 																	<h5>Edible Cakes</h5>
 																	<!-- Image -->
-																	<img width="150px" height="50px" src="<?php echo $this->config->base_url(); ?>img/edible.png" class="img-responsive" alt="" />
+																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_edible">	<img width="150px" height="50px" src="<?php echo $this->config->base_url(); ?>img/edible.png" class="img-responsive" alt="" /></a>
 																	<!-- Paragraph -->
 																	<p>Get your desired flavor in Flower Bouquet Design.</p>
 																	<!-- Button -->
-																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_edible" class="btn btn-danger btn-xs">View Menu</a>
+																	 <a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_edible" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
 															<div class="col-md-4 col-sm-8">
@@ -294,11 +343,12 @@ var option=option+'</tbody></table>';
 																	<!-- Heading -->
 																	<h5>valentine Cakes</h5>
 																	<!-- Image -->
-																	<img src="<?php echo $this->config->base_url(); ?>img/valentaine.png" class="img-responsive" alt="" />
+																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_valentaine">	<img src="<?php echo $this->config->base_url(); ?>img/valentaine.png" class="img-responsive" alt="" />
+																	</a>
 																	<!-- Paragraph -->
 																	<p>Get it with your desired flavor and Ingredients. </p>
 																	<!-- Button -->
-																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_valentaine" class="btn btn-danger btn-xs">View Menu</a>
+																	 <a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_valentaine" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
 															<div class="col-md-4 col-sm-8">
@@ -307,7 +357,8 @@ var option=option+'</tbody></table>';
 																	<!-- Heading -->
 																	<h5>Engagement Cakes</h5>
 																	<!-- Image -->
-																	<img src="<?php echo $this->config->base_url(); ?>img/engagement.png" class="img-responsive" alt="" />
+																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_engagement">	<img src="<?php echo $this->config->base_url(); ?>img/engagement.png" class="img-responsive" alt="" />
+																	</a>
 																	<!-- Paragraph -->
 																	<p>Get it in your desired flavor. </p>
 																	<!-- Button -->
@@ -320,8 +371,8 @@ var option=option+'</tbody></table>';
 																	<!-- Heading -->
 																	<h5>Cartoon Cakes</h5>
 																	<!-- Image -->
-																	<img src="<?php echo $this->config->base_url(); ?>img/cartoon.png" class="img-responsive" alt="" />
-																	<!-- Paragraph -->
+																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display">	<img src="<?php echo $this->config->base_url(); ?>img/cartoon.png" class="img-responsive" alt="" />
+																	</a><!-- Paragraph -->
 																	<p>Get your Favorite Cartoon on your Cake.</p>
 																	<!-- Button -->
 																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display" class="btn btn-danger btn-xs">View Menu</a>
@@ -335,7 +386,6 @@ var option=option+'</tbody></table>';
 											<li class="dropdown">
 												<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo $this->config->base_url(); ?>img/nav-menu/nav4.jpg" class="img-responsive" alt="" /> Shop <b class="caret"></b></a>
 												<ul class="dropdown-menu">
-													<li><a href="<?php echo $this->config->base_url(); ?>index.php/upload/img_display">Shopping</a></li>
 													
 													<li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/checkout">Checkout</a></li>
 													<li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/reserve_seats">Reservation</a></li>

@@ -31,11 +31,10 @@
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-laptop"></i>
-                                <span>Order Online</span>
+                                <span>Gallery</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/upload_form"><i class="fa fa-angle-double-right"></i> Order Online Images </a></li>
                                 <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/gallery_form"><i class="fa fa-angle-double-right"></i> Gallery Images </a></li>
 
                             </ul>

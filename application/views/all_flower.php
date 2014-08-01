@@ -41,8 +41,9 @@
 										<h4 class="pull-left"><?php echo $display[$i]->description;?></a></h4>
 										<!-- Buy now button -->
 										<div class="visible-xs"></div>
-											<a class="btn btn-danger btn-sm pull-left" href="#">Buy Now</a>
-										<span class="item-price pull-right"><?php echo 'Rs: '.$display[$i]->price;?></span>
+
+
+<button class="btn btn-danger btn-sm pull-left" onclick="cart(<?php echo $display[$i]->id ?>)">Buy Now </button>										<span class="item-price pull-right"><?php echo 'Rs: '.$display[$i]->price;?></span>
 										<div class="clearfix"></div>
 										
 										
