@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 01, 2014 at 11:54 AM
+-- Generation Time: Aug 01, 2014 at 01:05 PM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -31,11 +31,10 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `email` varchar(50) NOT NULL,
   `message` varchar(300) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `contact`
 --
 
-INSERT INTO `contact` (`id`, `fullname`, `email`, `message`) VALUES
-(1, 'reethu', 'reethima@hotmail.com', 'dgfhjgjhlkjl');
+INSERT INTO `dbversion` (`id`, `db_version`, `last_update_string`) VALUES (NULL, '1', '201407251620');

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 01, 2014 at 11:54 AM
+-- Generation Time: Aug 01, 2014 at 01:05 PM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -30,13 +30,10 @@ CREATE TABLE IF NOT EXISTS `subscribe` (
   `fullname` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `subscribe`
 --
 
-INSERT INTO `subscribe` (`id`, `fullname`, `email`) VALUES
-(1, 'reethi', 'reethima@hotmail.com'),
-(2, '0', '0'),
-(3, 'reethu', 'reethima@hotmail.com');
+INSERT INTO `dbversion` (`id`, `db_version`, `last_update_string`) VALUES (NULL, '1', '201407251620');
