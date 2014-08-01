@@ -31,6 +31,8 @@ Category Cake<select name="category">
 <option value="flower">Flower Cake</option>
 <option value="cartoon">Cartoon Cake</option>
 <option value="fruit">Fruit Cake</option>
+<option value="fruit">Valentaine Cake</option>
+
 </select>
 <br><br>
 Cake_Title<input type="text" name="name" placeholder="Enter name of Cake"/>
@@ -42,6 +44,8 @@ Price<input type="text" name="price" placeholder="Enter Price" />
 <input type="file" name="userfile" size="2000" />
 
 <br /><br /></center>
+<center><input type="submit" value="upload" /></center>
+
 <h3>Ingredients</h3>
 <br>
 Cream:<select name="cream">
@@ -127,7 +131,6 @@ veg-oil:<select name="vegoil">
 <br><br>
 
 
-<input type="submit" value="upload" />
 
 </form>
 

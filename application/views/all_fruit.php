@@ -19,41 +19,44 @@
 			
 			
 			
-			<!-- Inner Content -->
+<!-- Inner Content -->
 			<div class="inner-page padd">
 				
-				<!-- Gallery Start -->
+				<!-- Shopping Start -->
 				
-				<div class="gallery">
+				<div class="shopping">
 					<div class="container">
-						<!-- Gallery elements with pretty photo -->
-						<div class="gallery-content">
+						<!-- Shopping items content -->
+						<div class="shopping-content">
 							<div class="row">
 							<?php 
 									
 							for($i=0;$i<count($display);$i++) { ?>
-								<div class="col-md-3 col-sm-4">
-									<!-- Separate gallery element -->
-									<div class="element">
+								<div class="col-md-3 col-sm-6">
+									<!-- Shopping items -->
+									<div class="shopping-item imagestyle">
 										<!-- Image -->
-										<?php echo '<img src="'.$this->config->base_url().'uploads/'.$display[$i]->file.'" width="272" height="142"/>'; ?>
+												<?php echo '<img src="'.$this->config->base_url().'uploads/'.$display[$i]->file.'" width="242" height="242"/>'; ?>
+										<!-- Shopping item name / Heading -->
+										<h4 class="pull-left"><?php echo $display[$i]->description;?></a></h4>
+										<!-- Buy now button -->
+										<div class="visible-xs"></div>
 
-										<!-- Gallery Image Hover Effect -->
-										<span class="gallery-img-hover"></span>
-										<!-- Gallery Image Hover Icon -->
-										<!--"<?php echo '<img src="'.$this->config->base_url().'uploads/'.$display[$i]->file.'" width="242" height="142"/>'; ?> class="gallery-img-link" -->
-										<!--<?php echo '<a href="<img src="'.$this->config->base_url().'uploads/'.$display[$i]->file.'" width="242" height="142" class="gallery-img-link"/>"' ?></a> -->
 
-										<a href="<?php echo $this->config->base_url().'uploads/'.$display[$i]->file?>" class="gallery-img-link">
-											<i class="fa fa-search-plus hover-icon icon-left"></i>
-										</a>
-										<a href="#">
-											<i class="fa fa-link hover-icon icon-right"></i>
-										</a>
+<button class="btn btn-danger btn-sm pull-left" onclick="cart(<?php echo $display[$i]->id ?>)">Buy Now </button>										<span class="item-price pull-right"><?php echo 'Rs: '.$display[$i]->price;?></span>
+										<div class="clearfix"></div>
+										
+										
+										<!-- Shopping item hover block & link -->
+										<div class="item-hover br-red hidden-xs"></div>
+										<a class="link hidden-xs" href="<?php echo $this->config->base_url(); ?>index.php/welcome/item_single?id=<?php echo $display[$i]->id ?>">View Product</a>
+
+										
+										
 									</div>
 								</div>
 								<?php } ?>
-								
+
 							</div>
 							<!-- Pagination -->
 							<div class="shopping-pagination" style="text-align:center">

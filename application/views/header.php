@@ -1,3 +1,92 @@
+<script type="text/javascript">
+ 	var id_array=[];
+ 	var price_array=[];
+ 	var category_array=[];
+ 	var file_array=[];
+
+function cart(aa){
+ 	idval=aa;
+//alert('hhi');
+			$.ajax({
+				url:'cart',
+				type:'POST',
+				data:'cat_id='+idval,
+				dataType:'json',
+				success:function(response){	
+					id_array.push(response.categoryid);
+					price_array.push(response.price);
+					category_array.push(response.category);
+					file_array.push(response.file);
+					var length_id=id_array.length;
+
+
+					//cart-items
+					var i=0;
+					var price_total=0;
+					var option ='';
+					while(length_id>0)
+					{
+											price_total=parseInt(price_total)+parseInt(price_array[i]);
+
+					//alert(response);
+					var option = option+'<li aria-hidden="true"><div class="cart-item"><a href="#"><i class="fa fa-times"></i></a>';
+					var option = option+'<img class="img-responsive img-rounded" src="<?php echo base_url(); ?>uploads/'+file_array[i]+'" alt="" />';
+					var option = option+'<span class="cart-title"><a href="#">'+category_array[i]+'cake</a></span>';
+					var option = option+'<span class="cart-price pull-right red">Rs.'+price_array[i]+'/-</span>';
+					var option = option+'<div class="clearfix"></div></div></li>';
+					var length_id=length_id-1;
+					i++;
+
+					}
+
+					if(id_array.length>0)
+					{
+						var option = option+'<li><div class="cart-item"><button class="btn btn-danger" data-toggle="modal" data-target="#shoppingcart1" >Checkout</button></div></li>';
+					}
+
+					var item=id_array.length+" items $"+price_total+"/-";
+
+	   				$("#cart-items").html(item);
+	   				$(".cart-dropdown").html(option);
+	   				cart1(category_array,price_array,file_array,id_array);				
+
+					}
+
+					});
+function cart1(category_array,price_array,file_array,id_array)
+{
+		//alert(category_price);
+var option='';
+var option=option+'<table class="table table-striped"><thead><tr><td>Selected Cake</td><td>Category</td><td>Price</td></tr></thead><tbody>';
+							
+								
+	var i = 0;						
+var length_id=id_array.length;
+	while(length_id>0)
+{
+
+	var option = option+'<tr class="cart-item">';
+	var option = option+'<td><img class="img-responsive img-rounded" width="120px" height="120px" src="<?php echo base_url(); ?>uploads/'+file_array[i]+'" alt="" /></td>';
+	var option = option+'<td>'+category_array[i]+'</td>';
+	var option = option+'<td>'+price_array[i]+'</td>';
+	var option = option+'<div class="clearfix"></div></div></li></tr>';
+var length_id=length_id-1;
+					i++;
+}
+var option=option+'</tbody></table>';
+
+
+
+	   				$("#category_id").html(option); 
+}
+				}		
+			
+
+		//alert('hiiiii');
+ 
+
+</script>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en"> <!-- dir is direction and en is the font style i.e itallic !-->
 <head>
@@ -11,11 +100,14 @@
 		<meta name="keywords" content="yummy, bakery, cakes">
 		<meta name="author" content="ResponsiveWebInc">
 		
-
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE, NO-STORE, must-revalidate">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT=0>
 		<!-- Styles -->
         <!-- Bootstrap CSS -->
         <?php //echo $this->config->base_url(); ?>
         <link href="<?php echo $this->config->base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
+        
 
         <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
         <link href="<?php echo $this->config->base_url(); ?>assets/css/settings.css" rel="stylesheet">     
@@ -35,46 +127,17 @@
 		<link rel="shortcut icon" href="#">
 	</head>
 	<!-- Shopping cart Modal -->
-		<div class="modal fade pull-right" id="shoppingcart1" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal fade pull-right"  id="shoppingcart1" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						<h4 class="modal-title">Shopping Cart</h4>
+						
 					</div>
-					<div class="modal-body">
+					<div class="modal-body" id="category_id">
 						<!-- Items table -->
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th>Name</th>
-									<th>Quantity</th>
-									<th>Price</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td><a href="#">Exception Reins Evocative</a></td>
-									<td>2</td>
-									<td>$200</td>
-								</tr>
-								<tr>
-									<td><a href="#">Taut Mayoress Alias Appendicitis</a></td>
-									<td>1</td>
-									<td>$190</td>
-								</tr>
-								<tr>
-									<td><a href="#">Sinter et Molests Perfectionist</a></td>
-									<td>4</td>
-									<td>$99</td>
-								</tr>
-								<tr>
-									<th></th>
-									<th>Total</th>
-									<th>$489</th>
-								</tr>
-							</tbody>
-						</table>
+						
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Continue Shopping</button>
@@ -104,25 +167,16 @@
 										<img class="img-responsive" src="<?php echo $this->config->base_url(); ?>img/cart.png" alt="" />
 										<!-- Heading -->
 										<h4>Shopping Cart</h4>
-										
+											<span id="cart-items"></span>
+
+										<div class="clearfix"></div>
 										<div class="clearfix"></dbtn-cartiv>
 									</a>
 									<ul class="cart-dropdown" role="menu">
-										<li>
-											<!-- Cart items for shopping list -->
-											<div class="cart-item">
-												<!-- Item remove icon -->
-												<a href="#"><i class="fa fa-times"></i></a>
-												<!-- Image -->
-												<img class="img-responsive img-rounded" src="<?php echo $this->config->base_url(); ?>img/nav-menu/nav1.jpg" alt="" />
-												<!-- Title for purchase item -->
-												<span class="cart-title"><a href="#">Exception Reins Evocative</a></span>
-												<!-- Cart item price -->
-												<span class="cart-price pull-right red">$200/-</span>
-												<div class="clearfix"></div>
-											</div>
-										</li>
-										<li>
+
+																				
+
+										<?php /*<li>
 											<!-- Cart items for shopping list -->
 											<div class="cart-item">
 												<!-- Item remove icon -->
@@ -149,13 +203,8 @@
 												<span class="cart-price pull-right red">$99/-</span>
 												<div class="clearfix"></div>
 											</div>
-										</li>
-										<li>
-											<!-- Cart items for shopping list -->
-											<div class="cart-item">
-												<a class="btn btn-danger" data-toggle="modal" href="#shoppingcart1">Checkout</a>
-											</div>
-										</li>
+										</li>*/ ?>
+										
 									</ul>
 									<div class="clearfix"></div>
 								</div>
@@ -197,6 +246,90 @@
 											<li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/home"><img src="<?php echo $this->config->base_url(); ?>img/nav-menu/nav1.jpg" class="img-responsive" alt="" /> Home</a></li>
 											<li class="dropdown">
 												<a href="<?php echo $this->config->base_url(); ?>index.php/welcome/menu" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo $this->config->base_url(); ?>img/nav-menu/nav4.jpg" class="img-responsive" alt="" /> Menu <b class="caret"></b></a>
+												<ul class="dropdown-menu dropdown-md">
+													<li>
+														<div class="row">
+															<div class="col-md-4 col-sm-8">
+																<!-- Menu Item -->
+																<div class="menu-item">
+																	<!-- Heading -->
+																	<h5>Flower Bouquet Cakes</h5>
+																	<!-- Image -->
+																	<img width="150px" height="50px" src="<?php echo $this->config->base_url(); ?>img/flower.png" class="img-responsive" alt="" />
+																	<!-- Paragraph -->
+																	<p>Get your desired flavour in Flower Bouquet Design.</p>
+																	<!-- Button -->
+																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_flower" class="btn btn-danger btn-xs">View Menu</a>
+																</div>
+															</div>
+															<div class="col-md-4 col-sm-8">
+																<!-- Menu Item -->
+																<div class="menu-item">
+																	<!-- Heading -->
+																	<h5>Fruit Cakes</h5>
+																	<!-- Image -->
+																	<img src="<?php echo $this->config->base_url(); ?>img/fruit.png" class="img-responsive" alt="" />
+																	<!-- Paragraph -->
+																	<p>Get it with your desired flavor and Ingredients. </p>
+																	<!-- Button -->
+																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_fruit" class="btn btn-danger btn-xs">View Menu</a>
+																</div>
+															</div>
+															<div class="col-md-4 col-sm-8">
+																<!-- Menu Item -->
+																<div class="menu-item">
+																	<!-- Heading -->
+																	<h5>Edible Cakes</h5>
+																	<!-- Image -->
+																	<img width="150px" height="50px" src="<?php echo $this->config->base_url(); ?>img/edible.png" class="img-responsive" alt="" />
+																	<!-- Paragraph -->
+																	<p>Get your desired flavor in Flower Bouquet Design.</p>
+																	<!-- Button -->
+																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_edible" class="btn btn-danger btn-xs">View Menu</a>
+																</div>
+															</div>
+															<div class="col-md-4 col-sm-8">
+																<!-- Menu Item -->
+																<div class="menu-item">
+																	<!-- Heading -->
+																	<h5>valentine Cakes</h5>
+																	<!-- Image -->
+																	<img src="<?php echo $this->config->base_url(); ?>img/valentaine.png" class="img-responsive" alt="" />
+																	<!-- Paragraph -->
+																	<p>Get it with your desired flavor and Ingredients. </p>
+																	<!-- Button -->
+																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_valentaine" class="btn btn-danger btn-xs">View Menu</a>
+																</div>
+															</div>
+															<div class="col-md-4 col-sm-8">
+																<!-- Menu Item -->
+																<div class="menu-item">
+																	<!-- Heading -->
+																	<h5>Engagement Cakes</h5>
+																	<!-- Image -->
+																	<img src="<?php echo $this->config->base_url(); ?>img/engagement.png" class="img-responsive" alt="" />
+																	<!-- Paragraph -->
+																	<p>Get it in your desired flavor. </p>
+																	<!-- Button -->
+																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_engagement" class="btn btn-danger btn-xs">View Menu</a>
+																</div>
+															</div>
+															<div class="col-md-4 col-sm-6">
+																<!-- Menu Item -->
+																<div class="menu-item">
+																	<!-- Heading -->
+																	<h5>Cartoon Cakes</h5>
+																	<!-- Image -->
+																	<img src="<?php echo $this->config->base_url(); ?>img/cartoon.png" class="img-responsive" alt="" />
+																	<!-- Paragraph -->
+																	<p>Get your Favorite Cartoon on your Cake.</p>
+																	<!-- Button -->
+																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display" class="btn btn-danger btn-xs">View Menu</a>
+																</div>
+															</div>
+														</div>
+													</li>
+												</ul>
 											</li>
 											<li><a href="<?php echo $this->config->base_url(); ?>index.php/gallery_control/img_display"><img src="<?php echo $this->config->base_url(); ?>img/nav-menu/nav3.jpg" class="img-responsive" alt="" /> Gallery</a></li>
 											<li class="dropdown">

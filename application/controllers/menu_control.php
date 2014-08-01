@@ -10,8 +10,16 @@ class Menu_control extends CI_Controller {
         $this->load->library('form_validation');
     	$this->load->model('login_model');
 		$this->load->model('menu_model');
+		$this->load->model('menu_flower_model');
+		$this->load->model('menu_fruit_model');
+		$this->load->model('menu_edible_model');
+		$this->load->model('menu_engagement_model');
+		$this->load->model('menu_valentaine_model');
+				$this->load->model('item_single_model');
+
 		$this->load->model('pagination_model');
 		$this->load->library('pagination');
+		$this->load->library('cart');
 
 
 	}
@@ -20,6 +28,8 @@ class Menu_control extends CI_Controller {
 	{
 		$this->load->view('menu_form', array('error' => ' ' ));
 	}
+
+	
 
 	function do_upload()
 	{
@@ -70,7 +80,32 @@ class Menu_control extends CI_Controller {
 
             );
             $img_insert=$this->menu_model->insert($data_ary);
+
+		
+if($data_ary['name'] = 'Cartoon')
+			{
             $this->img_display();
+        }
+if($data_ary['name'] = 'flower')
+			{
+            $this->img_flower();
+        }
+        if($data_ary['name'] = 'fruit')
+			{
+            $this->img_fruit();
+        }
+        if($data_ary['name'] = 'edible')
+			{
+            $this->img_edible();
+        }
+        if($data_ary['name'] = 'engagement')
+			{
+            $this->img_engagement();
+        }
+         if($data_ary['name'] = 'valentine')
+			{
+            $this->img_valentaine();
+        }
 		}
 	}
 
@@ -91,7 +126,7 @@ class Menu_control extends CI_Controller {
 		}
 	else
 		{
-			$data['display']=$this->menu_model->get_images('4','1');
+			$data['display']=$this->menu_model->get_images('3','1');
 			print_r($data);
 		}
  			$data["links"] = $this->pagination->create_links();
@@ -100,6 +135,182 @@ class Menu_control extends CI_Controller {
 			$this->load->view('footer');
 	
 	 
+	}
+	function img_flower()
+		{
+			$config["total_rows"] = $this->menu_flower_model->count();
+			$config["per_page"] = 10;
+			$config["uri_segment"] = 3;
+			$config['num_links'] = 20;
+			$config['use_page_numbers'] = TRUE;
+			$config["base_url"] = $this->config->base_url().'/index.php/menu_control/img_flower';
+			$this->pagination->initialize($config);
+			$page = ($this->uri->segment(3)>0)? $this->uri->segment(3) : 1;		
+
+    if($page!="")
+    	{
+			$data['display']=$this->menu_flower_model->get_images($config["per_page"], $page);
+		}
+	else
+		{
+			$data['display']=$this->menu_flower_model->get_images('3','1');
+			print_r($data);
+		}
+ 			$data["links"] = $this->pagination->create_links();
+ 			$this->load->view('header'); 
+			$this->load->view('all_flower',$data);
+			$this->load->view('footer');
+	
+	 
+	}
+	function img_fruit()
+		{
+			$config["total_rows"] = $this->menu_fruit_model->count();
+			$config["per_page"] = 10;
+			$config["uri_segment"] = 3;
+			$config['num_links'] = 20;
+			$config['use_page_numbers'] = TRUE;
+			$config["base_url"] = $this->config->base_url().'/index.php/menu_control/img_fruit';
+			$this->pagination->initialize($config);
+			$page = ($this->uri->segment(3)>0)? $this->uri->segment(3) : 1;		
+
+    if($page!="")
+    	{
+			$data['display']=$this->menu_fruit_model->get_images($config["per_page"], $page);
+		}
+	else
+		{
+			$data['display']=$this->menu_fruit_model->get_images('3','1');
+			print_r($data);
+		}
+ 			$data["links"] = $this->pagination->create_links();
+ 			$this->load->view('header'); 
+			$this->load->view('all_fruit',$data);
+			$this->load->view('footer');
+	
+	 
+	}
+	function img_edible()
+		{
+			$config["total_rows"] = $this->menu_edible_model->count();
+			$config["per_page"] = 10;
+			$config["uri_segment"] = 3;
+			$config['num_links'] = 20;
+			$config['use_page_numbers'] = TRUE;
+			$config["base_url"] = $this->config->base_url().'/index.php/menu_control/img_edible';
+			$this->pagination->initialize($config);
+			$page = ($this->uri->segment(3)>0)? $this->uri->segment(3) : 1;		
+
+    if($page!="")
+    	{
+			$data['display']=$this->menu_edible_model->get_images($config["per_page"], $page);
+		}
+	else
+		{
+			$data['display']=$this->menu_edible_model->get_images('3','1');
+			print_r($data);
+		}
+ 			$data["links"] = $this->pagination->create_links();
+ 			$this->load->view('header'); 
+			$this->load->view('all_edible',$data);
+			$this->load->view('footer');
+	
+	 
+	}
+	function img_engagement()
+		{
+			$config["total_rows"] = $this->menu_engagement_model->count();
+			$config["per_page"] = 10;
+			$config["uri_segment"] = 3;
+			$config['num_links'] = 20;
+			$config['use_page_numbers'] = TRUE;
+			$config["base_url"] = $this->config->base_url().'/index.php/menu_control/img_engagement';
+			$this->pagination->initialize($config);
+			$page = ($this->uri->segment(3)>0)? $this->uri->segment(3) : 1;		
+
+    if($page!="")
+    	{
+			$data['display']=$this->menu_engagement_model->get_images($config["per_page"], $page);
+		}
+	else
+		{
+			$data['display']=$this->menu_engagement_model->get_images('3','1');
+			print_r($data);
+		}
+ 			$data["links"] = $this->pagination->create_links();
+ 			$this->load->view('header'); 
+			$this->load->view('all_engagement',$data);
+			$this->load->view('footer');
+	
+	 
+	}
+	function img_valentaine()
+		{
+			$config["total_rows"] = $this->menu_valentaine_model->count();
+			$config["per_page"] = 10;
+			$config["uri_segment"] = 3;
+			$config['num_links'] = 20;
+			$config['use_page_numbers'] = TRUE;
+			$config["base_url"] = $this->config->base_url().'/index.php/menu_control/img_valentaine';
+			$this->pagination->initialize($config);
+			$page = ($this->uri->segment(3)>0)? $this->uri->segment(3) : 1;		
+
+    if($page!="")
+    	{
+			$data['display']=$this->menu_valentaine_model->get_images($config["per_page"], $page);
+		}
+	else
+		{
+			$data['display']=$this->menu_valentaine_model->get_images('3','1');
+			print_r($data);
+		}
+ 			$data["links"] = $this->pagination->create_links();
+ 			$this->load->view('header'); 
+			$this->load->view('all_valentaine',$data);
+			$this->load->view('footer');
+	
+	 
+	}
+	function item_single()
+	{
+			$data['display']=$this->itemsingle_model->get_images();
+			$this->load->view('header'); 
+			$this->load->view('item_single',$data);
+			$this->load->view('footer');
+	
+
+	}
+	function cart()
+	{//echo 'hi';exit;
+		$catid=$this->input->post('cat_id');		
+		$pid=$this->item_single_model->get_details($catid);
+		$data['categoryid']=$pid[0]->id;
+		$data['category']=$pid[0]->category;
+		$data['file']=$pid[0]->file;
+		
+		$data['price']=$pid[0]->price;
+        echo json_encode($data);
+        exit;
+		//print_r($data);exit;
+		
+		//$this->db->insert("cart", $data); 
+		
+	}
+	function cart1()
+	{//echo 'hi';exit;
+		$catid=$this->input->post('cat_id');		
+		$pid=$this->item_single_model->get_details($catid);
+		$data['categoryid']=$pid[0]->id;
+		$data['category']=$pid[0]->category;
+		$data['file']=$pid[0]->file;
+		
+		$data['price']=$pid[0]->price;
+        echo json_encode($data);
+        exit;
+		//print_r($data);exit;
+		
+		//$this->db->insert("cart", $data); 
+		
 	}
 }
 

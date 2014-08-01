@@ -20,11 +20,7 @@ public function index()
 	{
 		$this->load->view('login');
     }
-    public function dash_main()
-    {
-		//$this->load->view('index1');
-        render_with_layout('dashboard.php','index1');
-    }
+    
     public function upload_form()
     {
         $this->load->view('upload_form', array('error' => ' ' ));
@@ -37,6 +33,8 @@ public function login_val()
         $userdata['password'] = $this->input->post('password');
               
         $value=$this->login_model->login_inst($userdata);
+        print_r($value);
+        exit;
         
         if($value)
         {
