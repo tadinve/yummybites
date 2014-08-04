@@ -312,24 +312,39 @@ public function upload_form()
 
 public function menu_form()
 	{
-		$session_id=$this->session->userdata('id');
+		if($session_id=$this->session->userdata('id'))
+		{
+			$session_id=$this->session->userdata('id');
         $data=$this->login_model->get_userdetails($session_id);
         $user['username']=$data->userid;
 		$this->load->view('admin_header',$user);
         $this->load->view('admin_sidebar',$user);
 		$this->load->view('menu_form', array('error' => ' ' ));
-		$this->load->view('admin_footer',$user);  
+		$this->load->view('admin_footer',$user); 
+		}
+		else
+	{
+		redirect('welcome/dashboard?login=failed');
+	}
+
 	}
 
 public function gallery_form()
 	{
-		$session_id=$this->session->userdata('id');
+		if($session_id=$this->session->userdata('id'))
+		{
         $data=$this->login_model->get_userdetails($session_id);
         $user['username']=$data->userid;
 		$this->load->view('admin_header',$user);
         $this->load->view('admin_sidebar',$user);
 		$this->load->view('gallery_form', array('error' => ' ' ));
 		$this->load->view('admin_footer',$user);  
+	}
+	else
+	{
+		redirect('welcome/dashboard?login=failed');
+	}
+
 	}
 
 public function upload_success()

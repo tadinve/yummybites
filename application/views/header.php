@@ -58,6 +58,11 @@ function cart(aa){
 					}
 
 					});
+
+
+1 dollars10.75 dollars43 dollars=0.75 rupees=0.750.75 rupees=1 rupees.
+
+
 function cart1(category_array,price_array,file_array,id_array)
 {
 		//alert(category_price);
@@ -83,7 +88,10 @@ var length_id=length_id-1;
 		var option = option+'<tr><td></td><td>Total:</td><td>'+price_total+'</td></tr>';
 
 var option=option+'</tbody></table>';
-//document.getElementById('amount').value=price_array;
+document.getElementById('item_name').value=category_array;
+document.getElementById('item_number').value=id_array;
+
+document.getElementById('amount').value=price_total;
 
 
 	   				$("#category_id").html(option); 
@@ -154,15 +162,14 @@ var option=option+'</tbody></table>';
 						<button type="button" class="btn btn-default" data-dismiss="modal">Continue Shopping</button>
 							<input type="hidden" name="business" id="business" value="<?php echo $paypal_id; ?>">
 						    <input type="hidden" name="cmd" value="_xclick">
-
-						    <input type="hidden" name="item_name" id="item_name" value="2">
-						    <input type="hidden" name="item_number" id="item_number" value="2">
+							<input type="hidden" name="undefined_quantity" value="1kg">
+						    <input type="hidden" name="item_name" id="item_name" value="">
+						    <input type="hidden" name="item_number" id="item_number" value="">
 						    <input type="hidden" name="credits" value="510">
-						    <input type="hidden" name="userid" value="1">
-						    <input type="hidden" name="amount" id="amount" value="2">
+						    <input type="hidden" name="amount" id="amount" value="">
 						    <input type="hidden" name="cpp_header_image" value="<?php echo $this->config->base_url(); ?>img/lo.png">
 						    <input type="hidden" name="no_shipping" value="2">
-						    <input type="hidden" name="currency_code" value="USD">
+						    <input type="hidden" name="currency_code" value="INR">
 						    <input type="hidden" name="handling" value="0">
 
 
