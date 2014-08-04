@@ -17,6 +17,17 @@
 			
 			<!-- Banner End -->
 			
+			<br>
+			<div class="tp-caption lfl largeblackbg br-red"
+								data-x="20" 
+								data-y="100"
+								data-speed="1500"
+								data-start="1200"
+								data-easing="Power4.easeOut"
+								data-endspeed="500"
+								data-endeasing="Power4.easeIn"
+								style="z-index: 3"><strong><center>Edible Cakes</center></strong>
+							</div>
 			
 			
 <!-- Inner Content -->

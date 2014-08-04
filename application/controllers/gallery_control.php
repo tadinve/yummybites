@@ -86,6 +86,7 @@ class Gallery_control extends CI_Controller {
 	
 	 
 	}
+	
 }
 
 ?>

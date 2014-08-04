@@ -136,6 +136,8 @@ public function item_single()
 		$this->load->view('footer');
     }
 
+
+
 public function paypal()
 {
 	$data['price']=$this->input->post('price');
@@ -545,5 +547,26 @@ public function change_password()
             //$data = array( "main_content" => 'includes/memberadmin/memberadmin_cpass');
                // $this->load->view('includes/memberadmin/template',$data);
           }
+          public function admin_galleryview()
+	{
+		if($session_id=$this->session->userdata('id'))
+		{
+			$session_id=$this->session->userdata('id');
+        	$data=$this->login_model->get_userdetails($session_id);
+        	$user['username']=$data->userid;
+
+				$this->load->view('admin_header',$user);
+        		$this->load->view('admin_sidebar',$user);
+                $data1= $this->gallery_model->display_images();
+        		$this->load->view('admin_gallery_imgdisplay',$data1);
+				$this->load->view('admin_footer',$user);  
+		}
+
+		else
+		{
+			redirect('welcome/dashboard?login=failed');
+		}
+	
+	}
 
 }

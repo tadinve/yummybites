@@ -304,21 +304,21 @@ document.getElementById('amount').value=price_total;
 												<ul class="dropdown-menu dropdown-md">
 													<li>
 														<div class="row">
-															<div class="col-md-4 col-sm-8">
+															<div class="col-md-2 col-sm-8">
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
-																	<h5>Flower Bouquet Cakes</h5>
+																	<h5>Flower Cakes</h5>
 																	<!-- Image -->
 																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_flower">	<img width="150px" height="50px" src="<?php echo $this->config->base_url(); ?>img/flower.png" class="img-responsive" alt="" />
 																	</a>
 																	<!-- Paragraph -->
-																	<p>Get your desired flavour in Flower Bouquet Design.</p>
+																	<!--<p>Get your desired flavour in Flower Bouquet Design.</p>
 																	<!-- Button -->
 																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_flower" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
-															<div class="col-md-4 col-sm-8">
+															<div class="col-md-2 col-sm-8">
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
@@ -326,12 +326,12 @@ document.getElementById('amount').value=price_total;
 																	<!-- Image -->
 																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_fruit"><img src="<?php echo $this->config->base_url(); ?>img/fruit.png" class="img-responsive" alt="" />
 																	</a><!-- Paragraph -->
-																	<p>Get it with your desired flavor and Ingredients. </p>
+																	<!--<p>Get it with your desired flavor and Ingredients. </p>
 																	<!-- Button -->
 																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_fruit" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
-															<div class="col-md-4 col-sm-8">
+															<div class="col-md-2 col-sm-8">
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
@@ -339,12 +339,12 @@ document.getElementById('amount').value=price_total;
 																	<!-- Image -->
 																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_edible">	<img width="150px" height="50px" src="<?php echo $this->config->base_url(); ?>img/edible.png" class="img-responsive" alt="" /></a>
 																	<!-- Paragraph -->
-																	<p>Get your desired flavor in Flower Bouquet Design.</p>
+																	<!--<p>Get your desired flavor in Flower Bouquet Design.</p>
 																	<!-- Button -->
 																	 <a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_edible" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
-															<div class="col-md-4 col-sm-8">
+															<div class="col-md-2 col-sm-8">
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
@@ -353,12 +353,12 @@ document.getElementById('amount').value=price_total;
 																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_valentaine">	<img src="<?php echo $this->config->base_url(); ?>img/valentaine.png" class="img-responsive" alt="" />
 																	</a>
 																	<!-- Paragraph -->
-																	<p>Get it with your desired flavor and Ingredients. </p>
+																	<!--<p>Get it with your desired flavor and Ingredients. </p>
 																	<!-- Button -->
 																	 <a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_valentaine" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
-															<div class="col-md-4 col-sm-8">
+															<div class="col-md-2 col-sm-8">
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
@@ -367,12 +367,12 @@ document.getElementById('amount').value=price_total;
 																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_engagement">	<img src="<?php echo $this->config->base_url(); ?>img/engagement.png" class="img-responsive" alt="" />
 																	</a>
 																	<!-- Paragraph -->
-																	<p>Get it in your desired flavor. </p>
+																	<!--<p>Get it in your desired flavor. </p>
 																	<!-- Button -->
 																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_engagement" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
-															<div class="col-md-4 col-sm-6">
+															<div class="col-md-2 col-sm-6">
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
@@ -380,7 +380,7 @@ document.getElementById('amount').value=price_total;
 																	<!-- Image -->
 																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display">	<img src="<?php echo $this->config->base_url(); ?>img/cartoon.png" class="img-responsive" alt="" />
 																	</a><!-- Paragraph -->
-																	<p>Get your Favorite Cartoon on your Cake.</p>
+																	<!--<p>Get your Favorite Cartoon on your Cake.</p>
 																	<!-- Button -->
 																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display" class="btn btn-danger btn-xs">View Menu</a>
 																</div>

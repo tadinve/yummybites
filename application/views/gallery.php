@@ -41,10 +41,8 @@
 										<!-- Gallery Image Hover Effect -->
 										<span class="gallery-img-hover"></span>
 										<!-- Gallery Image Hover Icon -->
-										<!--"<?php echo '<img src="'.$this->config->base_url().'uploads/'.$display[$i]->file.'" width="242" height="142"/>'; ?> class="gallery-img-link" -->
-										<!--<?php echo '<a href="<img src="'.$this->config->base_url().'uploads/'.$display[$i]->file.'" width="242" height="142" class="gallery-img-link"/>"' ?></a> -->
 
-										<a href="<?php echo $this->config->base_url().'uploads/'.$display[$i]->file?>" class="gallery-img-link">
+										<a href="<?php echo $this->config->base_url().'uploads/'.$display[$i]->file ?>" class="gallery-img-link">
 											<i class="fa fa-search-plus hover-icon icon-left"></i>
 										</a>
 										<a href="#">

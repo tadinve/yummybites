@@ -92,11 +92,11 @@
 
                           
                         <div class="form-group">
-                                        <input title="Enter FullName" type="text" class="form-control" placeholder="FullName" name="fullname"/>
+                                        <input title="Enter FullName" type="text" class="form-control" placeholder="Full Name" name="fullname"/>
                                         </div>
                                          <div class="form-group">
                                     
-                                        <input title="Enter EmailID" type="text" class="form-control" placeholder="EmailID" name="email"/></div>
+                                        <input title="Enter EmailID" type="text" class="form-control" placeholder="Email ID" name="email"/></div>
                                      <input type="submit" value="Subscribe" class="btn btn-danger"/>
                                     </form>
 

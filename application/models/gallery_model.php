@@ -37,16 +37,27 @@ $this->uri->segment(3);
         
         return $result;
 
-        if ($query->num_rows() > 0) 
-        {
-        foreach ($query->result() as $row) {
-        $data[] = $row;
-      }
+        
+}
+function display_images()
+{
 
-      return $data;
 
-    }
-    return false;
+    $this->db->select('*');
+        $this->db->from('menu');
+        $this->db->order_by ("id", "asc");
+//echo $start;
+//$start=$start*1;
+        
+    
+               $query=$this->db->get(); 
+               $result = $query->result_array();
+
+              
+              //echo $this->db->last_query();
+
+
+       return $result;
 
 }
 public function count() {
