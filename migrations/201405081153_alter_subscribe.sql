@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 04, 2014 at 01:15 PM
+-- Generation Time: Aug 05, 2014 at 06:23 AM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -31,9 +31,7 @@ CREATE TABLE IF NOT EXISTS `subscribe` (
   `email` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-INSERT INTO `dbversion` (`id`, `db_version`, `last_update_string`) VALUES (NULL, '1', '201407251620');
 
---
--- Dumping data for table `subscribe`
+INSERT INTO `dbversion` (`id`, `db_version`, `last_update_string`) VALUES (NULL, '1', '201407251620');
 
 
