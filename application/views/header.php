@@ -315,6 +315,7 @@ document.getElementById('amount').value=price_total;
 																	<!-- Paragraph -->
 																	<!--<p>Get your desired flavour in Flower Bouquet Design.</p>
 																	<!-- Button -->
+																	<br>
 																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_flower" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
@@ -328,6 +329,7 @@ document.getElementById('amount').value=price_total;
 																	</a><!-- Paragraph -->
 																	<!--<p>Get it with your desired flavor and Ingredients. </p>
 																	<!-- Button -->
+																	<br>
 																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_fruit" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
@@ -335,12 +337,12 @@ document.getElementById('amount').value=price_total;
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
-																	<h5>Edible Cakes</h5>
+																	<h5>Printable Cakes</h5>
 																	<!-- Image -->
 																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_edible">	<img width="150px" height="50px" src="<?php echo $this->config->base_url(); ?>img/edible.png" class="img-responsive" alt="" /></a>
 																	<!-- Paragraph -->
 																	<!--<p>Get your desired flavor in Flower Bouquet Design.</p>
-																	<!-- Button -->
+																	<!-- Button --><br>
 																	 <a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_edible" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
@@ -348,13 +350,13 @@ document.getElementById('amount').value=price_total;
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
-																	<h5>valentine Cakes</h5>
+																	<h5>Valentine Cakes</h5>
 																	<!-- Image -->
 																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_valentaine">	<img src="<?php echo $this->config->base_url(); ?>img/valentaine.png" class="img-responsive" alt="" />
 																	</a>
 																	<!-- Paragraph -->
 																	<!--<p>Get it with your desired flavor and Ingredients. </p>
-																	<!-- Button -->
+																	<!-- Button --><br>
 																	 <a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_valentaine" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
@@ -362,13 +364,14 @@ document.getElementById('amount').value=price_total;
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
-																	<h5>Engagement Cakes</h5>
+																	<h5>Occasional Cakes</h5>
 																	<!-- Image -->
 																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_engagement">	<img src="<?php echo $this->config->base_url(); ?>img/engagement.png" class="img-responsive" alt="" />
 																	</a>
 																	<!-- Paragraph -->
 																	<!--<p>Get it in your desired flavor. </p>
 																	<!-- Button -->
+																	<br>
 																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_engagement" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
@@ -381,7 +384,7 @@ document.getElementById('amount').value=price_total;
 																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display">	<img src="<?php echo $this->config->base_url(); ?>img/cartoon.png" class="img-responsive" alt="" />
 																	</a><!-- Paragraph -->
 																	<!--<p>Get your Favorite Cartoon on your Cake.</p>
-																	<!-- Button -->
+																	<!-- Button --><br>
 																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>

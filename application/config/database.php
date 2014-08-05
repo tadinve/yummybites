@@ -8,7 +8,6 @@
 | For complete instructions please consult the 'Database Connection'
 | page of the User Guide.
 |
-
 | -------------------------------------------------------------------
 | EXPLANATION OF VARIABLES
 | -------------------------------------------------------------------
@@ -50,8 +49,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'yummybites';
-$db['default']['password'] = 'yummybites1';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
 $db['default']['database'] = 'yummybites';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

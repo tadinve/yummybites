@@ -357,6 +357,8 @@ table { background: #fff; }
 .header .navbar-default .navbar-nav > li ul.dropdown-md img {
 	margin-bottom: 9px;
 	border: 2px solid #fff;
+	width:120px;
+	height:70px;
 	box-shadow: 0px 0px 5px rgba(0,0,0,0.25);
 }
 
@@ -1827,12 +1829,12 @@ div.ppt { display:none !important; }
 .footer .footer-widget img.dish {
 	display: inline-block;
 	margin: 0;
-	margin-right: 5px;
-	margin-top: 10px;
-	max-width: 70px;
+	
 	border: 2px solid #fff;
 	border-radius: 4px;
 	box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	width:70px;
+	height:50px;
 }
 
 .footer .footer-widget form{ margin-top: 15px; }

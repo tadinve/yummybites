@@ -2,9 +2,10 @@
 function myFunction()
 {
 var a=document.getElementById("quantity").value;
-c=document.getElementById("price_hidden").value;
-document.getElementById("price").value='Rs.'+a*c;
+c=document.getElementById("price").value;
 
+document.getElementById("price").value=a*c;
+b=document.getElementById("price").value;
 
 }
 </script>
@@ -18,7 +19,7 @@ document.getElementById("price").value='Rs.'+a*c;
 					<!-- Heading -->
 					<h2 class="white">Order Now</h2>
 					<ol class="breadcrumb">
-						<li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/home">Home</a></li>
+						<li><a href="<?php echo $this->config->base_url(); ?>welcome/home">Home</a></li>
 						<li><a href="<?php echo $this->config->base_url(); ?>index.php/upload/img_display">Shopping</a></li>
 						<li class="active">Order Now</li>
 					</ol>
@@ -42,11 +43,11 @@ document.getElementById("price").value='Rs.'+a*c;
 							<div class="row">
 								<div class="col-md-4 col-sm-5">
 									<!-- Product image -->
-									<img class="img-responsive img-thumbnail" src="<?php echo $this->config->base_url(); ?>img/valentaine.png" alt="" />
+									<img class="img-responsive img-thumbnail" src="<?php echo $this->config->base_url(); ?>img/cartoon.png" alt="" />
 								</div>
 								<div class="col-md-8 col-sm-7">
 									<!-- Heading -->
-									<h3>Valentine cake</h3>
+									<h3>Cartoon cake</h3>
 									<div class="row">
 										<div class="col-md-7 col-sm-12">
 											<!-- Single item details -->
@@ -109,12 +110,7 @@ document.getElementById("price").value='Rs.'+a*c;
 													<table class="table table-bordered">
 														<tr>
 															<td>Price</td>
-															<div class="form-group">
-
-															<td>
-															<input type="hidden" name="price_hidden" id="price_hidden" value="<?php echo '350'; ?>">
-															<input type="text" name="price" id="price" value='Rs.350'> </td>
-															</div>
+															Rs.<td><input type="text" name="price" id="price" value='350'></td>
 														</tr>
 														<tr>
 															<td>Shipping</td>

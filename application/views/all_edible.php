@@ -26,7 +26,7 @@
 								data-easing="Power4.easeOut"
 								data-endspeed="500"
 								data-endeasing="Power4.easeIn"
-								style="z-index: 3"><strong><center>Edible Cakes</center></strong>
+								style="z-index: 3"><strong><center>Printable Cakes</center></strong>
 							</div>
 			
 			
