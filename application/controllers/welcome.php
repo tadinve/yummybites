@@ -49,6 +49,22 @@ public function nocache()
 		$this->load->view('footer');
         		
     }
+    public function cake_options()
+	{
+
+		$this->load->view('header'); 
+ 		$this->load->view('all_cartoon'); 
+		$this->load->view('footer');
+        		
+    }
+    public function address_cart()
+	{
+
+		$this->load->view('header'); 
+ 		$this->load->view('address_cart'); 
+		$this->load->view('footer');
+        		
+    }
 
     public function all_edible()
 	{

@@ -2,7 +2,18 @@
 $paypal_url='https://www.sandbox.paypal.com/cgi-bin/webscr'; // Test Paypal API URL
 $paypal_id='reethi-facilitator@solivarindia.com '; // Business email ID
 ?>
+<SCRIPT LANGUAGE="JavaScript"> 
 
+function validateForm(){
+	
+var x = document.forms["frmPayPal1"]["inputName"].value;
+    if (x==null || x=="") {
+        alert("First name must be filled out");
+        return false;
+    }
+}
+
+</SCRIPT>
 <script type="text/javascript">
  	var id_array=[];
  	var price_array=[];
@@ -59,10 +70,6 @@ function cart(aa){
 
 					});
 
-
-1 dollars10.75 dollars43 dollars=0.75 rupees=0.750.75 rupees=1 rupees.
-
-
 function cart1(category_array,price_array,file_array,id_array)
 {
 		//alert(category_price);
@@ -88,10 +95,10 @@ var length_id=length_id-1;
 		var option = option+'<tr><td></td><td>Total:</td><td>'+price_total+'</td></tr>';
 
 var option=option+'</tbody></table>';
+document.getElementById('amount').value=price_total;
 document.getElementById('item_name').value=category_array;
 document.getElementById('item_number').value=id_array;
 
-document.getElementById('amount').value=price_total;
 
 
 	   				$("#category_id").html(option); 
@@ -103,6 +110,35 @@ document.getElementById('amount').value=price_total;
  
 
 </script>
+<?php
+
+function get_currency($from_Currency, $to_Currency, $amount) {
+	$price=$_POST['hide_amount'];
+//	$price= echo "<script> document.getElementById('amount').value </script>";
+
+$amount = urlencode($price);
+$from_Currency = urlencode($from_Currency);
+$to_Currency = urlencode($to_Currency);
+
+$url = "http://www.google.com/finance/converter?a=$amount&from=$from_Currency&to=$to_Currency";
+
+$ch = curl_init();
+$timeout = 0;
+curl_setopt ($ch, CURLOPT_URL, $url);
+curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+
+curl_setopt ($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)");
+curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+$rawdata = curl_exec($ch);
+curl_close($ch);
+$data = explode('bld>', $rawdata);
+$data = explode($to_Currency, $data[1]);
+return round($data[0], 2);
+}
+//echo get_currency('USD', 'INR', '$_GET[amount]');
+?>
+
+
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en"> <!-- dir is direction and en is the font style i.e itallic !-->
@@ -144,7 +180,6 @@ document.getElementById('amount').value=price_total;
 		<link rel="shortcut icon" href="#">
 	</head>
 	<!-- Shopping cart Modal -->
-                                    <form action="<?php echo $paypal_url; ?>" method="post" name="frmPayPal1">
 
 		<div class="modal fade pull-right"  id="shoppingcart1" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog">
@@ -160,16 +195,109 @@ document.getElementById('amount').value=price_total;
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Continue Shopping</button>
+							
+
+						<button class="btn btn-danger btn-sm pull-left" data-toggle="modal" data-target="#billing_cart">Checkout</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		<!-- Model End -->
+		
+							
+						
+
+
+
+
+<form class="form-horizontal" action="<?php echo $paypal_url; ?>" method="post" name="frmPayPal1" role="form" onSubmit="return validateForm();">
+
+<div class="modal fade pull-right"  id="billing_cart" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Shopping Cart</h4>
+						
+					</div>
+					<div class="modal-body" id="category_id">
+						<!-- Items table -->
+						<!-- Checkout Start -->
+					</div>
+				<div class="checkout">
+					<div class="container">
+					<!-- Heading -->
+					<h4>Shipping & Billing Details</h4>
+						<div class="row">
+							<div class="col-md-7 col-sm-6">
+								<!-- Checkout Form -->
+									<div class="form-group">
+										<label for="inputName" class="col-md-2 control-label">Name</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" name="inputName" placeholder="Name">
+										</div>
+									</div>            
+									<div class="form-group">
+										<label for="inputEmail1" class="col-md-2 control-label">Email</label>
+										<div class="col-md-8">
+											<input type="email" class="form-control" name="inputEmail1" placeholder="Email">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="inputPhone" class="col-md-2 control-label">Phone</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" name="inputPhone" placeholder="Phone">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="inputCountry" class="col-md-2 control-label">Country</label>
+										<div class="col-md-8">
+											<select class="form-control" name="inputCountry">
+												<option>Select Country</option>
+												<option>USA</option>
+												<option>India</option>
+												<option>Canada</option>
+												<option>UK</option>
+											</select>
+										</div>
+									</div>              
+									<div class="form-group">
+										<label for="inputAddress" class="col-md-2 control-label">Address</label>
+										<div class="col-md-8">
+											<textarea class="form-control" name="inputAddress" rows="3" placeholder="Address"></textarea>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="inputZip" class="col-md-2 control-label">Zip Code</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" name="inputZip" placeholder="Zip Code">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-md-offset-2 col-md-8">
+											<div class="checkbox">
+												<label>
+													<input type="checkbox"> Accept Terms & Conditions
+												</label>
+											</div>
+										</div>
+									</div>
+									
+					<div class="modal-footer" style="width:85%;">
 							<input type="hidden" name="business" id="business" value="<?php echo $paypal_id; ?>">
 						    <input type="hidden" name="cmd" value="_xclick">
-							<input type="hidden" name="undefined_quantity" value="1kg">
+
 						    <input type="hidden" name="item_name" id="item_name" value="">
 						    <input type="hidden" name="item_number" id="item_number" value="">
 						    <input type="hidden" name="credits" value="510">
+						    <input type="hidden" name="userid" value="1">
 						    <input type="hidden" name="amount" id="amount" value="">
+						   <!-- <input type="hidden" name="hide_amount" id="hide_amount" value="" onchange="get_currency('USD', 'INR', '');" > -->
+
+
 						    <input type="hidden" name="cpp_header_image" value="<?php echo $this->config->base_url(); ?>img/lo.png">
 						    <input type="hidden" name="no_shipping" value="2">
-						    <input type="hidden" name="currency_code" value="INR">
+						    <input type="hidden" name="currency_code" value="USD">
 						    <input type="hidden" name="handling" value="0">
 
 
@@ -179,30 +307,27 @@ document.getElementById('amount').value=price_total;
 						    <input type="hidden" name="cancel_return" value="http://demo.phpgang.com/payment_with_paypal/cancel.php">
 						    <input type="hidden" name="return" value="http://demo.phpgang.com/payment_with_paypal/success.php">
 
-
-						    <!--<input type="hidden" name="business" id="business" value="<?php echo $paypal_id; ?>">
-						    <input type="hidden" name="cmd" value="_xclick">
-
-						    <input type="hidden" name="item_name" id="item_name" value="1">
-						    <input type="hidden" name="item_number" id="item_number" value="1">
-						    <input type="hidden" name="credits" value="510">
-						    <input type="hidden" name="userid" value="1">
-						    <input type="hidden" name="amount" id="amount" value="2">
-						    <input type="hidden" name="cpp_header_image" value="<?php echo $this->config->base_url(); ?>img/lo.png">
-						    <input type="hidden" name="no_shipping" value="1">
-						    <input type="hidden" name="currency_code" value="USD">
-						    <input type="hidden" name="handling" value="0">
-						    <input type="hidden" name="cancel_return" value="http://demo.phpgang.com/payment_with_paypal/cancel.php">
-						    <input type="hidden" name="return" value="http://demo.phpgang.com/payment_with_paypal/success.php"> -->
-     
-						<button type="submit" class="btn btn-info" name="submit" alt="PayPal - The safer, easier way to pay online!">Checkout</button>
+<center>
+							<button type="submit" class="btn btn-info" name="submit" alt="PayPal - The safer, easier way to pay online!">Confirm Order</button>&nbsp;
+							<button type="reset" class="btn btn-default btn-sm">Reset</button>
+</center>
 					</div>
-				</div><!-- /.modal-content -->
-			</div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
-		</form>
-		<!-- Model End -->
+								</form>
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	
+
+
+
+				<!-- Checkout End -->
+					
+			
+
 		<!-- Page Wrapper -->
 		<div class="wrapper">
 			
@@ -304,22 +429,21 @@ document.getElementById('amount').value=price_total;
 												<ul class="dropdown-menu dropdown-md">
 													<li>
 														<div class="row">
-															<div class="col-md-2 col-sm-8">
+															<div class="col-md-4 col-sm-8">
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
-																	<h5>Flower Cakes</h5>
+																	<h5>Flower Bouquet Cakes</h5>
 																	<!-- Image -->
 																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_flower">	<img width="150px" height="50px" src="<?php echo $this->config->base_url(); ?>img/flower.png" class="img-responsive" alt="" />
 																	</a>
 																	<!-- Paragraph -->
-																	<!--<p>Get your desired flavour in Flower Bouquet Design.</p>
+																	<p>Get your desired flavour in Flower Bouquet Design.</p>
 																	<!-- Button -->
-																	<br>
 																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_flower" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
-															<div class="col-md-2 col-sm-8">
+															<div class="col-md-4 col-sm-8">
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
@@ -327,55 +451,53 @@ document.getElementById('amount').value=price_total;
 																	<!-- Image -->
 																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_fruit"><img src="<?php echo $this->config->base_url(); ?>img/fruit.png" class="img-responsive" alt="" />
 																	</a><!-- Paragraph -->
-																	<!--<p>Get it with your desired flavor and Ingredients. </p>
+																	<p>Get it with your desired flavor and Ingredients. </p>
 																	<!-- Button -->
-																	<br>
 																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_fruit" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
-															<div class="col-md-2 col-sm-8">
+															<div class="col-md-4 col-sm-8">
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
-																	<h5>Printable Cakes</h5>
+																	<h5>Edible Cakes</h5>
 																	<!-- Image -->
 																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_edible">	<img width="150px" height="50px" src="<?php echo $this->config->base_url(); ?>img/edible.png" class="img-responsive" alt="" /></a>
 																	<!-- Paragraph -->
-																	<!--<p>Get your desired flavor in Flower Bouquet Design.</p>
-																	<!-- Button --><br>
+																	<p>Get your desired flavor in Flower Bouquet Design.</p>
+																	<!-- Button -->
 																	 <a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_edible" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
-															<div class="col-md-2 col-sm-8">
+															<div class="col-md-4 col-sm-8">
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
-																	<h5>Valentine Cakes</h5>
+																	<h5>valentine Cakes</h5>
 																	<!-- Image -->
 																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_valentaine">	<img src="<?php echo $this->config->base_url(); ?>img/valentaine.png" class="img-responsive" alt="" />
 																	</a>
 																	<!-- Paragraph -->
-																	<!--<p>Get it with your desired flavor and Ingredients. </p>
-																	<!-- Button --><br>
+																	<p>Get it with your desired flavor and Ingredients. </p>
+																	<!-- Button -->
 																	 <a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_valentaine" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
-															<div class="col-md-2 col-sm-8">
+															<div class="col-md-4 col-sm-8">
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
-																	<h5>Occasional Cakes</h5>
+																	<h5>Engagement Cakes</h5>
 																	<!-- Image -->
 																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_engagement">	<img src="<?php echo $this->config->base_url(); ?>img/engagement.png" class="img-responsive" alt="" />
 																	</a>
 																	<!-- Paragraph -->
-																	<!--<p>Get it in your desired flavor. </p>
+																	<p>Get it in your desired flavor. </p>
 																	<!-- Button -->
-																	<br>
 																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_engagement" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
-															<div class="col-md-2 col-sm-6">
+															<div class="col-md-4 col-sm-6">
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
@@ -383,8 +505,8 @@ document.getElementById('amount').value=price_total;
 																	<!-- Image -->
 																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display">	<img src="<?php echo $this->config->base_url(); ?>img/cartoon.png" class="img-responsive" alt="" />
 																	</a><!-- Paragraph -->
-																	<!--<p>Get your Favorite Cartoon on your Cake.</p>
-																	<!-- Button --><br>
+																	<p>Get your Favorite Cartoon on your Cake.</p>
+																	<!-- Button -->
 																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display" class="btn btn-danger btn-xs">View Menu</a>
 																</div>
 															</div>
