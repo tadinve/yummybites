@@ -1,27 +1,28 @@
 <SCRIPT LANGUAGE="JavaScript"> 
 
 function validateForm(){
-	
-if(document.option[832].selectedIndex==0)
+if(document.myForm.weight.value==0)
 {
-	
-document.getElementById('display').innerHTML = 'choose an option';
-document.Item.focus();
+document.getElementById('display').innerHTML = "choose an option";
+document.myForm.weight.focus();
+return false;
+}
+else if(document.myForm.flavour.value==0)
+{
+	document.getElementById('display1').innerHTML = "choose an option";
+
+document.myForm.flavour.focus();
+
 return false;
 }
 return true;
+
+
+
+
 }
 
-function validateForm1(){
-	alert("hi");
-if(document.option[833].selectedIndex==0)
-{
-document.getElementById('boldStuff').innerHTML = 'choose an option';
-document.ItemList.Item.focus();
-return false;
-}
-return true;
-}
+            
 
 </SCRIPT>
 			<div class="modal fade pull-left"  id="buynow" tabindex="-1" role="dialog" aria-hidden="true" style="width: auto; height: auto; opacity: 1; overflow: visible;">
@@ -29,55 +30,55 @@ return true;
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title">Occasional Cakes</h4>
+						<h4 class="modal-title">Cartoon Cakes</h4>
 						
 					</div>
 					<div class="modal-body" id="category_id">
 						<!-- Items table -->
-						 <div id="option-832" class="option">
-                    		<span class="required">*</span>
+						<form name="myForm" onsubmit="return validateForm()" method="post">
+						 <div id="weight" class="option">
+                    		<span class="required" style="color:red";>*</span>
                     			<b>Weight:</b>
                     			<br>
-         							 <select name="option[832]" onBlur="validateForm()">
+         							 <select name="weight">
            									<option value=""> --- Please Select --- 
            									</option>
-					                        <option value="1533">1/2 Kg 
+					                        <option value="1/2kg">1/2 Kg 
 					                        </option>
-					                        <option value="1532">1 Kg                       
+					                        <option value="1kg">1 Kg                       
 					                         </option>
-					                        <option value="1531">2 Kg                        
+					                        <option value="2kg">2 Kg                        
 					                        </option>
-					                        <option value="1530">3 Kg                        
+					                        <option value="3kg">3 Kg                        
 					                        </option>
 					                      </select>
+					                <p id="display" name="display" style="color:red;font:8px;"> </p>
+
        				 </div>
-       				 <p name="display"> </p>
         				<br>
-                    <div id="option-833" class="option">
-                    <span class="required">*</span>
+                    <div id="flavour" class="option">
+                    <span class="required" style="color:red;">*</span>
                     <b>Flavour:</b>
                     <br>
-						          <select name="option[833]" onBlur="validateForm1()">
+						          <select name="flavour">
 						            <option value=""> --- Please Select --- </option>
-						                        <option value="1538">Pineapple                        
+						                        <option value="pineapple">Pineapple                        
 						                        </option>
-						                        <option value="1537">Chocolate                        
+						                        <option value="chocolate">Chocolate                        
 						                        </option>
-						                        <option value="1536">Mango                        
+						                        <option value="mango">Mango                        
 						                        </option>
-						                        <option value="1535">Strawberry                        
+						                        <option value="strawberry">Strawberry                        
 						                        </option>
-						                        <option value="1534">Blueberry                        
+						                        <option value="blueberry">Blueberry                        
 						                        </option>
-						                        <option value="1539">Black Currant                        
+						                        <option value="blackcurrent">Black Currant                        
 						                        </option>
-						                        <option value="1540">Kiwi                        
-						                        </option>
-						                        <option value="1541">Litchi                        
-						                        </option>
+						                        
 						                      </select>
+						         <p id="display1" name="display" style="color:red;font:8px;"> </p>
+
 					</div>
-					       				 <p name="boldStuff"> </p>
 
         			<br>
                     <div id="option-834" class="option">
@@ -91,13 +92,16 @@ return true;
          				 					&nbsp;
 
         				 </div>
+        				 
+        				 
        
             		</div>
+            		
             							<div class="modal-footer">
-							<button class="btn btn-danger btn-sm pull-left" data-toggle="modal" data-target="#buynow" onclick="cart(<?php for($i=0;$i<count($display);$i++) { echo $display[$i]->id; } ?>)">Add To Cart </button>
-					</div>
+							<input type="submit" name="submit" value="Add To Cart" class="btn btn-danger btn-sm pull-left">
+							</div>
                    
-
+</form>
 						
 					</div>
 					

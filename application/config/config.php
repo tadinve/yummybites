@@ -14,8 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://ym.solivarindia.in/';
-
+$config['base_url']	= 'http://localhost/ci';
 
 /*
 |--------------------------------------------------------------------------

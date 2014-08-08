@@ -151,6 +151,30 @@ document.getElementById("price").value='Rs.'+a*c;
 															</div></td>
 														</tr>
 														<tr>
+															<td>Flavours</td>
+															<td><div class="form-group">
+															<select class="form-control input-sm" name="quantity" id="quantity" onchange="myFunction()">
+										           				 <option value=""> --- Please Select --- </option>
+										                        <option value="1538">Pineapple                        
+										                        </option>
+										                        <option value="1537">Chocolate                        
+										                        </option>
+										                        <option value="1536">Mango                        
+										                        </option>
+										                        <option value="1535">Strawberry                        
+										                        </option>
+										                        <option value="1534">Blueberry                        
+										                        </option>
+										                        <option value="1539">Black Currant                        
+										                        </option>
+										                        <option value="1540">Kiwi                        
+										                        </option>
+										                        <option value="1541">Litchi                        
+										                        </option>
+						                      				</select>
+						                      				</div></td>
+														</tr>
+														<tr>
 															<td>Payment Mode</td>
 															<td><div class="form-group">
 																<select class="form-control input-sm">

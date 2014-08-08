@@ -31,8 +31,7 @@ CREATE TABLE IF NOT EXISTS `subscribe` (
   `email` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
-INSERT INTO `dbversion` (`id`, `db_version`, `last_update_string`) VALUES (NULL, '1', '201408070646');
+INSERT INTO `dbversion` (`id`, `db_version`, `last_update_string`) VALUES (NULL, '1', '201407251620');
 
 --
 -- Dumping data for table `subscribe`

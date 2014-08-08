@@ -2,19 +2,71 @@
 $paypal_url='https://www.sandbox.paypal.com/cgi-bin/webscr'; // Test Paypal API URL
 $paypal_id='reethi-facilitator@solivarindia.com '; // Business email ID
 ?>
-<SCRIPT LANGUAGE="JavaScript"> 
+<script type="text/javascript">
+function validateForm1(){
 
-function validateForm(){
-	
-var x = document.forms["frmPayPal1"]["inputName"].value;
-    if (x==null || x=="") {
-        alert("First name must be filled out");
-        return false;
-    }
+if(document.frmPayPal1.inputName.value==0)
+{
+document.getElementById('name').innerHTML = "Enter your Name";
+document.frmPayPal1.inputName.focus();
+return false;
+}
+else if(document.frmPayPal1.inputEmail1.value==0)
+{
+	document.getElementById('email').innerHTML = "choose an option";
+
+document.frmPayPal1.inputEmail1.focus();
+
+return false;
+}
+else if(document.frmPayPal1.inputPhone.value==0)
+{
+	document.getElementById('phone').innerHTML = "Enter Valid Phone number";
+
+document.frmPayPal1.inputPhone.focus();
+
+return false;
+}
+else if(document.frmPayPal1.inputCountry.value==0)
+{
+	document.getElementById('country').innerHTML = "choose an option";
+
+document.frmPayPal1.inputCountry.focus();
+
+return false;
+}
+else if(document.frmPayPal1.inputAddress.value==0)
+{
+	document.getElementById('address').innerHTML = "Enter Address";
+
+document.frmPayPal1.inputAddress.focus();
+
+return false;
+}
+else if(document.frmPayPal1.inputZip.value==0)
+{
+	document.getElementById('postal').innerHTML = "Enter your Postal Code";
+
+document.frmPayPal1.inputZip.focus();
+
+return false;
 }
 
-</SCRIPT>
+else if(frmPayPal1.terms.checked==false)
+{
+	alert("Please Accept Terms and Conditions to Preceed");
+}  
+return true;
+
+
+
+
+}
+</script>
 <script type="text/javascript">
+
+
+
  	var id_array=[];
  	var price_array=[];
  	var category_array=[];
@@ -210,9 +262,8 @@ return round($data[0], 2);
 
 
 
-<form class="form-horizontal" action="<?php echo $paypal_url; ?>" method="post" name="frmPayPal1" role="form" onSubmit="return validateForm();">
 
-<div class="modal fade pull-right"  id="billing_cart" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal fade pull-right"  id="billing_cart" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -220,34 +271,42 @@ return round($data[0], 2);
 						<h4 class="modal-title">Shopping Cart</h4>
 						
 					</div>
-					<div class="modal-body" id="category_id">
-						<!-- Items table -->
-						<!-- Checkout Start -->
-					</div>
-				<div class="checkout">
-					<div class="container">
+					
+					<div class="checkout">
+						<div class="container">
 					<!-- Heading -->
-					<h4>Shipping & Billing Details</h4>
-						<div class="row">
-							<div class="col-md-7 col-sm-6">
+							<h4>Shipping & Billing Details</h4>
+							<div class="row">
+								<form class="form-horizontal" name="frmPayPal1" action="<?php echo $paypal_url; ?>" onSubmit="return validateForm1()" method="post">
+
+								<div class="col-md-7 col-sm-6">
 								<!-- Checkout Form -->
 									<div class="form-group">
 										<label for="inputName" class="col-md-2 control-label">Name</label>
 										<div class="col-md-8">
 											<input type="text" class="form-control" name="inputName" placeholder="Name">
+											<p id="name" name="name" style="color:red;font:8px;"> </p>
+
 										</div>
+
 									</div>            
 									<div class="form-group">
 										<label for="inputEmail1" class="col-md-2 control-label">Email</label>
 										<div class="col-md-8">
 											<input type="email" class="form-control" name="inputEmail1" placeholder="Email">
+											<p id="email" name="email" style="color:red;font:8px;"> </p>
+
 										</div>
+
 									</div>
 									<div class="form-group">
 										<label for="inputPhone" class="col-md-2 control-label">Phone</label>
 										<div class="col-md-8">
 											<input type="text" class="form-control" name="inputPhone" placeholder="Phone">
+										<p id="phone" name="phone" style="color:red;font:8px;"> </p>
+
 										</div>
+
 									</div>
 									<div class="form-group">
 										<label for="inputCountry" class="col-md-2 control-label">Country</label>
@@ -259,31 +318,42 @@ return round($data[0], 2);
 												<option>Canada</option>
 												<option>UK</option>
 											</select>
+											<p id="country" name="country" style="color:red;font:8px;"> </p>
+
 										</div>
+
 									</div>              
 									<div class="form-group">
 										<label for="inputAddress" class="col-md-2 control-label">Address</label>
 										<div class="col-md-8">
 											<textarea class="form-control" name="inputAddress" rows="3" placeholder="Address"></textarea>
+									<p id="address" name="address" style="color:red;font:8px;"> </p>
+
 										</div>
+
 									</div>
 									<div class="form-group">
 										<label for="inputZip" class="col-md-2 control-label">Zip Code</label>
 										<div class="col-md-8">
 											<input type="text" class="form-control" name="inputZip" placeholder="Zip Code">
+										<p id="postal" name="postal" style="color:red;font:8px;"> </p>
+
 										</div>
+
 									</div>
 									<div class="form-group">
 										<div class="col-md-offset-2 col-md-8">
 											<div class="checkbox">
 												<label>
-													<input type="checkbox"> Accept Terms & Conditions
+													<input type="checkbox" id="terms" name="terms"> Accept Terms & Conditions
 												</label>
+
 											</div>
 										</div>
+
 									</div>
 									
-					<div class="modal-footer" style="width:85%;">
+							<div class="modal-footer" style="width:85%;">
 							<input type="hidden" name="business" id="business" value="<?php echo $paypal_id; ?>">
 						    <input type="hidden" name="cmd" value="_xclick">
 
@@ -308,19 +378,20 @@ return round($data[0], 2);
 						    <input type="hidden" name="return" value="http://demo.phpgang.com/payment_with_paypal/success.php">
 
 <center>
-							<button type="submit" class="btn btn-info" name="submit" alt="PayPal - The safer, easier way to pay online!">Confirm Order</button>&nbsp;
+							<input type="submit"  class="btn btn-info" name="submit" value="confirm order" alt="PayPal - The safer, easier way to pay online!">&nbsp;
 							<button type="reset" class="btn btn-default btn-sm">Reset</button>
 </center>
 					</div>
-								</form>
 							</div>
+							</form>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	
+									
+
 
 
 
