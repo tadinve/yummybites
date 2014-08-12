@@ -1,0 +1,689 @@
+Updating e57acfd..c8f0518
+Fast-forward
+ application/.DS_Store                              |  Bin 15364 -> 21508 bytes
+ application/config/.DS_Store                       |  Bin 6148 -> 6148 bytes
+ application/config/config.php                      |    2 +-
+ application/config/database.php                    |    4 +-
+ application/config/paypal-sample.php               |   77 +
+ application/config/paypal.php                      |   77 +
+ application/controllers/.DS_Store                  |  Bin 6148 -> 12292 bytes
+ application/controllers/login.php                  |    8 +-
+ application/controllers/menu_control.php           |  213 +-
+ application/controllers/paypal/ payflow.php        |  168 +
+ .../{pages/UI => controllers/paypal}/.DS_Store     |  Bin 6148 -> 6148 bytes
+ .../controllers/paypal/adaptive_payments.php       | 1699 ++++++++
+ application/controllers/paypal/payments_pro.php    | 1785 ++++++++
+ application/controllers/signout.php                |   22 +
+ application/controllers/welcome.php                |   74 +-
+ application/{pages => libraries}/.DS_Store         |  Bin 6148 -> 6148 bytes
+ application/libraries/paypal/.DS_Store             |  Bin 0 -> 6148 bytes
+ application/libraries/paypal/Paypal_adaptive.php   | 4353 +++++++++++++++++++
+ application/libraries/paypal/Paypal_payflow.php    |  181 +
+ application/libraries/paypal/Paypal_pro.php        | 2794 ++++++++++++
+ application/libraries/paypal/README.md             |  181 +
+ application/libraries/paypal/autoload.php          |   12 +
+ application/libraries/paypal/composer.json         |   24 +
+ .../libraries/paypal/documentation/index.html      |  104 +
+ .../libraries/paypal/includes/config-sample.php    |  134 +
+ .../libraries/paypal/samples/AddBankAccount.php    |   67 +
+ .../libraries/paypal/samples/AddPaymentCard.php    |   79 +
+ .../libraries/paypal/samples/BMButtonSearch.php    |   31 +
+ .../libraries/paypal/samples/CancelInvoice.php     |   38 +
+ .../libraries/paypal/samples/ConvertCurrency.php   |   43 +
+ .../libraries/paypal/samples/CreateAccount.php     |  113 +
+ .../paypal/samples/CreateAndSendInvoice.php        |  143 +
+ .../libraries/paypal/samples/CreateInvoice.php     |  143 +
+ .../samples/CreateRecurringPaymentsProfile.php     |  115 +
+ .../libraries/paypal/samples/DeleteInvoice.php     |   30 +
+ .../libraries/paypal/samples/DoDirectPayment.php   |  122 +
+ .../samples/DoExpressCheckoutPayment-Callback.php  |  167 +
+ .../paypal/samples/DoExpressCheckoutPayment.php    |  132 +
+ .../paypal/samples/DoReferenceTransaction.php      |  105 +
+ .../libraries/paypal/samples/ExecutePayment.php    |   36 +
+ .../paypal/samples/FinancingBannerEnrollment.php   |   27 +
+ .../libraries/paypal/samples/GetAccessToken.php    |   36 +
+ .../paypal/samples/GetAdvancedPersonalData.php     |   39 +
+ .../libraries/paypal/samples/GetBalance.php        |   31 +
+ .../paypal/samples/GetBasicPersonalData.php        |   39 +
+ .../libraries/paypal/samples/GetInvoiceDetails.php |   29 +
+ .../libraries/paypal/samples/GetPaymentOptions.php |   29 +
+ .../samples/GetRecurringPaymentsProfileDetails.php |   29 +
+ .../paypal/samples/GetShippingAddresses.php        |   31 +
+ .../paypal/samples/GetTransactionDetails.php       |   29 +
+ .../libraries/paypal/samples/GetVerifiedStatus.php |   38 +
+ .../ManageRecurringPaymentsProfileStatus.php       |   31 +
+ .../libraries/paypal/samples/MarkInvoiceAsPaid.php |   38 +
+ .../paypal/samples/MarkInvoiceAsRefunded.php       |   37 +
+ .../paypal/samples/MarkInvoiceAsUnpaid.php         |   30 +
+ application/libraries/paypal/samples/MassPay.php   |   60 +
+ .../libraries/paypal/samples/Pay-Chained.php       |  107 +
+ .../libraries/paypal/samples/Pay-Preapproval.php   |   84 +
+ application/libraries/paypal/samples/Pay.php       |   95 +
+ .../paypal/samples/PayFlowTransaction.php          |   72 +
+ .../libraries/paypal/samples/PayWithOptions.php    |  192 +
+ .../libraries/paypal/samples/PaymentDetails.php    |   38 +
+ .../libraries/paypal/samples/Preapproval.php       |   65 +
+ .../paypal/samples/PreapprovalDetails.php          |   38 +
+ application/libraries/paypal/samples/Refund.php    |   53 +
+ .../libraries/paypal/samples/RefundTransaction.php |   41 +
+ .../libraries/paypal/samples/RemindInvoice.php     |   37 +
+ .../paypal/samples/RequestPermissions.php          |   64 +
+ .../libraries/paypal/samples/SearchInvoices.php    |   57 +
+ .../libraries/paypal/samples/SendInvoice.php       |   29 +
+ .../paypal/samples/SetCustomerBillingAgreement.php |   49 +
+ .../paypal/samples/SetExpressCheckout-Callback.php |  193 +
+ .../paypal/samples/SetExpressCheckout.php          |  180 +
+ .../libraries/paypal/samples/SetMobileCheckout.php |   57 +
+ .../libraries/paypal/samples/SetPaymentOptions.php |  129 +
+ .../libraries/paypal/samples/TransactionSearch.php |   51 +
+ .../libraries/paypal/samples/UpdateInvoice.php     |  133 +
+ .../samples/UpdateRecurringPaymentsProfile.php     |   96 +
+ .../paypal/src/angelleye/PayPal/Adaptive.php       | 4593 ++++++++++++++++++++
+ .../paypal/src/angelleye/PayPal/Financing.php      |  164 +
+ .../paypal/src/angelleye/PayPal/PayFlow.php        |  180 +
+ .../paypal/src/angelleye/PayPal/PayPal.php         | 2798 ++++++++++++
+ .../libraries/paypal/templates/AddBankAccount.php  |   68 +
+ .../libraries/paypal/templates/AddPaymentCard.php  |   79 +
+ .../libraries/paypal/templates/AddressVerify.php   |   32 +
+ .../libraries/paypal/templates/BMButtonSearch.php  |   31 +
+ .../paypal/templates/BillAgreementUpdate.php       |   32 +
+ .../paypal/templates/BillOutstandingAmount.php     |   31 +
+ .../libraries/paypal/templates/CancelInvoice.php   |   38 +
+ .../paypal/templates/CancelPermissions.php         |   29 +
+ .../paypal/templates/CancelPreapproval.php         |   35 +
+ .../libraries/paypal/templates/ConvertCurrency.php |   43 +
+ .../libraries/paypal/templates/CreateAccount.php   |  162 +
+ .../paypal/templates/CreateAndSendInvoice.php      |  132 +
+ .../paypal/templates/CreateBillingAgreement.php    |   23 +
+ .../libraries/paypal/templates/CreateInvoice.php   |  132 +
+ .../templates/CreateRecurringPaymentsProfile.php   |  132 +
+ .../libraries/paypal/templates/DeleteInvoice.php   |   30 +
+ .../libraries/paypal/templates/DoAuthorization.php |   33 +
+ .../libraries/paypal/templates/DoCapture.php       |   38 +
+ .../libraries/paypal/templates/DoDirectPayment.php |  118 +
+ .../paypal/templates/DoExpressCheckoutPayment.php  |  111 +
+ .../paypal/templates/DoMobileCheckoutPayment.php   |   29 +
+ .../paypal/templates/DoNonReferencedCredit.php     |   73 +
+ .../paypal/templates/DoReauthorization.php         |   32 +
+ .../paypal/templates/DoReferenceTransaction.php    |  124 +
+ application/libraries/paypal/templates/DoVoid.php  |   31 +
+ .../libraries/paypal/templates/ExecutePayment.php  |   36 +
+ .../paypal/templates/ExpressCheckoutCallback.php   |  125 +
+ .../paypal/templates/FinancingBannerEnrollment.php |   28 +
+ .../paypal/templates/GenerateInvoiceNumber.php     |   28 +
+ .../templates/GetAccessPermissionsDetails.php      |   23 +
+ .../libraries/paypal/templates/GetAccessToken.php  |   36 +
+ .../paypal/templates/GetAdvancedPersonalData.php   |   39 +
+ .../libraries/paypal/templates/GetAuthDetails.php  |   23 +
+ .../libraries/paypal/templates/GetBalance.php      |   25 +
+ .../paypal/templates/GetBasicPersonalData.php      |   39 +
+ .../GetBillingAgreementCustomerDetails.php         |   23 +
+ .../paypal/templates/GetExpressCheckoutDetails.php |   25 +
+ .../libraries/paypal/templates/GetFundingPlans.php |   35 +
+ .../paypal/templates/GetInvoiceDetails.php         |   29 +
+ .../libraries/paypal/templates/GetPalDetails.php   |   22 +
+ .../paypal/templates/GetPaymentOptions.php         |   29 +
+ .../libraries/paypal/templates/GetPermissions.php  |   29 +
+ .../GetRecurringPaymentsProfileDetails.php         |   29 +
+ .../GetRecurringPaymentsProfileStatus.php          |   23 +
+ .../paypal/templates/GetShippingAddresses.php      |   35 +
+ .../paypal/templates/GetTransactionDetails.php     |   29 +
+ .../paypal/templates/GetVerifiedStatus.php         |   38 +
+ .../templates/ManagePendingTransactionStatus.php   |   31 +
+ .../ManageRecurringPaymentsProfileStatus.php       |   31 +
+ .../paypal/templates/MarkInvoiceAsPaid.php         |   38 +
+ .../paypal/templates/MarkInvoiceAsRefunded.php     |   37 +
+ .../paypal/templates/MarkInvoiceAsUnpaid.php       |   30 +
+ application/libraries/paypal/templates/MassPay.php |   60 +
+ application/libraries/paypal/templates/Pay.php     |   85 +
+ .../paypal/templates/PayFlowTransaction.php        |   70 +
+ .../libraries/paypal/templates/PayWithOptions.php  |  151 +
+ .../libraries/paypal/templates/PaymentDetails.php  |   38 +
+ .../libraries/paypal/templates/Preapproval.php     |   64 +
+ .../paypal/templates/PreapprovalDetails.php        |   38 +
+ application/libraries/paypal/templates/Refund.php  |   53 +
+ .../paypal/templates/RefundTransaction.php         |   43 +
+ .../libraries/paypal/templates/RemindInvoice.php   |   37 +
+ .../paypal/templates/RequestPermissions.php        |   64 +
+ .../libraries/paypal/templates/SearchInvoices.php  |   57 +
+ .../libraries/paypal/templates/SendInvoice.php     |   29 +
+ .../paypal/templates/SetAccessPermissions.php      |  118 +
+ .../paypal/templates/SetAuthFlowParam.php          |   57 +
+ .../templates/SetCustomerBillingAgreement.php      |   49 +
+ .../paypal/templates/SetExpressCheckout.php        |  166 +
+ .../paypal/templates/SetFundingSourceConfirmed.php |   37 +
+ .../paypal/templates/SetMobileCheckout.php         |   56 +
+ .../paypal/templates/SetPaymentOptions.php         |   98 +
+ .../paypal/templates/TransactionSearch.php         |   53 +
+ .../paypal/templates/UpdateAccessPermissions.php   |   23 +
+ .../libraries/paypal/templates/UpdateInvoice.php   |  133 +
+ .../templates/UpdateRecurringPaymentsProfile.php   |   96 +
+ application/models/.DS_Store                       |  Bin 6148 -> 12292 bytes
+ application/models/item_single_model.php           |   29 +
+ application/models/menu_edible_model.php           |   55 +
+ application/models/menu_engagement_model.php       |   55 +
+ application/models/menu_flower_model.php           |   55 +
+ application/models/menu_fruit_model.php            |   50 +
+ application/models/menu_valentaine_model.php       |   55 +
+ application/pages/UI/upload_form.html              |  248 --
+ application/views/.DS_Store                        |  Bin 15364 -> 15364 bytes
+ application/views/adaptive_payments_demo.php       |   77 +
+ application/views/all_cartoon.php                  |   46 +-
+ application/views/all_edible.php                   |   46 +-
+ application/views/all_engagement.php               |   46 +-
+ application/views/all_flower.php                   |   46 +-
+ application/views/all_fruit.php                    |   45 +-
+ application/views/all_valentaine.php               |   46 +-
+ application/views/cancel.php                       |    4 +
+ application/views/convert_currency.php             |   14 +
+ application/views/get_balance.php                  |   14 +
+ application/views/header.php                       |  247 +-
+ application/views/item_single.php                  |   66 +-
+ application/views/menu_form.php                    |    5 +-
+ application/views/menu_fruit_menu.php              |   55 +
+ application/views/menu_valentaine_model.php        |   55 +
+ application/views/payflow_demo.php                 |   56 +
+ application/views/payments_pro_demo.php            |   73 +
+ application/views/paypal.php                       |   80 +
+ application/views/paypal_error.php                 |   14 +
+ application/views/paypalfooter.php                 |  103 +
+ application/views/paypalheader.php                 |   69 +
+ application/views/success.php                      |   21 +
+ img/.DS_Store                                      |  Bin 21508 -> 21508 bytes
+ img/all/.DS_Store                                  |  Bin 15364 -> 15364 bytes
+ img/all/choc/.DS_Store                             |  Bin 6148 -> 6148 bytes
+ ...16835_127468790709006_230158052_n.jpg => 1.jpg} |  Bin
+ ...0688_127464550709430_1924401198_n.jpg => 3.jpg} |  Bin
+ ...23920_127468267375725_585458491_n.jpg => 4.jpg} |  Bin
+ ...61273_217563871699497_641849562_n.jpg => 6.jpg} |  Bin
+ img/all/choc/{engagement.png => 8.png}             |  Bin
+ ...6399_375436272578922_1231473956_o.jpg => 9.jpg} |  Bin
+ img/all/edible/.DS_Store                           |  Bin 6148 -> 6148 bytes
+ ...74479_370142863108263_978857075_o.jpg => 1.jpg} |  Bin
+ ...02426_375436562578893_581508596_o.jpg => 2.jpg} |  Bin
+ img/all/flower/.DS_Store                           |  Bin 15364 -> 12292 bytes
+ ...8277_254590977996786_1913822073_o.jpg => 1.jpg} |  Bin
+ ...4473_127488880706997_701000880_n.jpg => 10.jpg} |  Bin
+ ...6959_127477994041419_337789562_n.jpg => 11.jpg} |  Bin
+ ...18149_127469017375650_22618054_n.jpg => 12.jpg} |  Bin
+ ...9480_127488577373694_214815178_n.jpg => 13.jpg} |  Bin
+ ...730_127479094041309_1215677104_n.jpg => 14.jpg} |  Bin
+ ...4740_127478264041392_652349932_n.jpg => 15.jpg} |  Bin
+ ...660_127478627374689_1362060109_n.jpg => 16.jpg} |  Bin
+ ...8977_127478220708063_436698831_n.jpg => 17.jpg} |  Bin
+ ...0478_127464507376101_354124148_n.jpg => 18.jpg} |  Bin
+ ...0688_127469260708959_640158798_n.jpg => 19.jpg} |  Bin
+ ...4895_218318608290690_1838292717_o.jpg => 2.jpg} |  Bin
+ ...0848_127488804040338_669358725_n.jpg => 20.jpg} |  Bin
+ ...319_127467300709155_1802633727_n.jpg => 21.jpg} |  Bin
+ ...427_218318314957386_1969941387_n.jpg => 22.jpg} |  Bin
+ ...4552_261656997290184_828298017_n.jpg => 23.jpg} |  Bin
+ ...4905_254592641329953_720674541_o.jpg => 24.jpg} |  Bin
+ ...0556_254588284663722_424067777_o.jpg => 25.jpg} |  Bin
+ ...133_328048970650986_2042543417_o.jpg => 26.jpg} |  Bin
+ ...831_359542130835003_1495059344_o.jpg => 27.jpg} |  Bin
+ ...8062_361508267305056_630923634_o.jpg => 28.jpg} |  Bin
+ ...913_360653370723879_1449856874_o.jpg => 29.jpg} |  Bin
+ ...8879_218318591624025_2046032928_n.jpg => 3.jpg} |  Bin
+ ...356_359542140835002_1122939906_o.jpg => 30.jpg} |  Bin
+ ...2163_370366413085908_859301731_o.jpg => 31.jpg} |  Bin
+ ...0897_370366293085920_715879874_o.jpg => 32.jpg} |  Bin
+ ...0104_375435849245631_531802033_o.jpg => 33.jpg} |  Bin
+ ...780_374631825992700_1939530930_o.jpg => 34.jpg} |  Bin
+ ...2350_379139945541888_683986754_o.jpg => 35.jpg} |  Bin
+ ...81039_250401271749090_664935988_o.jpg => 4.jpg} |  Bin
+ ...5660_127478294041389_1824479340_n.jpg => 5.jpg} |  Bin
+ ...95345_127467504042468_847679648_n.jpg => 6.jpg} |  Bin
+ ...395665_127479420707943_64078634_n.jpg => 7.jpg} |  Bin
+ ...02411_127467204042498_207559038_n.jpg => 8.jpg} |  Bin
+ ...04204_127469420708943_434832407_n.jpg => 9.jpg} |  Bin
+ img/all/fruit/.DS_Store                            |  Bin 6148 -> 6148 bytes
+ ...32304_127467324042486_488992480_n.jpg => 2.jpg} |  Bin
+ ...2606_250401605082390_1535101942_o.jpg => 3.jpg} |  Bin
+ img/all/pinaple/.DS_Store                          |  Bin 6148 -> 6148 bytes
+ ...8879_218318601624024_1193397812_n.jpg => 1.jpg} |  Bin
+ ...1159_239829552806262_1770793159_n.jpg => 2.jpg} |  Bin
+ ...8004_127467387375813_1570264170_n.jpg => 3.jpg} |  Bin
+ ...27580_127467440709141_658591671_n.jpg => 4.jpg} |  Bin
+ ...93842_379139938875222_498249170_o.jpg => 5.jpg} |  Bin
+ ...2512_379139892208560_1799003258_o.jpg => 6.jpg} |  Bin
+ img/all/valentaine/.DS_Store                       |  Bin 6148 -> 6148 bytes
+ ...9643_253193514803199_1367482943_n.jpg => 1.jpg} |  Bin
+ ...95602_127467587375793_766418200_n.jpg => 2.jpg} |  Bin
+ ...9129_127467574042461_1360073326_n.jpg => 3.jpg} |  Bin
+ ...8881_127468057375746_1548620837_n.jpg => 5.jpg} |  Bin
+ ...25931_127467734042445_512940147_n.jpg => 6.jpg} |  Bin
+ ...30466_127467657375786_776261597_n.jpg => 7.jpg} |  Bin
+ ...6004_388406817948534_1048623734_n.jpg => 8.jpg} |  Bin
+ img/galary/26.png                                  |  Bin 124142 -> 0 bytes
+ img/galary/28.png                                  |  Bin 119788 -> 0 bytes
+ img/galary/30.png                                  |  Bin 106269 -> 0 bytes
+ img/galary/32.png                                  |  Bin 117446 -> 0 bytes
+ img/green_smiley.png                               |  Bin 118498 -> 0 bytes
+ img/slide2.jpg                                     |  Bin 0 -> 91866 bytes
+ migrations/.DS_Store                               |  Bin 6148 -> 6148 bytes
+ .../201407251620_alterstatements_contacttable.sql  |   46 -
+ migrations/201407251640_alter_menutable.sql        |   60 -
+ migrations/201407251650_alter_registertable.sql    |   45 -
+ migrations/201407251720_alter_uploadtable.sql      |   97 -
+ migrations/201407251730_alter_testtable.sql        |   37 -
+ migrations/201408010953_alter_carttable.sql        |  443 ++
+ uploads/014d924bdb7b0941430d6db612dfbcb2.jpg       |  Bin 0 -> 151955 bytes
+ uploads/04c86ae1aa066a53a538daa5e4dff94b.jpg       |  Bin 0 -> 89374 bytes
+ uploads/05ed525c3a808cd9cd0cff16b7f961e1.jpg       |  Bin 0 -> 231373 bytes
+ uploads/09a5061e0de3d8a39890de042ddc39f9.jpg       |  Bin 0 -> 109658 bytes
+ uploads/0a84cc675eed742823ef98bd9be71b33.jpg       |  Bin 0 -> 3043 bytes
+ uploads/0f7c4d581aee990b0d05ca35a3a2a1b6.jpg       |  Bin 0 -> 95642 bytes
+ uploads/10598c9e5b1cb84be6eaf8381614dbdd.jpg       |  Bin 0 -> 146366 bytes
+ uploads/1224f31baf993e707ab4a956e6b63a58.jpg       |  Bin 0 -> 126828 bytes
+ uploads/13c7c4cf0bea618d4dcd9c2dfd76a91c.jpg       |  Bin 0 -> 73984 bytes
+ uploads/16b39bb4cb111cd90292b72a4f981360.jpg       |  Bin 0 -> 17887 bytes
+ uploads/188ea4c69353fd0f237f68ea13576ad8.jpg       |  Bin 0 -> 96072 bytes
+ uploads/1992bd27a25987b1141c1dd4ffcf5497.jpg       |  Bin 0 -> 98253 bytes
+ uploads/1d456ca0d6c58d6394da90b5a310813d.jpg       |  Bin 0 -> 236390 bytes
+ uploads/1d8df883523052da7cb62d7ca029ba6a.jpg       |  Bin 0 -> 146366 bytes
+ uploads/1e2022d93bc289d0baf29b61dbf27345.jpg       |  Bin 0 -> 146366 bytes
+ uploads/1e9895ecc9cdc184ce7a675f1c89c826.jpg       |  Bin 0 -> 70370 bytes
+ uploads/1fbc74a9775437fe64ca7180b092b68c.jpg       |  Bin 0 -> 35836 bytes
+ uploads/26524e979cc2c06170eecb9068555281.jpg       |  Bin 0 -> 94940 bytes
+ uploads/2abfc7a0e7135f9d08a60021fc6a1f9b.jpg       |  Bin 0 -> 144622 bytes
+ uploads/3336442f649ccb1ee19b90de9f7ec2a9.jpg       |  Bin 0 -> 243475 bytes
+ uploads/341267e2d26f30fc900d4217cb7c449e.jpg       |  Bin 0 -> 101797 bytes
+ uploads/356f1015b06969ba74947209aff13552.jpg       |  Bin 0 -> 109032 bytes
+ uploads/3b6defbe05f1e0168a252d7c6e032e3c.jpg       |  Bin 0 -> 18224 bytes
+ uploads/3cc243716ae370c3b5a888eaade0203d.jpg       |  Bin 0 -> 21472 bytes
+ uploads/430294355ad86e4418dbf4f2f214fce8.jpg       |  Bin 0 -> 73984 bytes
+ .../442ff937ed0ac7239edb56f3f5752c29.jpg           |  Bin
+ uploads/502164ff9d7a3484198a9c96e882f5b3.jpg       |  Bin 0 -> 17129 bytes
+ uploads/53b83bdd165ddf83647ee1cc4f34cc2b.jpg       |  Bin 0 -> 93864 bytes
+ uploads/53fe5bdce8e79603471c3b98c37ea549.jpg       |  Bin 0 -> 158812 bytes
+ uploads/54ba1962ce70c99546dd7abc53dbf4c4.jpg       |  Bin 0 -> 119237 bytes
+ uploads/576516d57f940617a24cb8118ac7a1e4.jpg       |  Bin 0 -> 27953 bytes
+ uploads/5779a59d0532a17a1c4b12a8575e4210.jpg       |  Bin 0 -> 93864 bytes
+ uploads/58b163d36cdaaad6ab990688cb17eae8.jpg       |  Bin 0 -> 37383 bytes
+ uploads/5a92057219ab88d421948b8c611a6597.jpg       |  Bin 0 -> 149691 bytes
+ uploads/5de624a0331ac861a50f65af95c1503f.jpg       |  Bin 0 -> 103867 bytes
+ uploads/5f2683ca5f2bea84432276d19168c96a.jpg       |  Bin 0 -> 118035 bytes
+ uploads/60a2162bcdc233656d40dbca0d6ab849.jpg       |  Bin 0 -> 166760 bytes
+ uploads/630bb82138816135c8f451b59982e5d7.jpg       |  Bin 0 -> 115668 bytes
+ uploads/6a313dbf662f7859f078cd265af618f2.jpg       |  Bin 0 -> 166760 bytes
+ uploads/6aba2bfe598b648798b523c898a2e3b3.jpg       |  Bin 0 -> 138653 bytes
+ uploads/6e6b42dde84f69901f54f228796ab15b.jpg       |  Bin 0 -> 21003 bytes
+ uploads/6f9c1ea3a4f4d0b44f4ab3fd85e2e490.jpg       |  Bin 0 -> 75335 bytes
+ uploads/78261e175e746fa6445105e6cefc1414.jpg       |  Bin 0 -> 195987 bytes
+ uploads/7ebbd34ef3073b9d61b2bce705777ba1.jpg       |  Bin 0 -> 113665 bytes
+ uploads/7fa92e199b6cb4ff11b67a2259406d0d.jpg       |  Bin 0 -> 141698 bytes
+ uploads/821995521f8cdba44b12b7ce9016846e.jpg       |  Bin 0 -> 243475 bytes
+ uploads/871cb06f65f35be6cb7d3e9ba4c73b1e.jpg       |  Bin 0 -> 126828 bytes
+ uploads/876751933088d1cb5f801d90ec94d8db.jpg       |  Bin 0 -> 99015 bytes
+ uploads/91f7ef10800ddf5540c5087b6a122511.jpg       |  Bin 0 -> 154604 bytes
+ .../941c5ba4d01a75925e2d7d0524371889.jpg           |  Bin
+ .../9661bc3fd2cbf1e535718388ed3bb5ad.jpg           |  Bin
+ uploads/9e378e4c07be64f5d6bc4078c85c645b.jpg       |  Bin 0 -> 35836 bytes
+ uploads/9f32a9c0a46b2ea10ad1923f9a84fda5.jpg       |  Bin 0 -> 23328 bytes
+ uploads/a1e54d2601881a371a41f38180a7e235.jpg       |  Bin 0 -> 103867 bytes
+ uploads/ab5583ec35ed4c0aaa90bdc328c1ec55.jpg       |  Bin 0 -> 75685 bytes
+ uploads/b151d56814c01152c6f30d2896da42f0.jpg       |  Bin 0 -> 75335 bytes
+ uploads/b580807a51afcae7d960384a5bd26f5e.jpg       |  Bin 0 -> 75335 bytes
+ uploads/b5d46ecd0d32972cd91d2e592d4d72c5.jpg       |  Bin 0 -> 2878 bytes
+ .../b9fb19115cd811058243b150c8a0f262.jpg           |  Bin
+ uploads/bad8081b94c483cef11f61cf3c9cbf76.jpg       |  Bin 0 -> 75685 bytes
+ uploads/bb02db0cbfd43894c9aabaf9bc697697.jpg       |  Bin 0 -> 236454 bytes
+ uploads/bb4f9269be9a5b62b1564f3b84676fdd.jpg       |  Bin 0 -> 138653 bytes
+ uploads/bbb3e709f01ae824d7446e0a2b22891a.jpg       |  Bin 0 -> 73827 bytes
+ uploads/bbde2ef0b449afaa19d0d3d08761071a.jpg       |  Bin 0 -> 13943 bytes
+ uploads/bf89d16d61338ad5c4c9afab00c93e3f.jpg       |  Bin 0 -> 103867 bytes
+ uploads/c16050786157915369bb18f2a349f7bd.jpg       |  Bin 0 -> 93864 bytes
+ uploads/c2da3a7e0d2d83ed01583808e50512bc.jpg       |  Bin 0 -> 60653 bytes
+ uploads/c43e5ad27b97a5af1ce5fbab23f8173a.jpg       |  Bin 0 -> 309483 bytes
+ uploads/c472b937e76b82c9b475cf2c1d46f766.jpg       |  Bin 0 -> 93864 bytes
+ uploads/c892830477a7a3dbae0b8b13afc509b5.jpg       |  Bin 0 -> 53624 bytes
+ uploads/cb932f54c23ed5aec455674f1b527975.jpg       |  Bin 0 -> 243475 bytes
+ .../cd828e5eeff3c5537ccd77b95427d9ec.jpg           |  Bin
+ uploads/cdf66629c88202dbf5e730ced4a8e663.jpg       |  Bin 0 -> 80656 bytes
+ uploads/d5f11f85bc377e8ac457b7eed177cb66.jpg       |  Bin 0 -> 149691 bytes
+ uploads/db7f7011b5f62321abd42264da146fcc.jpg       |  Bin 0 -> 86995 bytes
+ uploads/e0d6ed8c10dd64251216ab5ecad4137c.jpg       |  Bin 0 -> 229576 bytes
+ uploads/e10952cf2900647b36f17c81ac4c0ba2.jpg       |  Bin 0 -> 229576 bytes
+ uploads/e2d0289b9a73146801ec6da69a4964af.jpg       |  Bin 0 -> 128485 bytes
+ uploads/e580169aafb2e4d02d1bc57913cfbd58.jpg       |  Bin 0 -> 33410 bytes
+ uploads/e646c25d6f9917e3de82becb52b75380.jpg       |  Bin 0 -> 101329 bytes
+ uploads/ea28b38f20ec30f685c7c7aeb34382f5.jpg       |  Bin 0 -> 20240 bytes
+ uploads/ebaf5612eefd0e893487203e0590c880.jpg       |  Bin 0 -> 86995 bytes
+ uploads/ee222a591f80d547993b65c32aab986e.jpg       |  Bin 0 -> 324080 bytes
+ uploads/f2ce151b5e13cb597d38504d929f9a9a.jpg       |  Bin 0 -> 103867 bytes
+ .../f4e1a60ef1c58aa66f1ed4c91ebda34b.jpg           |  Bin
+ uploads/f86dabc4d4477df1bc48b0460446de3b.jpg       |  Bin 0 -> 103867 bytes
+ 354 files changed, 29361 insertions(+), 774 deletions(-)
+ create mode 100644 application/config/paypal-sample.php
+ create mode 100644 application/config/paypal.php
+ create mode 100644 application/controllers/paypal/ payflow.php
+ rename application/{pages/UI => controllers/paypal}/.DS_Store (91%)
+ create mode 100644 application/controllers/paypal/adaptive_payments.php
+ create mode 100644 application/controllers/paypal/payments_pro.php
+ create mode 100644 application/controllers/signout.php
+ rename application/{pages => libraries}/.DS_Store (79%)
+ create mode 100644 application/libraries/paypal/.DS_Store
+ create mode 100644 application/libraries/paypal/Paypal_adaptive.php
+ create mode 100644 application/libraries/paypal/Paypal_payflow.php
+ create mode 100644 application/libraries/paypal/Paypal_pro.php
+ create mode 100644 application/libraries/paypal/README.md
+ create mode 100644 application/libraries/paypal/autoload.php
+ create mode 100644 application/libraries/paypal/composer.json
+ create mode 100644 application/libraries/paypal/documentation/index.html
+ create mode 100644 application/libraries/paypal/includes/config-sample.php
+ create mode 100644 application/libraries/paypal/samples/AddBankAccount.php
+ create mode 100644 application/libraries/paypal/samples/AddPaymentCard.php
+ create mode 100644 application/libraries/paypal/samples/BMButtonSearch.php
+ create mode 100644 application/libraries/paypal/samples/CancelInvoice.php
+ create mode 100644 application/libraries/paypal/samples/ConvertCurrency.php
+ create mode 100644 application/libraries/paypal/samples/CreateAccount.php
+ create mode 100644 application/libraries/paypal/samples/CreateAndSendInvoice.php
+ create mode 100644 application/libraries/paypal/samples/CreateInvoice.php
+ create mode 100644 application/libraries/paypal/samples/CreateRecurringPaymentsProfile.php
+ create mode 100644 application/libraries/paypal/samples/DeleteInvoice.php
+ create mode 100644 application/libraries/paypal/samples/DoDirectPayment.php
+ create mode 100644 application/libraries/paypal/samples/DoExpressCheckoutPayment-Callback.php
+ create mode 100644 application/libraries/paypal/samples/DoExpressCheckoutPayment.php
+ create mode 100644 application/libraries/paypal/samples/DoReferenceTransaction.php
+ create mode 100644 application/libraries/paypal/samples/ExecutePayment.php
+ create mode 100644 application/libraries/paypal/samples/FinancingBannerEnrollment.php
+ create mode 100644 application/libraries/paypal/samples/GetAccessToken.php
+ create mode 100644 application/libraries/paypal/samples/GetAdvancedPersonalData.php
+ create mode 100644 application/libraries/paypal/samples/GetBalance.php
+ create mode 100644 application/libraries/paypal/samples/GetBasicPersonalData.php
+ create mode 100644 application/libraries/paypal/samples/GetInvoiceDetails.php
+ create mode 100644 application/libraries/paypal/samples/GetPaymentOptions.php
+ create mode 100644 application/libraries/paypal/samples/GetRecurringPaymentsProfileDetails.php
+ create mode 100644 application/libraries/paypal/samples/GetShippingAddresses.php
+ create mode 100644 application/libraries/paypal/samples/GetTransactionDetails.php
+ create mode 100644 application/libraries/paypal/samples/GetVerifiedStatus.php
+ create mode 100644 application/libraries/paypal/samples/ManageRecurringPaymentsProfileStatus.php
+ create mode 100644 application/libraries/paypal/samples/MarkInvoiceAsPaid.php
+ create mode 100644 application/libraries/paypal/samples/MarkInvoiceAsRefunded.php
+ create mode 100644 application/libraries/paypal/samples/MarkInvoiceAsUnpaid.php
+ create mode 100644 application/libraries/paypal/samples/MassPay.php
+ create mode 100644 application/libraries/paypal/samples/Pay-Chained.php
+ create mode 100644 application/libraries/paypal/samples/Pay-Preapproval.php
+ create mode 100644 application/libraries/paypal/samples/Pay.php
+ create mode 100644 application/libraries/paypal/samples/PayFlowTransaction.php
+ create mode 100644 application/libraries/paypal/samples/PayWithOptions.php
+ create mode 100644 application/libraries/paypal/samples/PaymentDetails.php
+ create mode 100644 application/libraries/paypal/samples/Preapproval.php
+ create mode 100644 application/libraries/paypal/samples/PreapprovalDetails.php
+ create mode 100644 application/libraries/paypal/samples/Refund.php
+ create mode 100644 application/libraries/paypal/samples/RefundTransaction.php
+ create mode 100644 application/libraries/paypal/samples/RemindInvoice.php
+ create mode 100644 application/libraries/paypal/samples/RequestPermissions.php
+ create mode 100644 application/libraries/paypal/samples/SearchInvoices.php
+ create mode 100644 application/libraries/paypal/samples/SendInvoice.php
+ create mode 100644 application/libraries/paypal/samples/SetCustomerBillingAgreement.php
+ create mode 100644 application/libraries/paypal/samples/SetExpressCheckout-Callback.php
+ create mode 100644 application/libraries/paypal/samples/SetExpressCheckout.php
+ create mode 100644 application/libraries/paypal/samples/SetMobileCheckout.php
+ create mode 100644 application/libraries/paypal/samples/SetPaymentOptions.php
+ create mode 100644 application/libraries/paypal/samples/TransactionSearch.php
+ create mode 100644 application/libraries/paypal/samples/UpdateInvoice.php
+ create mode 100644 application/libraries/paypal/samples/UpdateRecurringPaymentsProfile.php
+ create mode 100644 application/libraries/paypal/src/angelleye/PayPal/Adaptive.php
+ create mode 100644 application/libraries/paypal/src/angelleye/PayPal/Financing.php
+ create mode 100644 application/libraries/paypal/src/angelleye/PayPal/PayFlow.php
+ create mode 100644 application/libraries/paypal/src/angelleye/PayPal/PayPal.php
+ create mode 100644 application/libraries/paypal/templates/AddBankAccount.php
+ create mode 100644 application/libraries/paypal/templates/AddPaymentCard.php
+ create mode 100644 application/libraries/paypal/templates/AddressVerify.php
+ create mode 100644 application/libraries/paypal/templates/BMButtonSearch.php
+ create mode 100644 application/libraries/paypal/templates/BillAgreementUpdate.php
+ create mode 100644 application/libraries/paypal/templates/BillOutstandingAmount.php
+ create mode 100644 application/libraries/paypal/templates/CancelInvoice.php
+ create mode 100644 application/libraries/paypal/templates/CancelPermissions.php
+ create mode 100644 application/libraries/paypal/templates/CancelPreapproval.php
+ create mode 100644 application/libraries/paypal/templates/ConvertCurrency.php
+ create mode 100644 application/libraries/paypal/templates/CreateAccount.php
+ create mode 100644 application/libraries/paypal/templates/CreateAndSendInvoice.php
+ create mode 100644 application/libraries/paypal/templates/CreateBillingAgreement.php
+ create mode 100644 application/libraries/paypal/templates/CreateInvoice.php
+ create mode 100644 application/libraries/paypal/templates/CreateRecurringPaymentsProfile.php
+ create mode 100644 application/libraries/paypal/templates/DeleteInvoice.php
+ create mode 100644 application/libraries/paypal/templates/DoAuthorization.php
+ create mode 100644 application/libraries/paypal/templates/DoCapture.php
+ create mode 100644 application/libraries/paypal/templates/DoDirectPayment.php
+ create mode 100644 application/libraries/paypal/templates/DoExpressCheckoutPayment.php
+ create mode 100644 application/libraries/paypal/templates/DoMobileCheckoutPayment.php
+ create mode 100644 application/libraries/paypal/templates/DoNonReferencedCredit.php
+ create mode 100644 application/libraries/paypal/templates/DoReauthorization.php
+ create mode 100644 application/libraries/paypal/templates/DoReferenceTransaction.php
+ create mode 100644 application/libraries/paypal/templates/DoVoid.php
+ create mode 100644 application/libraries/paypal/templates/ExecutePayment.php
+ create mode 100644 application/libraries/paypal/templates/ExpressCheckoutCallback.php
+ create mode 100644 application/libraries/paypal/templates/FinancingBannerEnrollment.php
+ create mode 100644 application/libraries/paypal/templates/GenerateInvoiceNumber.php
+ create mode 100644 application/libraries/paypal/templates/GetAccessPermissionsDetails.php
+ create mode 100644 application/libraries/paypal/templates/GetAccessToken.php
+ create mode 100644 application/libraries/paypal/templates/GetAdvancedPersonalData.php
+ create mode 100644 application/libraries/paypal/templates/GetAuthDetails.php
+ create mode 100644 application/libraries/paypal/templates/GetBalance.php
+ create mode 100644 application/libraries/paypal/templates/GetBasicPersonalData.php
+ create mode 100644 application/libraries/paypal/templates/GetBillingAgreementCustomerDetails.php
+ create mode 100644 application/libraries/paypal/templates/GetExpressCheckoutDetails.php
+ create mode 100644 application/libraries/paypal/templates/GetFundingPlans.php
+ create mode 100644 application/libraries/paypal/templates/GetInvoiceDetails.php
+ create mode 100644 application/libraries/paypal/templates/GetPalDetails.php
+ create mode 100644 application/libraries/paypal/templates/GetPaymentOptions.php
+ create mode 100644 application/libraries/paypal/templates/GetPermissions.php
+ create mode 100644 application/libraries/paypal/templates/GetRecurringPaymentsProfileDetails.php
+ create mode 100644 application/libraries/paypal/templates/GetRecurringPaymentsProfileStatus.php
+ create mode 100644 application/libraries/paypal/templates/GetShippingAddresses.php
+ create mode 100644 application/libraries/paypal/templates/GetTransactionDetails.php
+ create mode 100644 application/libraries/paypal/templates/GetVerifiedStatus.php
+ create mode 100644 application/libraries/paypal/templates/ManagePendingTransactionStatus.php
+ create mode 100644 application/libraries/paypal/templates/ManageRecurringPaymentsProfileStatus.php
+ create mode 100644 application/libraries/paypal/templates/MarkInvoiceAsPaid.php
+ create mode 100644 application/libraries/paypal/templates/MarkInvoiceAsRefunded.php
+ create mode 100644 application/libraries/paypal/templates/MarkInvoiceAsUnpaid.php
+ create mode 100644 application/libraries/paypal/templates/MassPay.php
+ create mode 100644 application/libraries/paypal/templates/Pay.php
+ create mode 100644 application/libraries/paypal/templates/PayFlowTransaction.php
+ create mode 100644 application/libraries/paypal/templates/PayWithOptions.php
+ create mode 100644 application/libraries/paypal/templates/PaymentDetails.php
+ create mode 100644 application/libraries/paypal/templates/Preapproval.php
+ create mode 100644 application/libraries/paypal/templates/PreapprovalDetails.php
+ create mode 100644 application/libraries/paypal/templates/Refund.php
+ create mode 100644 application/libraries/paypal/templates/RefundTransaction.php
+ create mode 100644 application/libraries/paypal/templates/RemindInvoice.php
+ create mode 100644 application/libraries/paypal/templates/RequestPermissions.php
+ create mode 100644 application/libraries/paypal/templates/SearchInvoices.php
+ create mode 100644 application/libraries/paypal/templates/SendInvoice.php
+ create mode 100644 application/libraries/paypal/templates/SetAccessPermissions.php
+ create mode 100644 application/libraries/paypal/templates/SetAuthFlowParam.php
+ create mode 100644 application/libraries/paypal/templates/SetCustomerBillingAgreement.php
+ create mode 100644 application/libraries/paypal/templates/SetExpressCheckout.php
+ create mode 100644 application/libraries/paypal/templates/SetFundingSourceConfirmed.php
+ create mode 100644 application/libraries/paypal/templates/SetMobileCheckout.php
+ create mode 100644 application/libraries/paypal/templates/SetPaymentOptions.php
+ create mode 100644 application/libraries/paypal/templates/TransactionSearch.php
+ create mode 100644 application/libraries/paypal/templates/UpdateAccessPermissions.php
+ create mode 100644 application/libraries/paypal/templates/UpdateInvoice.php
+ create mode 100644 application/libraries/paypal/templates/UpdateRecurringPaymentsProfile.php
+ create mode 100644 application/models/item_single_model.php
+ create mode 100644 application/models/menu_edible_model.php
+ create mode 100644 application/models/menu_engagement_model.php
+ create mode 100644 application/models/menu_flower_model.php
+ create mode 100644 application/models/menu_fruit_model.php
+ create mode 100644 application/models/menu_valentaine_model.php
+ delete mode 100644 application/pages/UI/upload_form.html
+ create mode 100644 application/views/adaptive_payments_demo.php
+ create mode 100644 application/views/cancel.php
+ create mode 100644 application/views/convert_currency.php
+ create mode 100644 application/views/get_balance.php
+ create mode 100644 application/views/menu_fruit_menu.php
+ create mode 100644 application/views/menu_valentaine_model.php
+ create mode 100644 application/views/payflow_demo.php
+ create mode 100644 application/views/payments_pro_demo.php
+ create mode 100644 application/views/paypal.php
+ create mode 100644 application/views/paypal_error.php
+ create mode 100644 application/views/paypalfooter.php
+ create mode 100644 application/views/paypalheader.php
+ create mode 100644 application/views/success.php
+ rename img/all/choc/{416835_127468790709006_230158052_n.jpg => 1.jpg} (100%)
+ rename img/all/choc/{420688_127464550709430_1924401198_n.jpg => 3.jpg} (100%)
+ rename img/all/choc/{423920_127468267375725_585458491_n.jpg => 4.jpg} (100%)
+ rename img/all/choc/{561273_217563871699497_641849562_n.jpg => 6.jpg} (100%)
+ rename img/all/choc/{engagement.png => 8.png} (100%)
+ rename img/all/choc/{856399_375436272578922_1231473956_o.jpg => 9.jpg} (100%)
+ rename img/all/edible/{774479_370142863108263_978857075_o.jpg => 1.jpg} (100%)
+ rename img/all/edible/{1102426_375436562578893_581508596_o.jpg => 2.jpg} (100%)
+ rename img/all/flower/{78277_254590977996786_1913822073_o.jpg => 1.jpg} (100%)
+ rename img/all/flower/{404473_127488880706997_701000880_n.jpg => 10.jpg} (100%)
+ rename img/all/flower/{416959_127477994041419_337789562_n.jpg => 11.jpg} (100%)
+ rename img/all/flower/{418149_127469017375650_22618054_n.jpg => 12.jpg} (100%)
+ rename img/all/flower/{419480_127488577373694_214815178_n.jpg => 13.jpg} (100%)
+ rename img/all/flower/{423730_127479094041309_1215677104_n.jpg => 14.jpg} (100%)
+ rename img/all/flower/{424740_127478264041392_652349932_n.jpg => 15.jpg} (100%)
+ rename img/all/flower/{427660_127478627374689_1362060109_n.jpg => 16.jpg} (100%)
+ rename img/all/flower/{428977_127478220708063_436698831_n.jpg => 17.jpg} (100%)
+ rename img/all/flower/{430478_127464507376101_354124148_n.jpg => 18.jpg} (100%)
+ rename img/all/flower/{430688_127469260708959_640158798_n.jpg => 19.jpg} (100%)
+ rename img/all/flower/{194895_218318608290690_1838292717_o.jpg => 2.jpg} (100%)
+ rename img/all/flower/{430848_127488804040338_669358725_n.jpg => 20.jpg} (100%)
+ rename img/all/flower/{431319_127467300709155_1802633727_n.jpg => 21.jpg} (100%)
+ rename img/all/flower/{541427_218318314957386_1969941387_n.jpg => 22.jpg} (100%)
+ rename img/all/flower/{574552_261656997290184_828298017_n.jpg => 23.jpg} (100%)
+ rename img/all/flower/{664905_254592641329953_720674541_o.jpg => 24.jpg} (100%)
+ rename img/all/flower/{680556_254588284663722_424067777_o.jpg => 25.jpg} (100%)
+ rename img/all/flower/{904133_328048970650986_2042543417_o.jpg => 26.jpg} (100%)
+ rename img/all/flower/{1040831_359542130835003_1495059344_o.jpg => 27.jpg} (100%)
+ rename img/all/flower/{1048062_361508267305056_630923634_o.jpg => 28.jpg} (100%)
+ rename img/all/flower/{1052913_360653370723879_1449856874_o.jpg => 29.jpg} (100%)
+ rename img/all/flower/{208879_218318591624025_2046032928_n.jpg => 3.jpg} (100%)
+ rename img/all/flower/{1064356_359542140835002_1122939906_o.jpg => 30.jpg} (100%)
+ rename img/all/flower/{1072163_370366413085908_859301731_o.jpg => 31.jpg} (100%)
+ rename img/all/flower/{1090897_370366293085920_715879874_o.jpg => 32.jpg} (100%)
+ rename img/all/flower/{1120104_375435849245631_531802033_o.jpg => 33.jpg} (100%)
+ rename img/all/flower/{1149780_374631825992700_1939530930_o.jpg => 34.jpg} (100%)
+ rename img/all/flower/{1172350_379139945541888_683986754_o.jpg => 35.jpg} (100%)
+ rename img/all/flower/{281039_250401271749090_664935988_o.jpg => 4.jpg} (100%)
+ rename img/all/flower/{395660_127478294041389_1824479340_n.jpg => 5.jpg} (100%)
+ rename img/all/flower/{395345_127467504042468_847679648_n.jpg => 6.jpg} (100%)
+ rename img/all/flower/{395665_127479420707943_64078634_n.jpg => 7.jpg} (100%)
+ rename img/all/flower/{402411_127467204042498_207559038_n.jpg => 8.jpg} (100%)
+ rename img/all/flower/{404204_127469420708943_434832407_n.jpg => 9.jpg} (100%)
+ rename img/all/fruit/{432304_127467324042486_488992480_n.jpg => 2.jpg} (100%)
+ rename img/all/fruit/{622606_250401605082390_1535101942_o.jpg => 3.jpg} (100%)
+ rename img/all/pinaple/{208879_218318601624024_1193397812_n.jpg => 1.jpg} (100%)
+ rename img/all/pinaple/{251159_239829552806262_1770793159_n.jpg => 2.jpg} (100%)
+ rename img/all/pinaple/{408004_127467387375813_1570264170_n.jpg => 3.jpg} (100%)
+ rename img/all/pinaple/{427580_127467440709141_658591671_n.jpg => 4.jpg} (100%)
+ rename img/all/pinaple/{1093842_379139938875222_498249170_o.jpg => 5.jpg} (100%)
+ rename img/all/pinaple/{1172512_379139892208560_1799003258_o.jpg => 6.jpg} (100%)
+ rename img/all/valentaine/{59643_253193514803199_1367482943_n.jpg => 1.jpg} (100%)
+ rename img/all/valentaine/{395602_127467587375793_766418200_n.jpg => 2.jpg} (100%)
+ rename img/all/valentaine/{409129_127467574042461_1360073326_n.jpg => 3.jpg} (100%)
+ rename img/all/valentaine/{418881_127468057375746_1548620837_n.jpg => 5.jpg} (100%)
+ rename img/all/valentaine/{425931_127467734042445_512940147_n.jpg => 6.jpg} (100%)
+ rename img/all/valentaine/{430466_127467657375786_776261597_n.jpg => 7.jpg} (100%)
+ rename img/all/valentaine/{1186004_388406817948534_1048623734_n.jpg => 8.jpg} (100%)
+ delete mode 100755 img/galary/26.png
+ delete mode 100755 img/galary/28.png
+ delete mode 100755 img/galary/30.png
+ delete mode 100755 img/galary/32.png
+ delete mode 100644 img/green_smiley.png
+ create mode 100644 img/slide2.jpg
+ delete mode 100644 migrations/201407251620_alterstatements_contacttable.sql
+ delete mode 100644 migrations/201407251640_alter_menutable.sql
+ delete mode 100644 migrations/201407251650_alter_registertable.sql
+ delete mode 100644 migrations/201407251720_alter_uploadtable.sql
+ delete mode 100644 migrations/201407251730_alter_testtable.sql
+ create mode 100644 migrations/201408010953_alter_carttable.sql
+ create mode 100644 uploads/014d924bdb7b0941430d6db612dfbcb2.jpg
+ create mode 100644 uploads/04c86ae1aa066a53a538daa5e4dff94b.jpg
+ create mode 100644 uploads/05ed525c3a808cd9cd0cff16b7f961e1.jpg
+ create mode 100644 uploads/09a5061e0de3d8a39890de042ddc39f9.jpg
+ create mode 100644 uploads/0a84cc675eed742823ef98bd9be71b33.jpg
+ create mode 100644 uploads/0f7c4d581aee990b0d05ca35a3a2a1b6.jpg
+ create mode 100644 uploads/10598c9e5b1cb84be6eaf8381614dbdd.jpg
+ create mode 100644 uploads/1224f31baf993e707ab4a956e6b63a58.jpg
+ create mode 100644 uploads/13c7c4cf0bea618d4dcd9c2dfd76a91c.jpg
+ create mode 100644 uploads/16b39bb4cb111cd90292b72a4f981360.jpg
+ create mode 100644 uploads/188ea4c69353fd0f237f68ea13576ad8.jpg
+ create mode 100644 uploads/1992bd27a25987b1141c1dd4ffcf5497.jpg
+ create mode 100644 uploads/1d456ca0d6c58d6394da90b5a310813d.jpg
+ create mode 100644 uploads/1d8df883523052da7cb62d7ca029ba6a.jpg
+ create mode 100644 uploads/1e2022d93bc289d0baf29b61dbf27345.jpg
+ create mode 100644 uploads/1e9895ecc9cdc184ce7a675f1c89c826.jpg
+ create mode 100644 uploads/1fbc74a9775437fe64ca7180b092b68c.jpg
+ create mode 100644 uploads/26524e979cc2c06170eecb9068555281.jpg
+ create mode 100644 uploads/2abfc7a0e7135f9d08a60021fc6a1f9b.jpg
+ create mode 100644 uploads/3336442f649ccb1ee19b90de9f7ec2a9.jpg
+ create mode 100644 uploads/341267e2d26f30fc900d4217cb7c449e.jpg
+ create mode 100644 uploads/356f1015b06969ba74947209aff13552.jpg
+ create mode 100644 uploads/3b6defbe05f1e0168a252d7c6e032e3c.jpg
+ create mode 100644 uploads/3cc243716ae370c3b5a888eaade0203d.jpg
+ create mode 100644 uploads/430294355ad86e4418dbf4f2f214fce8.jpg
+ rename img/galary/33.png => uploads/442ff937ed0ac7239edb56f3f5752c29.jpg (100%)
+ mode change 100755 => 100644
+ create mode 100644 uploads/502164ff9d7a3484198a9c96e882f5b3.jpg
+ create mode 100644 uploads/53b83bdd165ddf83647ee1cc4f34cc2b.jpg
+ create mode 100644 uploads/53fe5bdce8e79603471c3b98c37ea549.jpg
+ create mode 100644 uploads/54ba1962ce70c99546dd7abc53dbf4c4.jpg
+ create mode 100644 uploads/576516d57f940617a24cb8118ac7a1e4.jpg
+ create mode 100644 uploads/5779a59d0532a17a1c4b12a8575e4210.jpg
+ create mode 100644 uploads/58b163d36cdaaad6ab990688cb17eae8.jpg
+ create mode 100644 uploads/5a92057219ab88d421948b8c611a6597.jpg
+ create mode 100644 uploads/5de624a0331ac861a50f65af95c1503f.jpg
+ create mode 100644 uploads/5f2683ca5f2bea84432276d19168c96a.jpg
+ create mode 100644 uploads/60a2162bcdc233656d40dbca0d6ab849.jpg
+ create mode 100644 uploads/630bb82138816135c8f451b59982e5d7.jpg
+ create mode 100644 uploads/6a313dbf662f7859f078cd265af618f2.jpg
+ create mode 100644 uploads/6aba2bfe598b648798b523c898a2e3b3.jpg
+ create mode 100644 uploads/6e6b42dde84f69901f54f228796ab15b.jpg
+ create mode 100644 uploads/6f9c1ea3a4f4d0b44f4ab3fd85e2e490.jpg
+ create mode 100644 uploads/78261e175e746fa6445105e6cefc1414.jpg
+ create mode 100644 uploads/7ebbd34ef3073b9d61b2bce705777ba1.jpg
+ create mode 100644 uploads/7fa92e199b6cb4ff11b67a2259406d0d.jpg
+ create mode 100644 uploads/821995521f8cdba44b12b7ce9016846e.jpg
+ create mode 100644 uploads/871cb06f65f35be6cb7d3e9ba4c73b1e.jpg
+ create mode 100644 uploads/876751933088d1cb5f801d90ec94d8db.jpg
+ create mode 100644 uploads/91f7ef10800ddf5540c5087b6a122511.jpg
+ rename img/galary/7.png => uploads/941c5ba4d01a75925e2d7d0524371889.jpg (100%)
+ mode change 100755 => 100644
+ rename img/galary/11.png => uploads/9661bc3fd2cbf1e535718388ed3bb5ad.jpg (100%)
+ mode change 100755 => 100644
+ create mode 100644 uploads/9e378e4c07be64f5d6bc4078c85c645b.jpg
+ create mode 100644 uploads/9f32a9c0a46b2ea10ad1923f9a84fda5.jpg
+ create mode 100644 uploads/a1e54d2601881a371a41f38180a7e235.jpg
+ create mode 100644 uploads/ab5583ec35ed4c0aaa90bdc328c1ec55.jpg
+ create mode 100644 uploads/b151d56814c01152c6f30d2896da42f0.jpg
+ create mode 100644 uploads/b580807a51afcae7d960384a5bd26f5e.jpg
+ create mode 100644 uploads/b5d46ecd0d32972cd91d2e592d4d72c5.jpg
+ rename img/galary/15.png => uploads/b9fb19115cd811058243b150c8a0f262.jpg (100%)
+ mode change 100755 => 100644
+ create mode 100644 uploads/bad8081b94c483cef11f61cf3c9cbf76.jpg
+ create mode 100644 uploads/bb02db0cbfd43894c9aabaf9bc697697.jpg
+ create mode 100644 uploads/bb4f9269be9a5b62b1564f3b84676fdd.jpg
+ create mode 100644 uploads/bbb3e709f01ae824d7446e0a2b22891a.jpg
+ create mode 100644 uploads/bbde2ef0b449afaa19d0d3d08761071a.jpg
+ create mode 100644 uploads/bf89d16d61338ad5c4c9afab00c93e3f.jpg
+ create mode 100644 uploads/c16050786157915369bb18f2a349f7bd.jpg
+ create mode 100644 uploads/c2da3a7e0d2d83ed01583808e50512bc.jpg
+ create mode 100644 uploads/c43e5ad27b97a5af1ce5fbab23f8173a.jpg
+ create mode 100644 uploads/c472b937e76b82c9b475cf2c1d46f766.jpg
+ create mode 100644 uploads/c892830477a7a3dbae0b8b13afc509b5.jpg
+ create mode 100644 uploads/cb932f54c23ed5aec455674f1b527975.jpg
+ rename img/galary/34.png => uploads/cd828e5eeff3c5537ccd77b95427d9ec.jpg (100%)
+ mode change 100755 => 100644
+ create mode 100644 uploads/cdf66629c88202dbf5e730ced4a8e663.jpg
+ create mode 100644 uploads/d5f11f85bc377e8ac457b7eed177cb66.jpg
+ create mode 100644 uploads/db7f7011b5f62321abd42264da146fcc.jpg
+ create mode 100644 uploads/e0d6ed8c10dd64251216ab5ecad4137c.jpg
+ create mode 100644 uploads/e10952cf2900647b36f17c81ac4c0ba2.jpg
+ create mode 100644 uploads/e2d0289b9a73146801ec6da69a4964af.jpg
+ create mode 100644 uploads/e580169aafb2e4d02d1bc57913cfbd58.jpg
+ create mode 100644 uploads/e646c25d6f9917e3de82becb52b75380.jpg
+ create mode 100644 uploads/ea28b38f20ec30f685c7c7aeb34382f5.jpg
+ create mode 100644 uploads/ebaf5612eefd0e893487203e0590c880.jpg
+ create mode 100644 uploads/ee222a591f80d547993b65c32aab986e.jpg
+ create mode 100644 uploads/f2ce151b5e13cb597d38504d929f9a9a.jpg
+ rename img/galary/27.png => uploads/f4e1a60ef1c58aa66f1ed4c91ebda34b.jpg (100%)
+ mode change 100755 => 100644
+ create mode 100644 uploads/f86dabc4d4477df1bc48b0460446de3b.jpg

@@ -1,0 +1,21 @@
+Updating daaa8d7..b5420f0
+Fast-forward
+ application/config/config.php                      |   1 +
+ application/config/database.php                    |   1 +
+ application/controllers/welcome.php                |  21 +++-
+ application/views/aboutus.php                      |   2 +-
+ application/views/admin_gallery.php                |  74 +++++++++++++
+ application/views/admin_sidebar.php                |   3 +-
+ application/views/all_cartoon.php                  |   5 +-
+ application/views/all_edible.php                   |   5 +-
+ application/views/all_engagement.php               |   5 +-
+ application/views/all_flower.php                   |   5 +-
+ application/views/gallery_form.php                 |   3 +
+ application/views/header.php                       |  85 +++++++++++---
+ migrations/.DS_Store                               | Bin 6148 -> 6148 bytes
+ migrations/201408011148_alter_menutable.sql        | 123 ---------------------
+ ...r_carttable.sql => 201408011840_migrations.sql} |  37 +------
+ 15 files changed, 185 insertions(+), 185 deletions(-)
+ create mode 100644 application/views/admin_gallery.php
+ delete mode 100644 migrations/201408011148_alter_menutable.sql
+ rename migrations/{201408010953_alter_carttable.sql => 201408011840_migrations.sql} (95%)

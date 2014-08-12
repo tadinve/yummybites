@@ -1,0 +1,5 @@
+Updating c8f0518..daaa8d7
+Fast-forward
+ migrations/201408011148_alter_menutable.sql | 123 ++++++++++++++++++++++++++++
+ 1 file changed, 123 insertions(+)
+ create mode 100644 migrations/201408011148_alter_menutable.sql
