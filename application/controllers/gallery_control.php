@@ -63,7 +63,7 @@ class Gallery_control extends CI_Controller {
 	function img_display()
 		{
 			$config["total_rows"] = $this->gallery_model->count();
-			$config["per_page"] = 10;
+			$config["per_page"] = 50;
 			$config["uri_segment"] = 3;
 			$config['num_links'] = 20;
 			$config['use_page_numbers'] = TRUE;

@@ -2,26 +2,27 @@
 $paypal_url='https://www.sandbox.paypal.com/cgi-bin/webscr'; // Test Paypal API URL
 $paypal_id='reethi-facilitator@solivarindia.com '; // Business email ID
 ?>
-<script type="text/javascript">
-function validateForm1(){
 
+<script type="text/javascript">
+
+function validateForm1(){
 if(document.frmPayPal1.inputName.value==0)
 {
-document.getElementById('name').innerHTML = "Enter your Name";
+document.getElementById('displa').innerHTML = "Enter your Name";
 document.frmPayPal1.inputName.focus();
 return false;
 }
-else if(document.frmPayPal1.inputEmail1.value==0)
+else if(document.frmPayPal1.inputEmail.value==0)
 {
-	document.getElementById('email').innerHTML = "choose an option";
+	document.getElementById('displa1').innerHTML = "choose an option";
 
-document.frmPayPal1.inputEmail1.focus();
+document.frmPayPal1.inputEmail.focus();
 
 return false;
 }
 else if(document.frmPayPal1.inputPhone.value==0)
 {
-	document.getElementById('phone').innerHTML = "Enter Valid Phone number";
+	document.getElementById('displa2').innerHTML = "Enter Valid Phone number";
 
 document.frmPayPal1.inputPhone.focus();
 
@@ -29,7 +30,7 @@ return false;
 }
 else if(document.frmPayPal1.inputCountry.value==0)
 {
-	document.getElementById('country').innerHTML = "choose an option";
+	document.getElementById('displa3').innerHTML = "choose an option";
 
 document.frmPayPal1.inputCountry.focus();
 
@@ -37,7 +38,7 @@ return false;
 }
 else if(document.frmPayPal1.inputAddress.value==0)
 {
-	document.getElementById('address').innerHTML = "Enter Address";
+	document.getElementById('displa4').innerHTML = "Enter Address";
 
 document.frmPayPal1.inputAddress.focus();
 
@@ -45,27 +46,23 @@ return false;
 }
 else if(document.frmPayPal1.inputZip.value==0)
 {
-	document.getElementById('postal').innerHTML = "Enter your Postal Code";
+	document.getElementById('displa5').innerHTML = "Enter your Postal Code";
 
 document.frmPayPal1.inputZip.focus();
 
 return false;
 }
 
-else if(frmPayPal1.terms.checked==false)
+else if(form.terms.checked==false)
 {
 	alert("Please Accept Terms and Conditions to Preceed");
-}  
+}
 return true;
 
 
 
 
 }
-</script>
-<script type="text/javascript">
-
-
 
  	var id_array=[];
  	var price_array=[];
@@ -73,52 +70,60 @@ return true;
  	var file_array=[];
 
 function cart(aa){
+	//alert("hi");
  	idval=aa;
-//alert('hhi');
 			$.ajax({
 				url:'cart',
 				type:'POST',
 				data:'cat_id='+idval,
 				dataType:'json',
 				success:function(response){	
-					id_array.push(response.categoryid);
-					price_array.push(response.price);
-					category_array.push(response.category);
-					file_array.push(response.file);
-					var length_id=id_array.length;
+	
+//alert(response);
 
-
-					//cart-items
-					var i=0;
+                    var x;
+                    //x = $.parseJSON(response);
+					var items;
 					var price_total=0;
 					var option ='';
-					while(length_id>0)
-					{
-											price_total=parseInt(price_total)+parseInt(price_array[i]);
+					var i=0;
 
-					//alert(response);
-					var option = option+'<li aria-hidden="true"><div class="cart-item"><a href="#"><i class="fa fa-times"></i></a>';
-					var option = option+'<img class="img-responsive img-rounded" src="<?php echo base_url(); ?>uploads/'+file_array[i]+'" alt="" />';
-					var option = option+'<span class="cart-title"><a href="#">'+category_array[i]+'cake</a></span>';
-					var option = option+'<span class="cart-price pull-right red">Rs.'+price_array[i]+'/-</span>';
-					var option = option+'<div class="clearfix"></div></div></li>';
-					var length_id=length_id-1;
+				  
+                    for(x in response)
+                    {
+
+
+                     // alert(response[x].categoryid);
+
+                      price_total=parseInt(price_total)+parseInt(response[x].price);
+                      //alert(price_total);
+					option = option+'<li aria-hidden="true"><div class="cart-item"><a href="#"><i class="fa fa-times"></i></a>';
+					option = option+'<img class="img-responsive img-rounded" src="<?php echo base_url(); ?>uploads/'+response[x].file+'" alt="" />';
+					option = option+'<span class="cart-title"><a href="#">'+response[x].category+' Cake</a></span>';
+					option = option+'<span class="cart-price pull-right red">Rs.'+response[x].price+'/-</span>';
+
+					option = option+'<div class="clearfix"></div></div></li>';
 					i++;
+						//alert(x[response]);
+                    }
 
-					}
+						if(response.length!=0)
+						{
+						var option = option+'<li><div class="cart-items"><button class="btn btn-danger" data-toggle="modal" data-target="#shoppingcart1" >Checkout</button></div></li>';
 
-					if(id_array.length>0)
-					{
-						var option = option+'<li><div class="cart-item"><button class="btn btn-danger" data-toggle="modal" data-target="#shoppingcart1" >Checkout</button></div></li>';
-					}
+						}
 
-					var item=id_array.length+" items $"+price_total+"/-";
+							var item=response.length+" items $"+price_total+"/-";
+					//alert('response');
 
+					
 	   				$("#cart-items").html(item);
 	   				$(".cart-dropdown").html(option);
-	   				cart1(category_array,price_array,file_array,id_array);				
+	   				cart1(category_array,price_array,file_array,id_array);	
 
-					}
+
+
+					} 
 
 					});
 
@@ -159,10 +164,63 @@ document.getElementById('item_number').value=id_array;
 			
 
 		//alert('hiiiii');
- 
 
+
+function delete_items(a){
+	//alert(a);
+ 	idvalue=a;
+//alert('hhi');
+			$.ajax({
+				url:'delete_row',
+				type:'POST',
+				data:'category_id='+idvalue,
+				dataType:'json',
+				success:function(response){	
+
+					var items;
+					var price_total=0;
+					var option ='';
+					var i=0;
+				  
+                    for(x in response)
+                    {
+
+                      //alert(response[x].categoryid);
+                      price_total=parseInt(price_total)+parseInt(response[x].price);
+                      //alert(price_total);
+					option = option+'<li aria-hidden="true"><div class="cart-item"><a href="#"><i class="fa fa-times"></i></a>';
+					option = option+'<img class="img-responsive img-rounded" src="<?php echo base_url(); ?>uploads/'+response[x].file+'" alt="" />';
+					option = option+'<span class="cart-title"><a href="#">'+response[x].category+' Cake</a></span>';
+					option = option+'<span class="cart-price pull-right red">Rs.'+response[x].price+'/-</span>';
+
+					option = option+'<div class="clearfix"></div></div></li>';
+					i++;
+						//alert(x[response]);
+                    }
+
+						if(response.length!=0)
+						{
+						var option = option+'<li><div class="cart-items"><button class="btn btn-danger" data-toggle="modal" data-target="#shoppingcart1" >Checkout</button></div></li>';
+
+						}
+
+							var item=response.length+" items $"+price_total+"/-";
+
+					
+	   				$("#cart-items").html(item);
+	   				$(".cart-dropdown").html(option);
+	   				//cart1(category_array,price_array,file_array,id_array);	
+
+
+
+
+					} 
+					//alert('response');
+
+					});
+		}
 </script>
-<?php
+<?php /*
 
 function get_currency($from_Currency, $to_Currency, $amount) {
 	$price=$_POST['hide_amount'];
@@ -187,9 +245,8 @@ $data = explode('bld>', $rawdata);
 $data = explode($to_Currency, $data[1]);
 return round($data[0], 2);
 }
-//echo get_currency('USD', 'INR', '$_GET[amount]');
+//echo get_currency('USD', 'INR', '$_GET[amount]'); */
 ?>
-
 
 
 <!DOCTYPE html>
@@ -243,13 +300,16 @@ return round($data[0], 2);
 					</div>
 					<div class="modal-body" id="category_id">
 						<!-- Items table -->
+						<?php
+
+						?>
 						
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Continue Shopping</button>
 							
 
-						<button class="btn btn-danger btn-sm pull-left" data-toggle="modal" data-target="#billing_cart">Checkout</button>
+						<button class="btn btn-danger btn-sm pull-left" data-toggle="modal" data-dismiss="modal" data-target="#billing_cart">Checkout</button>
 					</div>
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
@@ -263,7 +323,7 @@ return round($data[0], 2);
 
 
 
-		<div class="modal fade pull-right"  id="billing_cart" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade pull-right"  id="billing_cart" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -271,21 +331,26 @@ return round($data[0], 2);
 						<h4 class="modal-title">Shopping Cart</h4>
 						
 					</div>
-					
-					<div class="checkout">
-						<div class="container">
+					<div class="modal-body" id="category_id">
+						<!-- Items table -->
+						<!-- Checkout Start -->
+					</div>
+				<div class="checkout">
+					<div class="container">
 					<!-- Heading -->
-							<h4>Shipping & Billing Details</h4>
-							<div class="row">
-								<form class="form-horizontal" name="frmPayPal1" action="<?php echo $paypal_url; ?>" onSubmit="return validateForm1()" method="post">
+					<h4>Shipping & Billing Details</h4>
+					<form class="form-horizontal" action="<?php echo $this->config->base_url(); ?>index.php/menu_control/shipping_address" method="post" name="frmPayPal1" onSubmit="return validateForm1()">
 
-								<div class="col-md-7 col-sm-6">
+					<!--<form class="form-horizontal" action="<?php echo $paypal_url; ?>" method="post" name="frmPayPal1" onSubmit="return validateForm1()"> -->
+
+						<div class="row">
+							<div class="col-md-7 col-sm-6">
 								<!-- Checkout Form -->
 									<div class="form-group">
 										<label for="inputName" class="col-md-2 control-label">Name</label>
 										<div class="col-md-8">
 											<input type="text" class="form-control" name="inputName" placeholder="Name">
-											<p id="name" name="name" style="color:red;font:8px;"> </p>
+											<p id="displa" name="displa" style="color:red;font:8px;"> </p>
 
 										</div>
 
@@ -293,8 +358,8 @@ return round($data[0], 2);
 									<div class="form-group">
 										<label for="inputEmail1" class="col-md-2 control-label">Email</label>
 										<div class="col-md-8">
-											<input type="email" class="form-control" name="inputEmail1" placeholder="Email">
-											<p id="email" name="email" style="color:red;font:8px;"> </p>
+											<input type="email" class="form-control" name="inputEmail" placeholder="Email">
+											<p id="displa1" name="displa1" style="color:red;font:8px;"> </p>
 
 										</div>
 
@@ -303,7 +368,7 @@ return round($data[0], 2);
 										<label for="inputPhone" class="col-md-2 control-label">Phone</label>
 										<div class="col-md-8">
 											<input type="text" class="form-control" name="inputPhone" placeholder="Phone">
-										<p id="phone" name="phone" style="color:red;font:8px;"> </p>
+										<p id="displa2" name="displa2" style="color:red;font:8px;"> </p>
 
 										</div>
 
@@ -318,7 +383,7 @@ return round($data[0], 2);
 												<option>Canada</option>
 												<option>UK</option>
 											</select>
-											<p id="country" name="country" style="color:red;font:8px;"> </p>
+											<p id="displa3" name="displa3" style="color:red;font:8px;"> </p>
 
 										</div>
 
@@ -327,7 +392,7 @@ return round($data[0], 2);
 										<label for="inputAddress" class="col-md-2 control-label">Address</label>
 										<div class="col-md-8">
 											<textarea class="form-control" name="inputAddress" rows="3" placeholder="Address"></textarea>
-									<p id="address" name="address" style="color:red;font:8px;"> </p>
+									<p id="displa4" name="displa4" style="color:red;font:8px;"> </p>
 
 										</div>
 
@@ -336,7 +401,7 @@ return round($data[0], 2);
 										<label for="inputZip" class="col-md-2 control-label">Zip Code</label>
 										<div class="col-md-8">
 											<input type="text" class="form-control" name="inputZip" placeholder="Zip Code">
-										<p id="postal" name="postal" style="color:red;font:8px;"> </p>
+										<p id="displa5" name="displa5" style="color:red;font:8px;"> </p>
 
 										</div>
 
@@ -345,15 +410,15 @@ return round($data[0], 2);
 										<div class="col-md-offset-2 col-md-8">
 											<div class="checkbox">
 												<label>
-													<input type="checkbox" id="terms" name="terms"> Accept Terms & Conditions
+													<input type="checkbox" name="terms" checked="checked" value="Acceted Terms and Conditions!!"> Accept Terms & Conditions
 												</label>
+									<p id="displa6" name="displa6" style="color:red;font:8px;"> </p>
 
 											</div>
 										</div>
 
 									</div>
 									
-							<div class="modal-footer" style="width:85%;">
 							<input type="hidden" name="business" id="business" value="<?php echo $paypal_id; ?>">
 						    <input type="hidden" name="cmd" value="_xclick">
 
@@ -362,7 +427,7 @@ return round($data[0], 2);
 						    <input type="hidden" name="credits" value="510">
 						    <input type="hidden" name="userid" value="1">
 						    <input type="hidden" name="amount" id="amount" value="">
-						   <!-- <input type="hidden" name="hide_amount" id="hide_amount" value="" onchange="get_currency('USD', 'INR', '');" > -->
+						  <!--  <input type="hidden" name="hide_amount" id="hide_amount" value="" onchange="get_currency('USD', 'INR', '');" > -->
 
 
 						    <input type="hidden" name="cpp_header_image" value="<?php echo $this->config->base_url(); ?>img/lo.png">
@@ -378,20 +443,19 @@ return round($data[0], 2);
 						    <input type="hidden" name="return" value="http://demo.phpgang.com/payment_with_paypal/success.php">
 
 <center>
-							<input type="submit"  class="btn btn-info" name="submit" value="confirm order" alt="PayPal - The safer, easier way to pay online!">&nbsp;
+							<input type="submit" class="btn btn-info" name="submit" alt="PayPal - The safer, easier way to pay online!" value="Confirm Order">
 							<button type="reset" class="btn btn-default btn-sm">Reset</button>
 </center>
-					</div>
+								
 							</div>
+						</div>
 							</form>
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-									
-
+	
 
 
 
@@ -419,42 +483,71 @@ return round($data[0], 2);
 										<!-- Heading -->
 										<h4>Shopping Cart</h4>
 											<span id="cart-items"></span>
+											<?php
+											if(isset($this->session->userdata['new_items']))
+											{
+												$cart_items=$this->session->userdata['new_items'];
+												if(count($cart_items)>0)
+												{
+													$price_total=0;
+													foreach($cart_items as $c)
+                                                   { 
+													$price_total=$price_total+$c['price'];
+												}
+												//echo $price_total;
+													//echo $_GET['price_total'];
+												echo count($cart_items)." items Rs.".$price_total."/-";
+											} 
+										}?>
 
-										<div class="clearfix"></div>
-										<div class="clearfix"></dbtn-cartiv>
-									</a>
 									<ul class="cart-dropdown" role="menu">
 
 																				
 
-										<?php /*<li>
+										<?php
+										if(isset($this->session->userdata['new_items']))
+											{
+												$cart_items=$this->session->userdata['new_items'];
+
+												//echo "<pre>";print_r($cart_items);
+                                                if(count($cart_items)>0)
+                                                {
+														$i=0;
+                                                   foreach($cart_items as $c)
+                                                   { 
+
+                                                       //echo "<pre>";print_r($c);?>
+                                                   	<li class="_<?php echo $i; ?>cartli" >
 											<!-- Cart items for shopping list -->
 											<div class="cart-item">
 												<!-- Item remove icon -->
-												<a href="#"><i class="fa fa-times"></i></a>
+	<button class="btn btn-danger btn-sm pull-right" style="height:auto;width:auto;" type="button" onclick="delete_items(<?php echo $i; ?>)">X</button>
 												<!-- Image -->
-												<img class="img-responsive img-rounded" src="<?php echo $this->config->base_url(); ?>img/nav-menu/nav2.jpg" alt="" />
+
+											<?php echo	'<img class="img-responsive img-rounded" src=" '.$this->config->base_url().'uploads/'.$c['file'].'" alt="" />'; ?>
 												<!-- Title for purchase item -->
-												<span class="cart-title"><a href="#">Taut Mayoress Alias Appendicitis</a></span>
+												<span class="cart-title"><a href="#"><?php echo ucfirst($c['category']).' Cake'; ?></a></span>
 												<!-- Cart item price -->
-												<span class="cart-price pull-right red">$190/-</span>
+												<span class="cart-price pull-right red"><?php echo $c['price']; ?>/-</span>
 												<div class="clearfix"></div>
 											</div>
 										</li>
-										<li>
-											<!-- Cart items for shopping list -->
-											<div class="cart-item">
-												<!-- Item remove icon -->
-												<a href="#"><i class="fa fa-times"></i></a>
-												<!-- Image -->
-												<img class="img-responsive img-rounded" src="<?php echo $this->config->base_url(); ?>img/nav-menu/nav3.jpg" alt="" />
-												<!-- Title for purchase item -->
-												<span class="cart-title"><a href="#">Sinter et Molests Perfectionist</a></span>
-												<!-- Cart item price -->
-												<span class="cart-price pull-right red">$99/-</span>
-												<div class="clearfix"></div>
-											</div>
-										</li>*/ ?>
+                                                 <?php  
+
+   				      $i++;                                    }
+
+
+                                                } ?>
+											
+											 
+											<?	//echo "<pre>";print_r($cart_items1);
+												if(count($cart_items)>0)
+												{ ?>
+											<br>
+													<center><li><div class="cart-items"><button class="btn btn-danger" data-toggle="modal" data-target="#shoppingcart1" >Checkout</button></div></li></center>
+											<br>
+											<?	}
+											} ?>
 										
 									</ul>
 									<div class="clearfix"></div>
@@ -500,75 +593,102 @@ return round($data[0], 2);
 												<ul class="dropdown-menu dropdown-md">
 													<li>
 														<div class="row">
-															<div class="col-md-4 col-sm-8">
+								<form action="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display" method="POST">
+
+															<div class="col-md-2 col-sm-8">
 																<!-- Menu Item -->
+																<br>
 																<div class="menu-item">
 																	<!-- Heading -->
-																	<h5>Flower Bouquet Cakes</h5>
+																	<h5>Flower Cakes</h5>
 																	<!-- Image -->
-																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_flower">	<img width="150px" height="50px" src="<?php echo $this->config->base_url(); ?>img/flower.png" class="img-responsive" alt="" />
+																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display">	<img width="150px" height="50px" src="<?php echo $this->config->base_url(); ?>img/flower.png" class="img-responsive" alt="" />
 																	</a>
 																	<!-- Paragraph -->
-																	<p>Get your desired flavour in Flower Bouquet Design.</p>
+																	<!-- <p>Get your desired flavour in Flower Bouquet Design.</p> -->
 																	<!-- Button -->
-																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_flower" class="btn btn-danger btn-xs">View Menu</a>
-																</div>
+
+																	<input type="hidden" name="categoryid" value="1">
+
+	<input type="submit" class="btn btn-danger btn-xs" value="view menu"></a>
+
+																																					
+														</div>
 															</div>
-															<div class="col-md-4 col-sm-8">
+								</form>
+								<form action="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display" method="POST">
+
+															<div class="col-md-2 col-sm-8">
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
 																	<h5>Fruit Cakes</h5>
 																	<!-- Image -->
-																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_fruit"><img src="<?php echo $this->config->base_url(); ?>img/fruit.png" class="img-responsive" alt="" />
+																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display"><img src="<?php echo $this->config->base_url(); ?>img/fruit.png" class="img-responsive" alt="" />
 																	</a><!-- Paragraph -->
-																	<p>Get it with your desired flavor and Ingredients. </p>
+																	<!--<p>Get it with your desired flavor and Ingredients. </p> -->
 																	<!-- Button -->
-																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_fruit" class="btn btn-danger btn-xs">View Menu</a>
-																</div>
+
+																	<input type="hidden" name="categoryid" value="2">
+																	<input type="submit" class="btn btn-danger btn-xs" value="view menu">
+																																						</div>
 															</div>
-															<div class="col-md-4 col-sm-8">
+								</form>
+								<form action="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display" method="POST">
+
+															<div class="col-md-2 col-sm-8">
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
-																	<h5>Edible Cakes</h5>
+																	<h5>Photo Cakes</h5>
 																	<!-- Image -->
-																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_edible">	<img width="150px" height="50px" src="<?php echo $this->config->base_url(); ?>img/edible.png" class="img-responsive" alt="" /></a>
+																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display">	<img width="150px" height="50px" src="<?php echo $this->config->base_url(); ?>img/edible.png" class="img-responsive" alt="" /></a>
 																	<!-- Paragraph -->
-																	<p>Get your desired flavor in Flower Bouquet Design.</p>
+																	<!--<p>Get your desired flavor in Flower Bouquet Design.</p> -->
 																	<!-- Button -->
-																	 <a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_edible" class="btn btn-danger btn-xs">View Menu</a>
-																</div>
+																	<input type="hidden" name="categoryid" value="3">
+																	<input type="submit" class="btn btn-danger btn-xs" value="view menu">
+																																	</div>
 															</div>
-															<div class="col-md-4 col-sm-8">
+														</form>
+				<form action="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display" method="POST">
+
+															<div class="col-md-2 col-sm-8">
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
-																	<h5>valentine Cakes</h5>
+																	<h5>Valentine Cakes</h5>
 																	<!-- Image -->
-																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_valentaine">	<img src="<?php echo $this->config->base_url(); ?>img/valentaine.png" class="img-responsive" alt="" />
+																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display">	<img src="<?php echo $this->config->base_url(); ?>img/valentaine.png" class="img-responsive" alt="" />
 																	</a>
 																	<!-- Paragraph -->
-																	<p>Get it with your desired flavor and Ingredients. </p>
+																	<!--<p>Get it with your desired flavor and Ingredients. </p> -->
 																	<!-- Button -->
-																	 <a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_valentaine" class="btn btn-danger btn-xs">View Menu</a>
-																</div>
+																	<input type="hidden" name="categoryid" value="7">
+																	<input type="submit" class="btn btn-danger btn-xs" value="view menu">
+																																	</div>
 															</div>
-															<div class="col-md-4 col-sm-8">
+														</form>
+				<form action="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display" method="POST">
+
+															<div class="col-md-2 col-sm-8">
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
-																	<h5>Engagement Cakes</h5>
+																	<h5>Celebration Cakes</h5>
 																	<!-- Image -->
-																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_engagement">	<img src="<?php echo $this->config->base_url(); ?>img/engagement.png" class="img-responsive" alt="" />
+																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display">	<img src="<?php echo $this->config->base_url(); ?>img/engagement.png" class="img-responsive" alt="" />
 																	</a>
 																	<!-- Paragraph -->
-																	<p>Get it in your desired flavor. </p>
+																	<!--<p>Get it in your desired flavor. </p> -->
 																	<!-- Button -->
-																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_engagement" class="btn btn-danger btn-xs">View Menu</a>
-																</div>
+																	<input type="hidden" name="categoryid" value="5">
+																	<input type="submit" class="btn btn-danger btn-xs" value="view menu">																</div>
 															</div>
-															<div class="col-md-4 col-sm-6">
+														</form>
+				<form action="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display" method="POST">
+ 
+															<div class="col-md-2 col-sm-6">
 																<!-- Menu Item -->
 																<div class="menu-item">
 																	<!-- Heading -->
@@ -576,17 +696,20 @@ return round($data[0], 2);
 																	<!-- Image -->
 																<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display">	<img src="<?php echo $this->config->base_url(); ?>img/cartoon.png" class="img-responsive" alt="" />
 																	</a><!-- Paragraph -->
-																	<p>Get your Favorite Cartoon on your Cake.</p>
+																	<!--<p>Get your Favorite Cartoon on your Cake.</p> -->
 																	<!-- Button -->
-																	<a href="<?php echo $this->config->base_url(); ?>index.php/menu_control/img_display" class="btn btn-danger btn-xs">View Menu</a>
+																	<input type="hidden" name="categoryid" value="6">
+																	<input type="submit" class="btn btn-danger btn-xs" value="view menu">
+																	
 																</div>
 															</div>
+															</form>
 														</div>
 													</li>
 												</ul>
 											</li>
 											<li><a href="<?php echo $this->config->base_url(); ?>index.php/gallery_control/img_display"><img src="<?php echo $this->config->base_url(); ?>img/nav-menu/nav3.jpg" class="img-responsive" alt="" /> Gallery</a></li>
-											<li class="dropdown">
+											<!--<li class="dropdown">
 												<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo $this->config->base_url(); ?>img/nav-menu/nav4.jpg" class="img-responsive" alt="" /> Shop <b class="caret"></b></a>
 												<ul class="dropdown-menu">
 													
@@ -594,8 +717,9 @@ return round($data[0], 2);
 													<li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/reserve_seats">Reservation</a></li>
 													<li><a href="<?php echo base_url() ?>index.php/welcome/contact">Contact Us</a></li>
 												</ul>
-											</li>
-											
+											</li> -->
+											<li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/contact"><img src="<?php echo $this->config->base_url(); ?>img/nav-menu/nav3.jpg" class="img-responsive" alt="" /> Contact Us</a></li>
+
 											<li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/aboutus"><img src="<?php echo $this->config->base_url(); ?>img/nav-menu/nav6.jpg" class="img-responsive" alt="" /> About</a></li>
 							
 						</div>

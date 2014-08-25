@@ -326,6 +326,16 @@ public function upload_form()
 		$this->load->view('upload_form', array('error' => ' ' ));
 		$this->load->view('admin_footer',$user);  
 	}
+	public function upload_formsucess()
+	{
+		$session_id=$this->session->userdata('id');
+        $data=$this->login_model->get_userdetails($session_id);
+        $user['username']=$data->userid;
+		$this->load->view('admin_header',$user);
+        $this->load->view('admin_sidebar',$user);
+		$this->load->view('upload_formsucess');
+		$this->load->view('admin_footer',$user);  
+	}
 
 
 public function menu_form()
@@ -563,7 +573,46 @@ public function change_password()
             //$data = array( "main_content" => 'includes/memberadmin/memberadmin_cpass');
                // $this->load->view('includes/memberadmin/template',$data);
           }
-          public function admin_galleryview()
+          public function admin_gallery_edit()
+          {
+ $data1['id'] = $this->input->get('id');
+      
+		$session_id=$this->session->userdata('id');
+        $data=$this->login_model->get_userdetails($session_id);
+        $user['username']=$data->userid;
+        	//echo $data['username'];exit;
+                  	$error = array('error' => $this->upload->display_errors());
+
+        $this->load->view('admin_header',$user);
+        $this->load->view('admin_sidebar',$user); 
+          	$this->load->view('admin_gallery_edit',$data1);
+        $this->load->view('admin_footer',$user);  
+          }
+          public function delete()
+          {
+          	 $data1['id'] = $this->input->get('id');
+
+          	$this->gallery_model->delete($data1);
+          }
+public function edit()
+{
+	  
+  		
+            $data_ary= array(
+
+                                'category' => $this->input->post('category'),
+
+                'description' => $this->input->post('description'),
+            	'price' =>  $this->input->post('price'),
+            	'id' => $this->input->post('id')
+
+            );
+            
+         $this->gallery_model->edit($data_ary);
+		}
+
+
+public function admin_galleryview()
 	{
 		if($session_id=$this->session->userdata('id'))
 		{
@@ -573,7 +622,8 @@ public function change_password()
 
 				$this->load->view('admin_header',$user);
         		$this->load->view('admin_sidebar',$user);
-                $data1= $this->gallery_model->display_images();
+                $data1['display']= $this->gallery_model->display_images();
+
         		$this->load->view('admin_gallery_imgdisplay',$data1);
 				$this->load->view('admin_footer',$user);  
 		}

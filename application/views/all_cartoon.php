@@ -25,89 +25,8 @@ return true;
             
 
 </SCRIPT>
-			<div class="modal fade pull-left"  id="buynow" tabindex="-1" role="dialog" aria-hidden="true" style="width: auto; height: auto; opacity: 1; overflow: visible;">
-			<div class="modal-dialog" style="overflow: auto; width: 344px; height: auto;">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title">Cartoon Cakes</h4>
-						
-					</div>
-					<div class="modal-body" id="category_id">
-						<!-- Items table -->
-						<form name="myForm" onsubmit="return validateForm()" method="post">
-						 <div id="weight" class="option">
-                    		<span class="required" style="color:red";>*</span>
-                    			<b>Weight:</b>
-                    			<br>
-         							 <select name="weight">
-           									<option value=""> --- Please Select --- 
-           									</option>
-					                        <option value="1/2kg">1/2 Kg 
-					                        </option>
-					                        <option value="1kg">1 Kg                       
-					                         </option>
-					                        <option value="2kg">2 Kg                        
-					                        </option>
-					                        <option value="3kg">3 Kg                        
-					                        </option>
-					                      </select>
-					                <p id="display" name="display" style="color:red;font:8px;"> </p>
 
-       				 </div>
-        				<br>
-                    <div id="flavour" class="option">
-                    <span class="required" style="color:red;">*</span>
-                    <b>Flavour:</b>
-                    <br>
-						          <select name="flavour">
-						            <option value=""> --- Please Select --- </option>
-						                        <option value="pineapple">Pineapple                        
-						                        </option>
-						                        <option value="chocolate">Chocolate                        
-						                        </option>
-						                        <option value="mango">Mango                        
-						                        </option>
-						                        <option value="strawberry">Strawberry                        
-						                        </option>
-						                        <option value="blueberry">Blueberry                        
-						                        </option>
-						                        <option value="blackcurrent">Black Currant                        
-						                        </option>
-						                        
-						                      </select>
-						         <p id="display1" name="display" style="color:red;font:8px;"> </p>
-
-					</div>
-
-        			<br>
-                    <div id="option-834" class="option">
-                    	<b>Message On Cake:</b><br>
-          					<textarea name="option[834]" cols="40" rows="5"></textarea>
-        			</div>
-        			<br>
-        			<div class="cart">
-       				 	<div>Qty:<input type="text" name="quantity" size="2" value="1">
-         				 	<input type="hidden" name="product_id" size="2" value="537">
-         				 					&nbsp;
-
-        				 </div>
-        				 
-        				 
-       
-            		</div>
-            		
-            							<div class="modal-footer">
-							<input type="submit" name="submit" value="Add To Cart" class="btn btn-danger btn-sm pull-left">
-							</div>
-                   
-</form>
-						
-					</div>
-					
-				</div><!-- /.modal-content -->
-			</div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
+		
 			<div class="banner padd">
 				<div class="container">
 					<!-- Image -->
@@ -133,7 +52,7 @@ return true;
 								data-easing="Power4.easeOut"
 								data-endspeed="500"
 								data-endeasing="Power4.easeIn"
-								style="z-index: 3"><strong><center>Cartoon Cakes</center></strong>
+								style="z-index: 3"><strong><center><?php $i=0; echo ucfirst($display[$i]->category);  ?> Cakes</center></strong>
 							</div>
 			
 			
@@ -157,6 +76,7 @@ return true;
 												<?php echo '<img src="'.$this->config->base_url().'uploads/'.$display[$i]->file.'" width="242" height="242"/>'; ?>
 										<!-- Shopping item name / Heading -->
 										<h4 class="pull-left"><?php echo $display[$i]->description;?></a></h4>
+										<?php $display[$i]->category; ?>
 										<!-- Buy now button -->
 										<div class="visible-xs"></div>
 

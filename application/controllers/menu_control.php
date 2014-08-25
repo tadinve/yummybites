@@ -10,11 +10,7 @@ class Menu_control extends CI_Controller {
         $this->load->library('form_validation');
     	$this->load->model('login_model');
 		$this->load->model('menu_model');
-		$this->load->model('menu_flower_model');
-		$this->load->model('menu_fruit_model');
-		$this->load->model('menu_edible_model');
-		$this->load->model('menu_engagement_model');
-		$this->load->model('menu_valentaine_model');
+		
 				$this->load->model('item_single_model');
 
 		$this->load->model('pagination_model');
@@ -84,33 +80,169 @@ class Menu_control extends CI_Controller {
 		
 if($data_ary['name'] = 'Cartoon')
 			{
-            $this->img_display();
+           $config["total_rows"] = $this->menu_model->count();
+			$config["per_page"] = 10;
+			$config["uri_segment"] = 3;
+			$config['num_links'] = 20;
+			$config['use_page_numbers'] = TRUE;
+			$config["base_url"] = $this->config->base_url().'/index.php/menu_control/img_display1';
+			$this->pagination->initialize($config);
+			$page = ($this->uri->segment(3)>0)? $this->uri->segment(3) : 1;		
+
+    if($page!="")
+    	{
+			$data['display']=$this->menu_model->get_adminimages($config["per_page"], $page);
+		}
+	else
+		{
+			$data['display']=$this->menu_model->get_adminimages('3','1');
+			print_r($data);
+		}
+ 			$data["links"] = $this->pagination->create_links();
+ 			$this->load->view('header'); 
+			$this->load->view('all_cartoon',$data);
+			$this->load->view('footer');
+	
         }
 if($data_ary['name'] = 'flower')
 			{
-            $this->img_flower();
+            $this->img_display1($data_ary);
         }
         if($data_ary['name'] = 'fruit')
 			{
-            $this->img_fruit();
+            $config["total_rows"] = $this->menu_model->count();
+			$config["per_page"] = 10;
+			$config["uri_segment"] = 3;
+			$config['num_links'] = 20;
+			$config['use_page_numbers'] = TRUE;
+			$config["base_url"] = $this->config->base_url().'/index.php/menu_control/img_display1';
+			$this->pagination->initialize($config);
+			$page = ($this->uri->segment(3)>0)? $this->uri->segment(3) : 1;		
+
+    if($page!="")
+    	{
+			$data['display']=$this->menu_model->get_adminimages($config["per_page"], $page);
+		}
+	else
+		{
+			$data['display']=$this->menu_model->get_adminimages('3','1');
+			print_r($data);
+		}
+ 			$data["links"] = $this->pagination->create_links();
+ 			$this->load->view('header'); 
+			$this->load->view('all_cartoon',$data);
+			$this->load->view('footer');
+	
         }
         if($data_ary['name'] = 'edible')
+
 			{
-            $this->img_edible();
+            $config["total_rows"] = $this->menu_model->count();
+			$config["per_page"] = 10;
+			$config["uri_segment"] = 3;
+			$config['num_links'] = 20;
+			$config['use_page_numbers'] = TRUE;
+			$config["base_url"] = $this->config->base_url().'/index.php/menu_control/img_display1';
+			$this->pagination->initialize($config);
+			$page = ($this->uri->segment(3)>0)? $this->uri->segment(3) : 1;		
+
+    if($page!="")
+    	{
+			$data['display']=$this->menu_model->get_adminimages($config["per_page"], $page);
+		}
+	else
+		{
+			$data['display']=$this->menu_model->get_adminimages('3','1');
+			print_r($data);
+		}
+ 			$data["links"] = $this->pagination->create_links();
+ 			$this->load->view('header'); 
+			$this->load->view('all_cartoon',$data);
+			$this->load->view('footer');
+	
         }
         if($data_ary['name'] = 'engagement')
 			{
-            $this->img_engagement();
+            $config["total_rows"] = $this->menu_model->count();
+			$config["per_page"] = 10;
+			$config["uri_segment"] = 3;
+			$config['num_links'] = 20;
+			$config['use_page_numbers'] = TRUE;
+			$config["base_url"] = $this->config->base_url().'/index.php/menu_control/img_display1';
+			$this->pagination->initialize($config);
+			$page = ($this->uri->segment(3)>0)? $this->uri->segment(3) : 1;		
+
+    if($page!="")
+    	{
+			$data['display']=$this->menu_model->get_adminimages($config["per_page"], $page);
+		}
+	else
+		{
+			$data['display']=$this->menu_model->get_adminimages('3','1');
+			print_r($data);
+		}
+ 			$data["links"] = $this->pagination->create_links();
+ 			$this->load->view('header'); 
+			$this->load->view('all_cartoon',$data);
+			$this->load->view('footer');
+	
         }
          if($data_ary['name'] = 'valentine')
 			{
-            $this->img_valentaine();
+            $config["total_rows"] = $this->menu_model->count();
+			$config["per_page"] = 10;
+			$config["uri_segment"] = 3;
+			$config['num_links'] = 20;
+			$config['use_page_numbers'] = TRUE;
+			$config["base_url"] = $this->config->base_url().'/index.php/menu_control/img_display1';
+			$this->pagination->initialize($config);
+			$page = ($this->uri->segment(3)>0)? $this->uri->segment(3) : 1;		
+
+    if($page!="")
+    	{
+			$data['display']=$this->menu_model->get_adminimages($config["per_page"], $page);
+		}
+	else
+		{
+			$data['display']=$this->menu_model->get_adminimages('3','1');
+			print_r($data);
+		}
+ 			$data["links"] = $this->pagination->create_links();
+ 			$this->load->view('header'); 
+			$this->load->view('all_cartoon',$data);
+			$this->load->view('footer');
+	
         }
 		}
 	}
 
 	function img_display()
 		{
+
+ 
+      $cat_id=$this->input->post('categoryid');
+
+      if($cat_id>0)
+      {
+           
+      $data['categoryid']=$cat_id;
+      $this->session->set_userdata('categoryid',$cat_id);
+      $id=$this->session->userdata('categoryid'); 
+      }
+      else
+      {
+      	$id=$this->session->userdata('categoryid');
+        $data['categoryid']=$id;
+      
+      
+
+      }        
+
+
+
+if(strlen($data['categoryid'])!=0){
+	  //$this->session->set_userdata('categoryid',$data['categoryid']);
+
 			$config["total_rows"] = $this->menu_model->count();
 			$config["per_page"] = 10;
 			$config["uri_segment"] = 3;
@@ -119,154 +251,55 @@ if($data_ary['name'] = 'flower')
 			$config["base_url"] = $this->config->base_url().'/index.php/menu_control/img_display';
 			$this->pagination->initialize($config);
 			$page = ($this->uri->segment(3)>0)? $this->uri->segment(3) : 1;		
-
+          
     if($page!="")
     	{
-			$data['display']=$this->menu_model->get_images($config["per_page"], $page);
+			$data['display']=$this->menu_model->get_images($config["per_page"], $page,$data['categoryid']);
+
+			
 		}
 	else
 		{
-			$data['display']=$this->menu_model->get_images('3','1');
-			print_r($data);
+			$data['display']=$this->menu_model->get_images('3','1',$data['categoryid']);
+		}
+
+ 			$data["links"] = $this->pagination->create_links();
+ 			$this->load->view('header'); 
+			$this->load->view('all_cartoon',$data,$this->session->all_userdata());
+			$this->load->view('footer');
+	
+	 
+
+}
+        
+	
+	}
+	
+	function img_display1()
+		{
+
+			
+			$config["total_rows"] = $this->menu_model->count();
+			$config["per_page"] = 10;
+			$config["uri_segment"] = 3;
+			$config['num_links'] = 20;
+			$config['use_page_numbers'] = TRUE;
+			$config["base_url"] = $this->config->base_url().'/index.php/menu_control/img_display1';
+			$this->pagination->initialize($config);
+			$page = ($this->uri->segment(3)>0)? $this->uri->segment(3) : 1;		
+
+    if($page!="")
+    	{
+			$data['display']=$this->menu_model->get_adminimages($config["per_page"], $page);
+			
+		}
+	else
+		{
+			$data['display']=$this->menu_model->get_adminimages('3','1');
 		}
  			$data["links"] = $this->pagination->create_links();
  			$this->load->view('header'); 
 			$this->load->view('all_cartoon',$data);
-			$this->load->view('footer');
-	
-	 
-	}
-	function img_flower()
-		{
-			$config["total_rows"] = $this->menu_flower_model->count();
-			$config["per_page"] = 10;
-			$config["uri_segment"] = 3;
-			$config['num_links'] = 20;
-			$config['use_page_numbers'] = TRUE;
-			$config["base_url"] = $this->config->base_url().'/index.php/menu_control/img_flower';
-			$this->pagination->initialize($config);
-			$page = ($this->uri->segment(3)>0)? $this->uri->segment(3) : 1;		
-
-    if($page!="")
-    	{
-			$data['display']=$this->menu_flower_model->get_images($config["per_page"], $page);
-		}
-	else
-		{
-			$data['display']=$this->menu_flower_model->get_images('3','1');
-			print_r($data);
-		}
- 			$data["links"] = $this->pagination->create_links();
- 			$this->load->view('header'); 
-			$this->load->view('all_flower',$data);
-			$this->load->view('footer');
-	
-	 
-	}
-	function img_fruit()
-		{
-			$config["total_rows"] = $this->menu_fruit_model->count();
-			$config["per_page"] = 10;
-			$config["uri_segment"] = 3;
-			$config['num_links'] = 20;
-			$config['use_page_numbers'] = TRUE;
-			$config["base_url"] = $this->config->base_url().'/index.php/menu_control/img_fruit';
-			$this->pagination->initialize($config);
-			$page = ($this->uri->segment(3)>0)? $this->uri->segment(3) : 1;		
-
-    if($page!="")
-    	{
-			$data['display']=$this->menu_fruit_model->get_images($config["per_page"], $page);
-		}
-	else
-		{
-			$data['display']=$this->menu_fruit_model->get_images('3','1');
-			print_r($data);
-		}
- 			$data["links"] = $this->pagination->create_links();
- 			$this->load->view('header'); 
-			$this->load->view('all_fruit',$data);
-			$this->load->view('footer');
-	
-	 
-	}
-	function img_edible()
-		{
-			$config["total_rows"] = $this->menu_edible_model->count();
-			$config["per_page"] = 10;
-			$config["uri_segment"] = 3;
-			$config['num_links'] = 20;
-			$config['use_page_numbers'] = TRUE;
-			$config["base_url"] = $this->config->base_url().'/index.php/menu_control/img_edible';
-			$this->pagination->initialize($config);
-			$page = ($this->uri->segment(3)>0)? $this->uri->segment(3) : 1;		
-
-    if($page!="")
-    	{
-			$data['display']=$this->menu_edible_model->get_images($config["per_page"], $page);
-		}
-	else
-		{
-			$data['display']=$this->menu_edible_model->get_images('3','1');
-			print_r($data);
-		}
- 			$data["links"] = $this->pagination->create_links();
- 			$this->load->view('header'); 
-			$this->load->view('all_edible',$data);
-			$this->load->view('footer');
-	
-	 
-	}
-	function img_engagement()
-		{
-			$config["total_rows"] = $this->menu_engagement_model->count();
-			$config["per_page"] = 10;
-			$config["uri_segment"] = 3;
-			$config['num_links'] = 20;
-			$config['use_page_numbers'] = TRUE;
-			$config["base_url"] = $this->config->base_url().'/index.php/menu_control/img_engagement';
-			$this->pagination->initialize($config);
-			$page = ($this->uri->segment(3)>0)? $this->uri->segment(3) : 1;		
-
-    if($page!="")
-    	{
-			$data['display']=$this->menu_engagement_model->get_images($config["per_page"], $page);
-		}
-	else
-		{
-			$data['display']=$this->menu_engagement_model->get_images('3','1');
-			print_r($data);
-		}
- 			$data["links"] = $this->pagination->create_links();
- 			$this->load->view('header'); 
-			$this->load->view('all_engagement',$data);
-			$this->load->view('footer');
-	
-	 
-	}
-	function img_valentaine()
-		{
-			$config["total_rows"] = $this->menu_valentaine_model->count();
-			$config["per_page"] = 10;
-			$config["uri_segment"] = 3;
-			$config['num_links'] = 20;
-			$config['use_page_numbers'] = TRUE;
-			$config["base_url"] = $this->config->base_url().'/index.php/menu_control/img_valentaine';
-			$this->pagination->initialize($config);
-			$page = ($this->uri->segment(3)>0)? $this->uri->segment(3) : 1;		
-
-    if($page!="")
-    	{
-			$data['display']=$this->menu_valentaine_model->get_images($config["per_page"], $page);
-		}
-	else
-		{
-			$data['display']=$this->menu_valentaine_model->get_images('3','1');
-			print_r($data);
-		}
- 			$data["links"] = $this->pagination->create_links();
- 			$this->load->view('header'); 
-			$this->load->view('all_valentaine',$data);
 			$this->load->view('footer');
 	
 	 
@@ -280,17 +313,72 @@ if($data_ary['name'] = 'flower')
 	
 
 	}
-	function cart()
+	function shipping()
+	{
+		$data['weight']=$this->input->post('weight');
+		$data['flavour']=$this->input->post('flavour');
+		$data['message']=$this->input->post('message');
+
+		$data['quantity']=$this->input->post('quantity');
+		
+
+		$result=$this->menu_model->get_shipping($data);
+		
+
+	}
+	function shipping_address()
+	{
+		$data['inputName']=$this->input->post('inputName');
+		$data['inputEmail']=$this->input->post('inputEmail');
+		$data['inputPhone']=$this->input->post('inputPhone');
+		$data['inputAddress']=$this->input->post('inputAddress');
+		$data['inputZip']=$this->input->post('inputZip');
+		$data['terms']=$this->input->post('terms');
+
+		$data['inputCountry']=$this->input->post('inputCountry');
+
+		$result=$this->menu_model->get_shippingaddress($data);
+		
+	}
+	public function cart()
 	{//echo 'hi';exit;
-		$catid=$this->input->post('cat_id');		
+	
+
+
+		$catid=$this->input->post('cat_id');
 		$pid=$this->item_single_model->get_details($catid);
-		$data['categoryid']=$pid[0]->id;
+		
+        	
+        $data['categoryid']=$pid[0]->id;
 		$data['category']=$pid[0]->category;
 		$data['file']=$pid[0]->file;
-		
 		$data['price']=$pid[0]->price;
-        echo json_encode($data);
+		//$a = array('desk_id' => $catid);
+		
+		# on f
+	# pull the existing IDs out of the session
+		$new_items = $this->session->userdata('new_items',$data);
+		# on first load, the array may not be initialized
+		if (!is_array($new_items))
+ 		 $new_items = array();
+  		# append $desk_id to the list of viewed items
+		$new_items[] = $data;
+		# put the new list back into the session
+
+		$this->session->set_userdata('new_items', $new_items);
+
+		//$this->session->set_flashdata('new_items', $new_items);
+
+
+		$sessionid=$this->session->userdata('new_items');
+		    // print_r(array_keys($sessionid));
+
+
+        echo json_encode($sessionid);
         exit;
+        	   	 
+       
+		
 		//print_r($data);exit;
 		
 		//$this->db->insert("cart", $data); 
@@ -298,20 +386,88 @@ if($data_ary['name'] = 'flower')
 	}
 	function cart1()
 	{//echo 'hi';exit;
-		$catid=$this->input->post('cat_id');		
+		$catid=$this->input->post('cat_id');
 		$pid=$this->item_single_model->get_details($catid);
-		$data['categoryid']=$pid[0]->id;
+		
+        	
+        $data['categoryid']=$pid[0]->id;
 		$data['category']=$pid[0]->category;
 		$data['file']=$pid[0]->file;
-		
 		$data['price']=$pid[0]->price;
-        echo json_encode($data);
-        exit;
-		//print_r($data);exit;
+		$a = array('desk_id' => $catid);
+	# pull the existing IDs out of the session
+		$new_items =  $this->session->userdata('new_items',$data);
+		# on first load, the array may not be initialized
+		if (!is_array($new_items))
+ 		 $new_items = array();
+  		# append $desk_id to the list of viewed items
+		$new_items[] = $data;
+		# put the new list back into the session
+		$this->session->set_userdata('new_items', $new_items);
+
 		
-		//$this->db->insert("cart", $data); 
+		$sessionid=$this->session->userdata('new_items');
+
+        echo json_encode($sessionid);
+        exit;
 		
 	}
+//function reset_session()
+//{
+ 
+ 	//$newdata = array();
+
+   public function delete_row()
+     {
+     	$new_items=$this->session->userdata('new_items');
+
+     	print_r($new_items);
+     	
+
+     	echo $catid=$this->input->post('category_id');
+     	foreach ($new_items as $i => $catid) 
+     	{
+
+     	unset($new_items['categoryid'][$i]);
+     	unset($new_items['category'][$i]);
+     	unset($new_items['file'][$i]);
+     	unset($new_items['price'][$i]);
+     	unset($new_items[$i]);
+		$this->session->set_userdata('new_items',$new_items);
+     	$sessionid=$this->session->userdata('new_items');
+     	//print_r($sessionid);
+     	 echo json_encode($sessionid);
+        exit;
+
+     }
+
+
+     	//print_r($sessionid[$catid]['categoryid']);
+     	//print_r($sessionid[$catid]);
+     	//for($x=0;$x<$sessionid[$catid];$x++)
+     	//{
+     		//print_r($sessionid[$catid]);
+     	//unset($sessionid['categoryid']);
+     	//print_r($sessionid);
+    // }
+     	//$this->session->set_userdata('new_items',$sessionid);
+     	//$sessionid=$this->session->userdata('new_items');
+     	//print_r($sessionid);
+  /*  if ($sessionid['categoryid']==$catid) 
+    {
+    unset($this->newdata[$catid]['categoryid']);
+    unset($this->newdata[$catid]['category']);
+    unset($this->newdata[$catid]['price']);
+    unset($this->newdata[$catid]['file']);
+
+    $this->session->set_userdata(array('contents' => $this->newdata));
+
+   $contents=$this->session->userdata('contents'); */
+    
+
+   
+	//} 
+}
 }
 
 ?>

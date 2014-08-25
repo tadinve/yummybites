@@ -1,8 +1,10 @@
 <?php class Gallery_model extends CI_Model {
+  protected $table="menu";
       public function __construct() 
      {
            parent::__construct(); 
            $this->load->database();
+
      }
 
 	function insert($data_ary)
@@ -14,6 +16,30 @@
            return $result;
         
 	}
+  function edit($data)
+  {
+   
+      $this->db->where('id',$id);
+$this->db->update('menu',$data);
+
+
+redirect("welcome/admin_galleryview");
+
+
+  }
+   function delete($data)
+  {
+   
+   $id=$data['id'];
+
+      $this->db->where('id',$id);
+$this->db->delete('menu',$data);
+
+
+redirect("welcome/admin_galleryview");
+
+
+  }
 function get_images($limit="", $start="")
 {
 
@@ -21,7 +47,7 @@ $this->uri->segment(3);
     
     $this->db->select('*');
         $this->db->from('gallery');
-        $this->db->order_by ("id", "asc");
+        $this->db->order_by ("id", "desc");
 //echo $start;
 //$start=$start*1;
         if($start!==0 && $start!==1)
@@ -36,6 +62,14 @@ $this->uri->segment(3);
               //echo $this->db->last_query();
         
         return $result;
+        if ($query->num_rows() > 0) 
+        {
+        foreach ($query->result() as $row) 
+        {
+        $data[] = $row;
+        }
+      return $data;
+        }
 
         
 }

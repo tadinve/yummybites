@@ -36,7 +36,6 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/gallery_form"><i class="fa fa-angle-double-right"></i> Gallery Images upload</a></li>
-                                 <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/admin_galleryview"><i class="fa fa-angle-double-right"></i> View Gallery</a></li>
                                    
                             </ul>
                            
@@ -48,12 +47,20 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/menu_form"><i class="fa fa-angle-double-right"></i> Flower Cake Images </a></li>
-                                <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/menu_form"><i class="fa fa-angle-double-right"></i> Edible Cake Images </a></li>
-                                 <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/menu_form"><i class="fa fa-angle-double-right"></i> Fruit Cake Images </a></li>
-                                <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/menu_form"><i class="fa fa-angle-double-right"></i> Cartoon Cake Images </a></li>
-                                 <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/menu_form"><i class="fa fa-angle-double-right"></i> Engagement Cake Images </a></li>
-
+                                <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/menu_form"><i class="fa fa-angle-double-right"></i> Menu Images </a></li>
+                        <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/admin_galleryview"><i class="fa fa-angle-double-right"></i> View Menu</a></li>
+<li class="treeview">
+                            <a href="<?php echo $this->config->base_url(); ?>index.php/welcome/admin_galleryview">
+                                <i class="fa fa-angle-double-right"></i>
+                                <span>View category wise</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="<?php echo $this->config->base_url(); ?>index.php/welcome/gallery_form"><i class="fa fa-angle-double-right"></i> Flower Images </a></li>
+                                   
+                            </ul>
+                           
+                        </li>
                             </ul>
                            
                         </li>

@@ -3,6 +3,8 @@
      {
            parent::__construct(); 
            $this->load->database();
+          $this->load->library("session");
+
      }
  public function get_images()
 {
@@ -18,11 +20,14 @@
 
      public function get_details($aa)
 	{
-        $query=$this->db->get_where ('menu',array('id' => $aa));
-		$result = $query->result_object();
-        return $result;
-    }
 
+        
+
+          $query=$this->db->get_where ('menu',array('id' => $aa));
+		      $result = $query->result_object();
+        return $result;
+       
+}
 
 
 

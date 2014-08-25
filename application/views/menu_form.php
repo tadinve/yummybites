@@ -22,7 +22,7 @@
                                 <div class="inner">
 <?php echo $error;?>
 
-<?php echo form_open_multipart('menu_control/do_upload');?>
+<?php echo form_open_multipart('welcome/upload_formsucess');?>
 <center><h3>Cake Category</h3>
 <br>
 Category Cake<select name="category">
@@ -31,7 +31,7 @@ Category Cake<select name="category">
 <option value="flower">Flower Cake</option>
 <option value="cartoon">Cartoon Cake</option>
 <option value="fruit">Fruit Cake</option>
-<option value="fruit">Valentaine Cake</option>
+<option value="valentaine">Valentaine Cake</option>
 
 </select>
 <br><br>
