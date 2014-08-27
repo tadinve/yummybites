@@ -99,7 +99,7 @@ function cart(aa){
                       //alert(price_total);
 					option = option+'<li aria-hidden="true"><div class="cart-item"><a href="#"><i class="fa fa-times"></i></a>';
 					option = option+'<img class="img-responsive img-rounded" src="<?php echo base_url(); ?>uploads/'+response[x].file+'" alt="" />';
-					option = option+'<span class="cart-title"><a href="#">'+response[x].category+' Cake</a></span>';
+					option = option+'<span class="cart-title"><a href="#">'+ucwords(response[x].category)+' Cake</a></span>';
 					option = option+'<span class="cart-price pull-right red">Rs.'+response[x].price+'/-</span>';
 
 					option = option+'<div class="clearfix"></div></div></li>';
